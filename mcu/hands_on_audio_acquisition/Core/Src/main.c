@@ -91,6 +91,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
 	if( power > 50 ){
+		power = 0;
 		print_buffer((uint16_t *) ADCData2);
 		HAL_TIM_Base_Stop(&htim3);
 		HAL_ADC_Stop_DMA(&hadc1);
@@ -106,6 +107,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
 
 void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc){
 	if( power > 50 ){
+		power = 0;
 		print_buffer((uint16_t *) ADCData1);
 		HAL_TIM_Base_Stop(&htim3);
 		HAL_ADC_Stop_DMA(&hadc1);
