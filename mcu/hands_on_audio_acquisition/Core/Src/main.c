@@ -19,7 +19,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
+#include "dma.h"
 #include "usart.h"
+#include "tim.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -35,13 +38,14 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ADC_BUF_SIZE 256
+#define ADC_BUF_SIZE 30000
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 
 /* USER CODE END PM */
+
 
 /* Private variables ---------------------------------------------------------*/
 
@@ -50,6 +54,9 @@ volatile int state;
 volatile uint16_t ADCBuffer[2*ADC_BUF_SIZE]; /* ADC group regular conversion data (array of data) */
 volatile uint16_t* ADCData1;
 volatile uint16_t* ADCData2;
+volatile uint32_t power;
+
+//volatile uint32_t ADC_value;
 
 char hex_encoded_buffer[4*ADC_BUF_SIZE+1];
 /* USER CODE END PV */
@@ -67,6 +74,45 @@ uint32_t get_signal_power(uint16_t *buffer, size_t len);
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if (GPIO_Pin == B1_Pin) {
 		state = 1-state;
+
+		/*
+		HAL_ADC_Start(&hadc1); // start acquisition
+		uint32_t err = HAL_ADC_PollForConversion(&hadc1,0xFFFF); // triggers and store in the reg
+		if (err == HAL_OK){
+			ADC_value = HAL_ADC_GetValue(&hadc1);
+		}
+		HAL_ADC_Stop(&hadc1);
+		*/
+
+		HAL_TIM_Base_Start(&htim3);
+		HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADCBuffer, 2*ADC_BUF_SIZE);
+	}
+}
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
+	if( power > 50 ){
+		print_buffer((uint16_t *) ADCData2);
+		HAL_TIM_Base_Stop(&htim3);
+		HAL_ADC_Stop_DMA(&hadc1);
+	}
+	//HAL_TIM_Base_Stop(&htim3);
+	//HAL_ADC_Stop_DMA(&hadc1);
+	else{
+		power = get_signal_power((uint16_t *) ADCData2, ADC_BUF_SIZE);
+		printf("power = %ld \n", power);
+	}
+	//print_buffer(ADCBuffer);
+}
+
+void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc){
+	if( power > 50 ){
+		print_buffer((uint16_t *) ADCData1);
+		HAL_TIM_Base_Stop(&htim3);
+		HAL_ADC_Stop_DMA(&hadc1);
+	}
+	else{
+		power = get_signal_power((uint16_t *) ADCData1, ADC_BUF_SIZE);
+		printf("power = %ld \n", power);
 	}
 }
 
@@ -122,7 +168,10 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_LPUART1_UART_Init();
+  MX_ADC1_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   RetargetInit(&hlpuart1);
   printf("Hello world!\r\n");
@@ -139,6 +188,8 @@ int main(void)
 	HAL_Delay(500);
 	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 	HAL_Delay(500);
+
+	//printf("ADC_value = %lu \n", ADC_value);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
