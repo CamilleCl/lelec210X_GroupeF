@@ -123,7 +123,7 @@ class BasicChain(Chain):
 
     cfo_val, sto_val = np.nan, np.nan  # CFO and STO are random
 
-    bypass_preamble_detect = True
+    bypass_preamble_detect = False
 
     def preamble_detect(self, y):
         """
@@ -181,6 +181,9 @@ class BasicChain(Chain):
         """
         Non-coherent demodulator.
         """
+        fd = self.freq_dev  # Frequency deviation, Delta_f
+        B = self.bit_rate  # B=1/T
+        h = 2 * fd / B  # Modulation index
         R = self.osr_rx  # Receiver oversampling factor
         nb_syms = len(y) // R  # Number of CPFSK symbols in y
 
@@ -190,10 +193,20 @@ class BasicChain(Chain):
         # TO DO: generate the reference waveforms used for the correlation
         # hint: look at what is done in modulate() in chain.py
 
+        ph = 2 * np.pi * fd * (np.arange(R) / R) / B  # Phase of reference waveform
+
+        s0 = np.exp(1j * ph)
+        s1 = np.exp(-1j * ph)
+
         # TO DO: compute the correlations with the two reference waveforms (r0 and r1)
+        r0 = 1 / R * (y @ s0)
+        r1 = 1 / R * (y @ s1)
 
         # TO DO: performs the decision based on r0 and r1
 
         bits_hat = np.zeros(nb_syms, dtype=int)  # Default value, all bits=0. TO CHANGE!
+
+        for i in range(len(r0)):
+            bits_hat[i] = 0 if abs(r0[i]) > abs(r1[i]) else 1 
 
         return bits_hat
