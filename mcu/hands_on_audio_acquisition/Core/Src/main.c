@@ -38,7 +38,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ADC_BUF_SIZE 30000
+#define ADC_BUF_SIZE 10000
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -54,7 +54,7 @@ volatile int state;
 volatile uint16_t ADCBuffer[2*ADC_BUF_SIZE]; /* ADC group regular conversion data (array of data) */
 volatile uint16_t* ADCData1;
 volatile uint16_t* ADCData2;
-volatile uint32_t power;
+// volatile uint32_t power = 51;
 
 //volatile uint32_t ADC_value;
 
@@ -90,32 +90,39 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
-	if( power > 50 ){
-		power = 0;
-		print_buffer((uint16_t *) ADCData2);
-		HAL_TIM_Base_Stop(&htim3);
-		HAL_ADC_Stop_DMA(&hadc1);
-	}
-	//HAL_TIM_Base_Stop(&htim3);
-	//HAL_ADC_Stop_DMA(&hadc1);
-	else{
-		power = get_signal_power((uint16_t *) ADCData2, ADC_BUF_SIZE);
-		printf("power = %ld \n", power);
-	}
-	//print_buffer(ADCBuffer);
+//	if( power > 50 ){
+//		power = 0;
+//		print_buffer((uint16_t *) ADCData2);
+//		HAL_TIM_Base_Stop(&htim3);
+//		HAL_ADC_Stop_DMA(&hadc1);
+//	}
+//	//HAL_TIM_Base_Stop(&htim3);
+//	//HAL_ADC_Stop_DMA(&hadc1);
+//	else{
+//		power = get_signal_power((uint16_t *) ADCData2, ADC_BUF_SIZE);
+//		printf("power = %ld \n", power);
+//	}
+//	//print_buffer(ADCBuffer);
 }
 
 void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc){
-	if( power > 50 ){
-		power = 0;
-		print_buffer((uint16_t *) ADCData1);
-		HAL_TIM_Base_Stop(&htim3);
-		HAL_ADC_Stop_DMA(&hadc1);
-	}
-	else{
-		power = get_signal_power((uint16_t *) ADCData1, ADC_BUF_SIZE);
-		printf("power = %ld \n", power);
-	}
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+	HAL_TIM_Base_Stop(&htim3);
+	HAL_ADC_Stop_DMA(&hadc1);
+	print_buffer((uint16_t *) ADCData1);
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+
+//	if( power > 50 ){
+//		power = 0;
+//		print_buffer((uint16_t *) ADCData1);
+//		HAL_TIM_Base_Stop(&htim3);
+//		HAL_ADC_Stop_DMA(&hadc1);
+//	}
+//	else{
+//		power = get_signal_power((uint16_t *) ADCData1, ADC_BUF_SIZE);
+//		printf("power = %ld \n", power);
+//	}
+
 }
 
 void hex_encode(char* s, const uint8_t* buf, size_t len) {
@@ -186,11 +193,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
-	HAL_Delay(500);
-	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-	HAL_Delay(500);
-
+	  __WFI();
+//	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+//	HAL_Delay(500);
+//	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+//	HAL_Delay(500);
 	//printf("ADC_value = %lu \n", ADC_value);
     /* USER CODE END WHILE */
 
