@@ -139,7 +139,7 @@ class BasicChain(Chain):
 
         return None
 
-    bypass_cfo_estimation = True
+    bypass_cfo_estimation = False
 
     def cfo_estimation(self, y):
         """
@@ -147,9 +147,16 @@ class BasicChain(Chain):
         """
         # TO DO: extract 2 blocks of size N*R at the start of y
 
+        N = 2
+        R = self.osr_rx
+        B = self.bit_rate
+
+        block1 = y[:N*R] 
+        block2 = y[N*R:2*N*R]
+
         # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
 
-        cfo_est = 0  # Default value, to change
+        cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
 
         return cfo_est
 
