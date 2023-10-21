@@ -20,13 +20,13 @@ class Chain:
     preamble = PREAMBLE
     sync_word = SYNC_WORD
 
-    payload_len = 50  # Number of bits per packet
+    payload_len = 150  # Number of bits per packet
 
     ## Simulation parameters
-    n_packets = 100  # Number of sent packets
+    n_packets = 1000  # Number of sent packets
 
     ## Channel parameters
-    sto_val = 0
+    sto_val = 0  # 0 de base
     sto_range = 10 / BIT_RATE  # defines the delay range when random
 
     cfo_val = 0
@@ -121,7 +121,8 @@ class Chain:
 class BasicChain(Chain):
     name = "Basic Tx/Rx chain"
 
-    cfo_val, sto_val = np.nan, np.nan  # CFO and STO are random
+    cfo_val = np.nan  # CFO is random
+    sto_val = np.nan  # STO is random
 
     bypass_preamble_detect = False
 
@@ -160,7 +161,7 @@ class BasicChain(Chain):
 
         return cfo_est
 
-    bypass_sto_estimation = True
+    bypass_sto_estimation = False
 
     def sto_estimation(self, y):
         """
