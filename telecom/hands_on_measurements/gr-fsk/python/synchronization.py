@@ -27,7 +27,17 @@ def cfo_estimation(y, B, R, Fdev):
     """
     Estimate CFO using Moose algorithm, on first samples of preamble
     """
-    return 0.0  # TODO
+    
+    N = 2
+
+    block1 = y[:N*R] 
+    block2 = y[N*R:2*N*R]
+
+    # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
+
+    cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+
+    return cfo_est
 
 
 def sto_estimation(y, B, R, Fdev):
@@ -122,6 +132,7 @@ class synchronization(gr.basic_block):
                 SNR_est = (
                     self.power_est - self.estimated_noise_power
                 ) / self.estimated_noise_power
+                print( self.power_est, self.estimated_noise_power, self.estimated_noise_power)
                 print(
                     "[SYNC] Estimated SNR: {:.2f} dB ({} samples)".format(
                         10 * np.log10(SNR_est), len(y)
