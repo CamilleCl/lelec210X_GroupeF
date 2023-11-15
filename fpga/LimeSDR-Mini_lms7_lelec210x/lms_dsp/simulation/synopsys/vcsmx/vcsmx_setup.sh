@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 18.1 625 win32 2023.11.08.03:03:50
+# ACDS 18.1 625 linux 2023.11.09.15:42:46
 
 # ----------------------------------------
 # vcsmx - auto-generated simulation script
@@ -107,12 +107,12 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 18.1 625 win32 2023.11.08.03:03:50
+# ACDS 18.1 625 linux 2023.11.09.15:42:46
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="lms_dsp"
 QSYS_SIMDIR="./../../"
-QUARTUS_INSTALL_DIR="C:/intelfpga/18.1/quartus/"
+QUARTUS_INSTALL_DIR="/home/julien/intelFPGA_lite/18.1/quartus/"
 SKIP_FILE_COPY=0
 SKIP_DEV_COM=0
 SKIP_COM=0
