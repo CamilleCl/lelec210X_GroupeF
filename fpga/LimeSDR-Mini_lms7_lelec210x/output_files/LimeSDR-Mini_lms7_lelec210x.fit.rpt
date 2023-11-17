@@ -1,5 +1,5 @@
 Fitter report for LimeSDR-Mini_lms7_lelec210x
-Thu Nov  9 15:47:09 2023
+Thu Nov 16 14:33:17 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Thu Nov  9 15:47:09 2023       ;
+; Fitter Status                      ; Successful - Thu Nov 16 14:33:17 2023       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; LimeSDR-Mini_lms7_lelec210x                 ;
 ; Top-level Entity Name              ; lms7_trx_top                                ;
@@ -164,14 +164,14 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.29        ;
+; Average used               ; 1.36        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  10.7%      ;
-;     Processor 3            ;   9.3%      ;
-;     Processor 4            ;   9.1%      ;
+;     Processor 2            ;  13.0%      ;
+;     Processor 3            ;  11.7%      ;
+;     Processor 4            ;  11.4%      ;
 +----------------------------+-------------+
 
 
@@ -3648,25 +3648,25 @@ Info (176235): Finished register packing
     Extra Info (176218): Packed 68 registers into blocks of type I/O Output Buffer
     Extra Info (176220): Created 21 register duplicates
 Info (128000): Starting physical synthesis optimizations for speed
-Info (128001): Physical synthesis optimizations for speed complete: elapsed time is 00:00:05
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:20
+Info (128001): Physical synthesis optimizations for speed complete: elapsed time is 00:00:06
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:21
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:07
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:08
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:42
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:52
 Info (170193): Fitter routing operations beginning
 Info (170089): 8e+02 ns of routing delay (approximately 2.0% of available device routing delay) has been added to meet hold timing. For more information, refer to the Estimated Delay Added for Hold Timing section in the Fitter report.
 Info (170195): Router estimated average interconnect usage is 16% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 27% of the available device resources in the region that extends from location X38_Y20 to location X50_Y30
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:33
-Info (11888): Total time spent on timing analysis during the Fitter is 26.64 seconds.
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:35
+Info (11888): Total time spent on timing analysis during the Fitter is 25.73 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:16
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:22
 Warning (169177): 51 pins must meet Intel FPGA requirements for 3.3-, 3.0-, and 2.5-V interfaces. For more information, refer to AN 447: Interfacing MAX 10 Devices with 3.3/3.0/2.5-V LVTTL/LVCMOS I/O Systems.
     Info (169178): Pin FT_BE[0] uses I/O standard 3.3-V LVCMOS at B11 File: /home/julien/Documents/LELEC2102/lelec210X_GroupeF/fpga/LimeSDR-Mini_lms7_lelec210x/src/top/synth/lms7_trx_top.vhd Line: 80
     Info (169178): Pin FT_BE[1] uses I/O standard 3.3-V LVCMOS at C12 File: /home/julien/Documents/LELEC2102/lelec210X_GroupeF/fpga/LimeSDR-Mini_lms7_lelec210x/src/top/synth/lms7_trx_top.vhd Line: 80
@@ -3721,10 +3721,10 @@ Warning (169177): 51 pins must meet Intel FPGA requirements for 3.3-, 3.0-, and 
     Info (169178): Pin FT_TXEn uses I/O standard 3.3-V LVCMOS at C13 File: /home/julien/Documents/LELEC2102/lelec210X_GroupeF/fpga/LimeSDR-Mini_lms7_lelec210x/src/top/synth/lms7_trx_top.vhd Line: 84
 Info (144001): Generated suppressed messages file /home/julien/Documents/LELEC2102/lelec210X_GroupeF/fpga/LimeSDR-Mini_lms7_lelec210x/output_files/LimeSDR-Mini_lms7_lelec210x.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 24 warnings
-    Info: Peak virtual memory: 1820 megabytes
-    Info: Processing ended: Thu Nov  9 15:47:12 2023
-    Info: Elapsed time: 00:02:14
-    Info: Total CPU time (on all processors): 00:04:13
+    Info: Peak virtual memory: 1812 megabytes
+    Info: Processing ended: Thu Nov 16 14:33:20 2023
+    Info: Elapsed time: 00:02:36
+    Info: Total CPU time (on all processors): 00:05:23
 
 
 +----------------------------+

@@ -150,7 +150,7 @@ find_package(Doxygen)
 # Setup doxygen option
 ########################################################################
 if(DOXYGEN_FOUND)
-    option(ENABLE_DOXYGEN "Build docs using Doxygen" ON)
+    option(ENABLE_DOXYGEN "Build docs using Doxygen" OFF)
 else(DOXYGEN_FOUND)
     option(ENABLE_DOXYGEN "Build docs using Doxygen" OFF)
 endif(DOXYGEN_FOUND)

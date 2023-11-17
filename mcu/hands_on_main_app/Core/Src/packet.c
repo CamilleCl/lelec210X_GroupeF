@@ -34,10 +34,19 @@ void tag_cbc_mac(uint8_t *tag, const uint8_t *msg, size_t msg_len) {
 // Assumes payload is already in place in the packet
 int make_packet(uint8_t *packet, size_t payload_len, uint8_t sender_id, uint32_t serial) {
     size_t packet_len = payload_len + PACKET_HEADER_LENGTH + PACKET_TAG_LENGTH;
-    // Initially, the whole packet header is set to 0s
-    memset(packet, 0, PACKET_HEADER_LENGTH);
-    // So is the tag
-	memset(packet + payload_len + PACKET_HEADER_LENGTH, 0, PACKET_TAG_LENGTH);
+//    // Initially, the whole packet header is set to 0s
+//    memset(packet, 0, PACKET_HEADER_LENGTH);
+//    // So is the tag
+//	memset(packet + payload_len + PACKET_HEADER_LENGTH, 0, PACKET_TAG_LENGTH);
+
+    packet[0] = 0x00;
+    packet[1] = sender_id;
+    packet[2] = (uint8_t) payload_len >> 8;
+    packet[3] = (uint8_t) payload_len;
+    packet[4] = (uint8_t) serial >> 24;
+    packet[5] = (uint8_t) serial >> 16;
+    packet[6] = (uint8_t) serial >> 8;
+    packet[7] = (uint8_t) serial;
 
 	// TO DO :  replace the two previous command by properly
 	//			setting the packet header with the following structure :
