@@ -69,6 +69,8 @@ class AudioUtil:
         sig, sr = audio
 
         ### TO COMPLETE
+        M = sr/newsr
+        resig = signal.resample(sig, int(len(sig) / M))
 
         return (resig, newsr)
 
@@ -126,6 +128,9 @@ class AudioUtil:
 
         ### TO COMPLETE
 
+        sig = sig * random.randrange(scaling_limit)
+        audio = (sig,sr)
+
         return audio
 
     def add_noise(audio, sigma=0.05) -> Tuple[ndarray, int]:
@@ -139,6 +144,10 @@ class AudioUtil:
 
         ### TO COMPLETE
 
+        noise = random.normal(scale = sigma, size = len(sig))
+        sig = sig + noise
+        audio = (sig,sr)
+        
         return audio
 
     def echo(audio, nechos=2) -> Tuple[ndarray, int]:
