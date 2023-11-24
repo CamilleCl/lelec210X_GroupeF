@@ -69,6 +69,8 @@ class AudioUtil:
         sig, sr = audio
 
         ### TO COMPLETE
+        M = sr/newsr
+        resig = signal.resample(sig, int(len(sig) / M))
 
         return (resig, newsr)
 
@@ -126,6 +128,9 @@ class AudioUtil:
 
         ### TO COMPLETE
 
+        sig = sig * random.randrange(scaling_limit)
+        audio = (sig,sr)
+
         return audio
 
     def add_noise(audio, sigma=0.05) -> Tuple[ndarray, int]:
@@ -139,6 +144,10 @@ class AudioUtil:
 
         ### TO COMPLETE
 
+        noise = np.random.normal(scale = sigma, size = len(sig))
+        sig = sig + noise
+        audio = (sig,sr)
+        
         return audio
 
     def echo(audio, nechos=2) -> Tuple[ndarray, int]:
@@ -169,6 +178,7 @@ class AudioUtil:
         sig, sr = audio
 
         ### TO COMPLETE
+        
        
         return (sig, sr)
 
@@ -185,10 +195,20 @@ class AudioUtil:
 
         sig, sr = audio
 
-        ### TO COMPLETE
+        # #Line completed
+        # for i in range(num_sources):
+        #     classname = dataset.list_classes()
+        #     rand_class = random.choice(classname)
+        #     size = len(rand_class)
+        #     rand_index = random.randrange(size - 1)
+        #     sound = dataset[rand_class, rand_index]
+        #     sound = sound[:max_ms]
+        #     sound[sound >= amplitude_limit] = amplitude_limit
+        #     index_add = random.randrange(len(sig)-len(sound))
+        #     sig[index_add:index_add+len(sound)] = sig[index_add:index_add+len(sound)] + sound
 
         return audio
-
+    
     def specgram(audio, Nft=512, fs2=11025) -> ndarray:
         """
         Compute a Spectrogram.
@@ -200,6 +220,24 @@ class AudioUtil:
 
         ### TO COMPLETE
         # stft /= float(2**8)
+        y, sr = audio
+        
+        L = len(y)
+        y = y[: L - L % Nft]
+        L = len(y)
+
+        "Reshape the signal with a piece for each row"
+        audiomat = np.reshape(y, (L // Nft, Nft))
+        audioham = audiomat * np.hamming(Nft)  # Windowing. Hamming, Hanning, Blackman,..
+
+        z = np.reshape(audioham, -1)  # y windowed by pieces
+        "FFT row by row"
+        stft = np.fft.fft(audioham, axis=1)
+        stft = np.abs(
+            stft[:, : Nft // 2].T
+        )  # Taking only positive frequencies and computing the magnitude
+
+        
         return stft
 
     def get_hz2mel(fs2=11025, Nft=512, Nmel=20) -> ndarray:
@@ -227,6 +265,17 @@ class AudioUtil:
         """
 
         ### TO COMPLETE
+        sig, sr = audio
+        
+        audio = AudioUtil.resample(audio, fs2)
+        
+        stft = AudioUtil.specgram(audio, Nft, fs2)
+        
+        mels = librosa.filters.mel(sr=fs2, n_fft=Nft, n_mels=Nmel)
+        mels = mels[:, :-1]
+        ### Normalize the mels matrix such that its maximum value is one.
+        mels = mels/(np.max(mels))
+        melspec = mels@stft
 
         return melspec
 
