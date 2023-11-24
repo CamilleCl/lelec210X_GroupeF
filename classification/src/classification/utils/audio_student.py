@@ -71,6 +71,8 @@ class AudioUtil:
         ### TO COMPLETE
         M = sr/newsr
         resig = signal.resample(sig, int(len(sig) / M))
+        M = sr/newsr
+        resig = signal.resample(sig, int(len(sig) / M))
 
         return (resig, newsr)
 
@@ -127,6 +129,9 @@ class AudioUtil:
         sig, sr = audio
 
         ### TO COMPLETE
+
+        sig = sig * random.randrange(scaling_limit)
+        audio = (sig,sr)
 
         sig = sig * random.randrange(scaling_limit)
         audio = (sig,sr)
