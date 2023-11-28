@@ -71,8 +71,6 @@ class AudioUtil:
         ### TO COMPLETE
         M = sr/newsr
         resig = signal.resample(sig, int(len(sig) / M))
-        M = sr/newsr
-        resig = signal.resample(sig, int(len(sig) / M))
 
         return (resig, newsr)
 
@@ -130,10 +128,7 @@ class AudioUtil:
 
         ### TO COMPLETE
 
-        sig = sig * random.randrange(scaling_limit)
-        audio = (sig,sr)
-
-        sig = sig * random.randrange(scaling_limit)
+        sig = sig / random.randrange(1, scaling_limit)
         audio = (sig,sr)
 
         return audio
@@ -200,17 +195,22 @@ class AudioUtil:
 
         sig, sr = audio
 
-        # #Line completed
-        # for i in range(num_sources):
-        #     classname = dataset.list_classes()
-        #     rand_class = random.choice(classname)
-        #     size = len(rand_class)
-        #     rand_index = random.randrange(size - 1)
-        #     sound = dataset[rand_class, rand_index]
-        #     sound = sound[:max_ms]
-        #     sound[sound >= amplitude_limit] = amplitude_limit
-        #     index_add = random.randrange(len(sig)-len(sound))
-        #     sig[index_add:index_add+len(sound)] = sig[index_add:index_add+len(sound)] + sound
+        #Line completed
+        for i in range(num_sources):
+            classname = dataset.list_classes()
+            rand_class = random.choice(classname)
+            size = len(rand_class)
+            rand_index = random.randrange(size - 1)
+            sound_bg = dataset[rand_class, rand_index]
+            audio_bg = AudioUtil.open(sound_bg)
+            audio_bg = AudioUtil.resample(audio_bg, audio[1])
+            sig_bg   = audio_bg[0]
+            sig_bg = sig_bg[:max_ms]
+            sig_bg = (sig_bg / np.max(sig_bg)) * amplitude_limit
+            index_add = random.randrange(len(sig)-len(sig_bg))
+            sig[index_add:index_add+len(sig_bg)] = sig[index_add:index_add+len(sig_bg)] + sig_bg
+
+        audio = (sig, sr)
 
         return audio
     
