@@ -9,6 +9,7 @@ plt.switch_backend('TkAgg')
 import numpy as np
 import serial
 from serial.tools import list_ports
+import pickle
 
 from classification.utils.plots import plot_specgram
 
@@ -18,6 +19,10 @@ MELVEC_LENGTH = 20
 N_MELVECS = 20
 
 dt = np.dtype(np.uint16).newbyteorder("<")
+
+model_dir = "../../classification/data/models/" # where to save the models
+filename = 'model.pickle'
+model = pickle.load(open(model_dir + filename, 'rb'))
 
 
 def parse_buffer(line):
@@ -77,3 +82,10 @@ if __name__ == "__main__":
             plt.draw()
             plt.pause(0.001)
             plt.show()
+
+            melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
+            melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
+
+            y_predict = model.predict(melvec_normalized)
+
+            print(f'predicted class: {y_predict}')
