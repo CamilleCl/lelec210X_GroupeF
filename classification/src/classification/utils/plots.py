@@ -145,6 +145,47 @@ def plot_specgram(
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
     ax.set_title(title)
+
+
+def save_specgram(
+    specgram,
+    is_mel=False,
+    title=None,
+    xlabel="Time [s]",
+    ylabel="Frequency [Hz]",
+    cmap="jet",
+    cb=True,
+    tf=None,
+    invert=True,
+):
+    if tf is None:
+        tf = specgram.shape[1]
+
+    if is_mel:
+        ylabel = "Frequency [Mel]"
+        im = plt.imshow(
+            specgram, cmap=cmap, aspect="auto", extent=[0, tf, specgram.shape[0], 0]
+        )
+    else:
+        im = plt.imshow(
+            specgram,
+            cmap=cmap,
+            aspect="auto",
+            extent=[0, tf, int(specgram.size / tf), 0],
+        )
+    if invert:
+        plt.invert_yaxis()
+    fig = plt.gcf()
+    if cb:
+        fig.colorbar(im, ax=ax)
+    # cbar.set_label('log scale', rotation=270)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.title(title)
+
+    plt.savefig(f"{title}.pdf")
+
+
     return None
 
 
