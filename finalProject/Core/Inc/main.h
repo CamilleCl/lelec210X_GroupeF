@@ -43,8 +43,6 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 
-extern volatile uint8_t btn_press;
-
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -63,35 +61,14 @@ void Error_Handler(void);
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
 #define B1_EXTI_IRQn EXTI15_10_IRQn
-#define RADIO_S2LP_CSN_Pin GPIO_PIN_0
-#define RADIO_S2LP_CSN_GPIO_Port GPIOC
-#define RADIO_INT_Pin GPIO_PIN_3
-#define RADIO_INT_GPIO_Port GPIOA
-#define RADIO_INT_EXTI_IRQn EXTI3_IRQn
-#define RADIO_SDN_Pin GPIO_PIN_13
-#define RADIO_SDN_GPIO_Port GPIOF
-#define RADIO_EEPROM_CSN_Pin GPIO_PIN_11
-#define RADIO_EEPROM_CSN_GPIO_Port GPIOE
 #define LD3_Pin GPIO_PIN_14
 #define LD3_GPIO_Port GPIOB
-#define USB_OverCurrent_Pin GPIO_PIN_5
-#define USB_OverCurrent_GPIO_Port GPIOG
-#define USB_PowerSwitchOn_Pin GPIO_PIN_6
-#define USB_PowerSwitchOn_GPIO_Port GPIOG
 #define STLK_RX_Pin GPIO_PIN_7
 #define STLK_RX_GPIO_Port GPIOG
 #define STLK_TX_Pin GPIO_PIN_8
 #define STLK_TX_GPIO_Port GPIOG
-#define USB_SOF_Pin GPIO_PIN_8
-#define USB_SOF_GPIO_Port GPIOA
-#define USB_VBUS_Pin GPIO_PIN_9
-#define USB_VBUS_GPIO_Port GPIOA
-#define USB_ID_Pin GPIO_PIN_10
-#define USB_ID_GPIO_Port GPIOA
-#define USB_DM_Pin GPIO_PIN_11
-#define USB_DM_GPIO_Port GPIOA
-#define USB_DP_Pin GPIO_PIN_12
-#define USB_DP_GPIO_Port GPIOA
+#define LD1_Pin GPIO_PIN_7
+#define LD1_GPIO_Port GPIOC
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14

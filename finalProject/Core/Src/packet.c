@@ -6,7 +6,6 @@
 #include "config.h"
 #include "packet.h"
 #include "main.h"
-#include "utils.h"
 
 // uniformly randomly chosen key
 const uint8_t AES_Key[16]  = {

@@ -24,6 +24,7 @@
 #include "usart.h"
 #include "tim.h"
 #include "gpio.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
@@ -59,7 +60,8 @@ volatile int state = 0;
 volatile int bounce = 0;
 volatile uint16_t ADCBuffer[2*SAMPLES_PER_MELVEC]; /* ADC write buffer (via DMA) */
 volatile uint16_t* ADCDblBuffer[2] = {&ADCBuffer[0], &ADCBuffer[SAMPLES_PER_MELVEC]};
-volatile uint32_t serial;	// unique and incrementing id of the packet
+
+volatile uint32_t serial;  // unique and incrementing id of the packet
 
 static volatile uint8_t cur_melvec = 0;
 
@@ -105,9 +107,9 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
 	{
 		HAL_TIM_Base_Stop(&htim3);
 		HAL_ADC_Stop_DMA(&hadc1);
-		int packet_length = make_packet(mel_vectors_flat, N_MELVECS * MELVEC_LENGTH * 2, 0, serial);   // Each melvec has a 2 byte lenght
+		int packet_length = make_packet((uint8_t *) mel_vectors_flat, N_MELVECS * MELVEC_LENGTH*2 , 0, serial );
 		serial++;
-		print_buffer(mel_vectors_flat, packet_length);
+		print_buffer(mel_vectors_flat, N_MELVECS * MELVEC_LENGTH);
 		cur_melvec = 0;
 	}
 	bounce = 0;
