@@ -98,7 +98,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [576, 20.0]
+    coordinate: [584, 84.0]
     rotation: 0
     state: true
 - name: estimated_noise_power
