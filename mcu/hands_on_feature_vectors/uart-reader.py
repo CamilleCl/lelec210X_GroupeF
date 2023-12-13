@@ -16,7 +16,7 @@ from classification.utils.plots import plot_specgram
 
 PRINT_PREFIX = "DF:HEX:"
 FREQ_SAMPLING = 10200
-MELVEC_LENGTH = 16
+MELVEC_LENGTH = 20
 N_MELVECS = 20
 
 result_filename = "predicted_class.csv"
@@ -117,7 +117,8 @@ if __name__ == "__main__":
             melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
             # Pas bon, c'était juste pour tester
-            y_predict = model.predict(np.hstack((melvec_normalized, np.zeros((1,80)))))
+            # y_predict = model.predict(np.hstack((melvec_normalized, np.zeros((1,80)))))
+            y_predict = model.predict(melvec_normalized)
 
             print(f'predicted class: {y_predict}')
 
@@ -125,8 +126,8 @@ if __name__ == "__main__":
             file.write(f"{y_predict}\n")
             file.close()
             
-            # plt.figure()
-            # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
-            # plt.draw()
-            # plt.pause(0.001)
-            # plt.show()
+            plt.figure()
+            plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
+            plt.draw()
+            plt.pause(0.001)
+            plt.show()
