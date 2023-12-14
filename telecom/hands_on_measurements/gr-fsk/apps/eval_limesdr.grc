@@ -8,7 +8,7 @@ options:
     description: ''
     gen_cmake: 'On'
     gen_linking: dynamic
-    generate_options: qt_gui
+    generate_options: no_gui
     hier_block_src_path: '.:'
     id: eval_limesdr
     max_nouts: '0'
@@ -160,7 +160,7 @@ blocks:
     bus_structure: null
     coordinate: [984, 20]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: rx_gain
   id: variable
   parameters:
@@ -172,7 +172,7 @@ blocks:
     bus_structure: null
     coordinate: [1260, 50]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: samp_rate
   id: variable
   parameters:
@@ -275,6 +275,7 @@ blocks:
     analog_bandw_ch1: 1.5e6
     calibr_bandw_ch0: ''
     calibr_bandw_ch1: 2.5e6
+    ch_align: 'False'
     channel_mode: '0'
     comment: ''
     dacVal: '180'
@@ -352,7 +353,7 @@ blocks:
     bus_structure: null
     coordinate: [498, 492]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: zeromq_pub_sink_0
   id: zeromq_pub_sink
   parameters:
