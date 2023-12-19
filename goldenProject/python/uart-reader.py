@@ -16,7 +16,7 @@ from classification.utils.plots import plot_specgram
 
 # creating the socket
 host = socket.gethostname()
-port = 5000 
+port = 5002
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -80,9 +80,8 @@ def reader_socket():
                   
 if __name__ == "__main__":
     try:
-
-        file = open(result_filename, 'w')
-        file.close()
+        # file = open(result_filename, 'w')
+        # file.close()
 
         argParser = argparse.ArgumentParser()
         argParser.add_argument("-p", "--port", help="Port for serial communication")
@@ -126,11 +125,11 @@ if __name__ == "__main__":
                 file.write(f"{y_predict}\n")
                 file.close()
                 
-                plt.figure()
-                plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
-                plt.draw()
-                plt.pause(0.001)
-                plt.show()
+                # plt.figure()
+                # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
+                # plt.draw()
+                # plt.pause(0.001)
+                # plt.show()
 
     except KeyboardInterrupt:
         print("\n\nProgram interrupted. Shutting down server")

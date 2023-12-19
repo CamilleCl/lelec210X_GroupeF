@@ -177,7 +177,7 @@ def main(
                 yield msg
 
     host = socket.gethostname()
-    port = 5000 
+    port = 5002
 
     client_socket = socket.socket()
     client_socket.connect((host, port)) 

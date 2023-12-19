@@ -1,0 +1,37 @@
+---------------------------------------------------------------
+LimeSuite Source (RX) info
+
+##################
+Connecting to device
+##################
+LimeSuite version: 22.09.1-myriadrf1~ubuntu20.04
+gr-limesdr version: v1.0-compat-xxx-xunknown
+##################
+Device list:
+Nr.:0 device:LimeSDR Mini, media=USB 3.0, module=FT601, addr=24607:1027, serial=1D74EF675B5C46
+##################
+INFO: device_handler::open_device(): no serial number. Using first device in the list.
+Use "LimeUtil --find" in terminal to find prefered device serial.
+Using device: LimeSDR-Mini(1D74EF675B5C46) GW: 1.29 FW: 6
+##################
+
+INFO: device_handler::enable_channels(): SISO CH0 set for device number 0.
+INFO: device_handler::set_samp_rate(): set sampling rate: 0.4 MS/s.
+INFO: device_handler::set_rf_freq(): RF frequency set [RX]: 870 MHz.
+INFO: device_handler::set_analog_filter(): INFO: device_handler::set_digital_filter(): digital filter CH0 [RX]: 0.4 MHz.
+INFO: device_handler::set_gain(): 
+Clearing running sum before changing gain 
+Actual : Short = 0 /  Long = 0
+Clear : Short = 0 /  Long = 0
+Set gain [RX] CH0: 40 dB.
+Running : Short = 0 /  Long = 0
+INFO: device_handler::set_antenna(): CH0 antenna set [RX]: LNAW.
+INFO: device_handler::calibrate(): INFO: device_handler::set_dspcfg_preamble(): Preamble Detector Enabled
+Passthrough length: 8048
+Detection threshold: 
+
+Short sum: 0
+Long sum: 0
+count: 0
+INFO: source_impl::init_stream(): source channel 0 (device nr. 0) stream setup done.
+Press Enter to quit: 

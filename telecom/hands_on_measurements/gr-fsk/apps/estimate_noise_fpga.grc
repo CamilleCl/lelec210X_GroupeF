@@ -36,7 +36,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '1'
+    value: '12'
   states:
     bus_sink: false
     bus_source: false
@@ -48,7 +48,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 868e6
+    value: 870e6
   states:
     bus_sink: false
     bus_source: false
@@ -80,7 +80,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '70'
-    value: '70'
+    value: '40'
     widget: counter_slider
   states:
     bus_sink: false

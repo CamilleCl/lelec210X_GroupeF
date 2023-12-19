@@ -57,7 +57,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '12'
+    value: '10'
   states:
     bus_sink: false
     bus_source: false
@@ -105,7 +105,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '0.1'
+    value: '0.005'
   states:
     bus_sink: false
     bus_source: false
@@ -117,7 +117,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 800e-06
+    value: '3.7e-7'
   states:
     bus_sink: false
     bus_source: false
@@ -198,7 +198,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '70'
+    value: '40'
   states:
     bus_sink: false
     bus_source: false
@@ -316,7 +316,7 @@ blocks:
     dspcfg_PASSTHROUGH_LEN: (packet_len+1)*8*int(samp_rate/data_rate)+int(samp_rate/data_rate)
       + 1000
     dspcfg_THRESHOLD: K_threshold
-    dspcfg_preamble_en: '0'
+    dspcfg_preamble_en: '1'
     filename: ''
     gain_dB_ch0: rx_gain
     gain_dB_ch1: '1'
