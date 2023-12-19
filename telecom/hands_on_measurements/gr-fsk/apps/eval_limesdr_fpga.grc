@@ -8,7 +8,7 @@ options:
     description: ''
     gen_cmake: 'On'
     gen_linking: dynamic
-    generate_options: qt_gui
+    generate_options: no_gui
     hier_block_src_path: '.:'
     id: eval_limesdr_fpga
     max_nouts: '0'
@@ -52,19 +52,19 @@ blocks:
     bus_structure: null
     coordinate: [1111, 19]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: K_threshold
   id: variable
   parameters:
     comment: ''
-    value: '7'
+    value: '10'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [1313, 22]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: carrier_freq
   id: variable
   parameters:
@@ -117,7 +117,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 1e-06
+    value: '3.5e-7'
   states:
     bus_sink: false
     bus_source: false
@@ -193,19 +193,19 @@ blocks:
     bus_structure: null
     coordinate: [984, 20]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: rx_gain
   id: variable
   parameters:
     comment: ''
-    value: '15'
+    value: '40'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [1345, 91]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: samp_rate
   id: variable
   parameters:
@@ -256,7 +256,7 @@ blocks:
     bus_structure: null
     coordinate: [320, 204.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: fsk_packet_parser_0
   id: fsk_packet_parser
   parameters:
@@ -295,7 +295,7 @@ blocks:
     bus_structure: null
     coordinate: [320, 380.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: fsk_synchronization_0
   id: fsk_synchronization
   parameters:
@@ -336,7 +336,7 @@ blocks:
     dspcfg_PASSTHROUGH_LEN: (packet_len+1)*8*int(samp_rate/data_rate)+int(samp_rate/data_rate)
       + 1000
     dspcfg_THRESHOLD: K_threshold
-    dspcfg_preamble_en: '1'
+    dspcfg_preamble_en: '0'
     filename: ''
     gain_dB_ch0: rx_gain
     gain_dB_ch1: '1'
@@ -385,7 +385,7 @@ blocks:
     bus_structure: null
     coordinate: [64, 356.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: zeromq_pub_sink_0
   id: zeromq_pub_sink
   parameters:
