@@ -176,11 +176,11 @@ def main(
                 msg = socket.recv(2 * melvec_len * num_melvecs)
                 yield msg
 
-    host = socket.gethostname()
-    port = 5002
+    # host = socket.gethostname()
+    # port = 5002
 
-    client_socket = socket.socket()
-    client_socket.connect((host, port)) 
+    # client_socket = socket.socket()
+    # client_socket.connect((host, port)) 
 
     input_stream = reader()
     for msg in input_stream:
@@ -195,7 +195,7 @@ def main(
             output.flush()
 
             msg_to_send = PRINT_PREFIX + payload.hex() + "\n"
-            client_socket.send(msg_to_send.encode('ascii')) 
+            # client_socket.send(msg_to_send.encode('ascii')) 
 
 
         except packet.InvalidPacket as e:
