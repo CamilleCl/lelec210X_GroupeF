@@ -1,10 +1,12 @@
 from pathlib import Path
 from typing import List, Tuple
 
+SOUND_DURATION: float = 5.0
+
 
 def get_cls_from_path(file: Path) -> str:
     """
-    Returns a sound class from a given path.
+    Return a sound class from a given path.
 
     By convention, sound files should be named `some/path/cls_index.format`,
     where format can be any supported audio format, index is some
@@ -22,7 +24,7 @@ class Dataset:
         self, folder: Path = Path(__file__).parent / "soundfiles", format: str = "wav"
     ):
         """
-        Initializes a dataset from a given folder, including
+        Initialize a dataset from a given folder, including
         subfolders. Uses :func:`get_cls_from_path` to determine
         the sound class of each file.
 
@@ -47,13 +49,13 @@ class Dataset:
 
     def __len__(self) -> int:
         """
-        Returns the number of sounds in the dataset.
+        Return the number of sounds in the dataset.
         """
         return self.size
 
     def __getitem__(self, cls_index: Tuple[str, int]) -> Path:
         """
-        Returns the file path corresponding the
+        Return the file path corresponding the
         the (class name, index) pair.
 
         :cls_index: Class name and index.
@@ -69,13 +71,21 @@ class Dataset:
         :cls_index: Class name and index.
         :return: The name of the sound.
         """
-
         cls, index = cls_index
         return self.files[cls][index].stem
 
+    def get_class_files(self, cls_name: str) -> List[Path]:
+        """
+        Return the list of files of a given class.
+
+        :cls_name: Class name.
+        :return: The list of file paths.
+        """
+        return self.files[cls_name]
+
     def list_classes(self) -> List[str]:
         """
-        Returns the list of classes
+        Return the list of classes
         in the given dataset.
 
         :return: The list of classes.

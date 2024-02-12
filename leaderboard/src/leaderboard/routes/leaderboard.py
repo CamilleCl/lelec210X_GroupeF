@@ -1,20 +1,21 @@
 import urllib
 
 import flask
-from ..backend.models import Guess, Submission
-from flask import Blueprint
+from flask import Blueprint, jsonify, make_response, render_template
 from flask import current_app as app
-from flask import jsonify, make_response, render_template
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_restx import Api, Resource
+
+from ..backend.models import Guess, Submission
 
 leaderboard = Blueprint("leaderboard", __name__, static_folder="../static")
 
 api = Api(
     leaderboard,
     title="Leaderboard API",
-    description="The API documentation. Please click on **default** to show all the possible endpoints.",
+    description="The API documentation. "
+    "Please click on **default** to show all the possible endpoints.",
     doc="/doc/",
 )
 
