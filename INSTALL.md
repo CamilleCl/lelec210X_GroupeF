@@ -72,7 +72,8 @@ of Ubuntu Desktop 20.04.5 LTS:
 - [x] password set to faraday;
 - [x] automatically log in.
 
-> Note: after first logging, the French Azerty layout was also added, and should be
+> [!NOTE]
+> After first logging, the French Azerty layout was also added, and should be
 > the default one. To switch between the two layouts,
 > you can use <kbd>SHIFT</kbd>+<kbd>SUPER</kbd>+<kbd>SPACE</kbd>,
 > where <kbd>SUPER</kbd> is usually the Windows key.
@@ -143,10 +144,11 @@ want to use Linux later-on, and have at least 60 Go of free memory.
 
 ## Installation steps
 
-https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/
-
 The following steps will either need to be performed on your host system, or on the Ubuntu system on which GNU Radio is installed (either a VM, WSL, or your host if it is Ubuntu-20.04).
-The subsection titles will therefore include an annotation **Host**, if the steps must be performed on your host system (Windows, MacOS, or Linux), or **Ubuntu**, if they refer to your Ubuntu-20.04 installation. If your host system is Ubuntu-20.04, perform them in both cases.Additionnally, some steps might be only required for some specific OSs, in which case it will be specified.
+The subsection titles will therefore include an annotation **Host**,
+if the steps must be performed on your host system (Windows, MacOS, or Linux), or **Ubuntu**,
+if they refer to your Ubuntu-20.04 installation. If your host system is Ubuntu-20.04, perform them in both cases.
+Additionnally, some steps might be only required for some specific OSs, in which case it will be specified.
 
 Quick tips : Ubuntu terminal windows can be launched via the Ubuntu Launchpad, or with
 <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>T</kbd>.
@@ -205,7 +207,8 @@ exec bash
 
 to apply changes.
 
-> Note: using `>>` automatically appends to the file, so that you don't have anything
+> [!TIP]
+> Using `>>` automatically appends to the file, so that you don't have anything
 > to do. If you prefer, you can edit the files from the terminal using programs
 > like `nano` or `vim`.
 
@@ -217,7 +220,8 @@ In the Powershell:
 (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
 ```
 
-Do not close the terminal, it will probably ask you to add the poetry installation path to your PATH environment variable. To do so, follow [this guide](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/).
+Do not close the terminal, it will probably ask you to add the poetry installation path to your PATH environment variable.
+To do so, follow [this guide](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/).
 
 ### Ubuntu : Installing CMake and Make
 
@@ -245,6 +249,7 @@ gnuradio-companion
 
 To kill GNU Radio, either press the exit button, or press <kbd>CTRL</kbd>+<kbd>C</kbd>.
 
+> [!TIP]
 > On Linux, you can launch processes in the background by appending `&` at the end
 > of some command. E.g., `gnuradio-companion &`. To later terminate the process,
 > you can use the `pkill` command. E.g., `pkill gnuradio-compagnion`.
@@ -317,12 +322,35 @@ sudo apt-get update
 sudo apt-get install gr-limesdr
 ```
 
+#### (After H4) Ubuntu - Installing Gr-LimeSDR custom components
+
+First you need to install the following components :
+
+```bash
+sudo apt install liblimesuite-dev swig4.0 liborc-0.4-dev
+```
+
+Then, go into the `./telecom/gr-limesdr` directory and install:
+
+```bash
+mkdir build
+cd build /
+cmake ..
+sudo make install
+sudo ldconfig
+```
+
 #### Ubuntu - Testing the installation of LimeSDR
 
 You can launch GNU Radio companion. On the right part of the window, at the end of the list,
 LimeSDR components should now appear.
 
 ### (Only for WSL users) Connect the LimeSDR to the WSL via USB pass-through
+
+> [!IMPORTANT]
+> We assume you installed `usbipb-win` 4.0.0 or above.
+> For earlier versions, the commands are not exactly the same
+> so we ask you to upgrade your version.
 
 The LimeSDR will be connected to your computer but should be interfaced with your Ubuntu and not Windows. To do so, we will need to create a passthrough using [USBIPD-WIN](https://learn.microsoft.com/en-us/windows/wsl/connect-usb) supported by Microsoft. Go to this [git project](https://github.com/dorssel/usbipd-win/releases) and download the `.msi` file of the latest version and install it.
 On Ubuntu, you will need to run the two following commands:
@@ -333,16 +361,23 @@ sudo update-alternatives --install /usr/local/bin/usbip usbip  /usr/lib/linux-to
 ```
 
 You can now attach any device from your computer to Ubuntu.
-To do so, open a PowerShell or prompt in Windows and use the three following commands to respectively list all the USB devices connected to windows, attach to WSL the device with the given busid, detach the device from WSL.
+To do so, open a PowerShell or prompt in Windows and use the four following commands to respectively
+list all the USB devices connected to windows, bind a given busid,
+attach to WSL the device with the given busid, and detach the device from WSL.
 
 ```bat
-usbipd wsl list
-usbipd wsl attach --busid <busid>
-usbipd wsl detach --busid <busid>
+usbipd list
+usbipd bind --busid <busid>
+usbipd attach --wsl --busid <busid>
+usbipd detach --busid <busid>
 ```
 
-> Note: if you have `error: Access denied; this operation requires administrator privileges`, you should
-> run the same commands but in a administrator terminal. Do forget that `wsl` must be running in a separate
+The last command should only be used if you want to disconnect your device.
+
+> [!NOTE]
+> If you have `error: Access denied; this operation requires administrator privileges`, you should
+> run the same commands but in a administrator terminal.
+> Do not forget that `wsl` must be running in a separate
 > Windows shell.
 >
 > Also, the command may tell you to update WSL. If so, please do with `wsl --update`.
@@ -391,6 +426,45 @@ intelFPGA/18.1/quartus/common/devinfo/dev\_install
 
 The programm will ask you to select the folder in which the downloaded file is located,
 it will then automatically detect the MAX 10 device support file. You can proceed to the installation.
+
+### Install Python dependencies
+
+To install the Python dependencies, you can simply run:
+
+```bash
+poetry run install
+```
+
+You should only perform this once.
+
+> [!IMPORTANT]
+> Note that, in order to work, `poetry` commands
+> must be done in a terminal session **from inside**
+> the root directory of this project, or any of its
+> subdirectories.
+
+If you modify any of the packages listed in the `[tool.poetry]` section
+of [`pyproject.toml`](pyproject.toml), the changes will directly apply
+to your installation.
+
+To add new Python dependencies to your project, you can use
+
+```bash
+poetry add package_name
+```
+
+and Poetry will do the rest for you! For other use cases, please
+check out their documentation.
+
+> [!NOTE]
+> Later in the project, you will install Python packages from
+> GNU Radio projects. Those packets are **not installed**
+> in the virtual environment created by Poetry.
+> To use those packages (e.g., `fsk`), you should
+> then use your system Python.
+>
+> We already considered that in the hands-on sessions,
+> and the commands we provide should work as expected.
 
 ## Tips for a Better Environment
 
@@ -448,7 +522,8 @@ chsh -s $(which zsh)
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-> Important: re-run all the `export ...=...` commands but
+> [!IMPORTANT]
+> Re-run all the `export ...=...` commands but
 > **change** the output file to `>> ~/.zshrc`.
 
 Then, you can add plugins to your Zsh shell,
@@ -465,6 +540,7 @@ the code editor for real programmers:
 sudo apt-get install neovim
 ```
 
+> [!NOTE]
 > Jokes aside, NeoVim is a very nice editor, but also quite hard to use, mainly because
 > you can only use your keyboard (you are in the terminal!). Learning NeoVim is good if
 > you plan on regularly connecting to remote machines (e.g., you train a ML model on a

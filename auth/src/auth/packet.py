@@ -35,7 +35,8 @@ class InvalidPacket(ValueError):
 
 
 class PacketUnwrapper:
-    """Verify packet wire format, validate security properties and extract the
+    """
+    Verify packet wire format, validate security properties and extract the
     payload.
 
     :param allowed_sender_ids: list of id of allowed senders
@@ -55,7 +56,7 @@ class PacketUnwrapper:
         }
 
     def unwrap_packet(self, packet):
-        """Returns (sender, payload), or None if packet is not valid."""
+        """Return (sender, payload), or None if packet is not valid."""
         # Version check, we only know version 0
         if len(packet) < 1 or packet[0] != 0:
             raise InvalidPacket("Packet empty or wrong version.")

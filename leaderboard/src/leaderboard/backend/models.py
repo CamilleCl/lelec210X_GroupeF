@@ -20,7 +20,7 @@ from pydantic import (
     validator,
 )
 
-DEFAULT_CONFIG_PATH = Path(".config.json")
+DEFAULT_CONFIG_PATH = Path(__file__).parents[3] / ".config.json"
 
 
 class GroupConfig(BaseModel):
@@ -516,9 +516,7 @@ class Config(BaseModel):
                     group_config.key, current_round, lap
                 )
 
-                if (
-                    self.rounds_config.get_current_round_config().only_check_for_presence
-                ):
+                if self.rounds_config.get_current_round_config().only_check_for_presence:
                     if guess != Guess.nothing:
                         guess = Guess.received
                         correct = True

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 uart-reader.py
 ELEC PROJECT - 210x
@@ -127,7 +126,13 @@ if __name__ == "__main__":
             file.close()
             
             plt.figure()
-            plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
+            plot_specgram(
+                melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T,
+                ax=plt.gca(),
+                is_mel=True,
+                title=f"MEL Spectrogram #{msg_counter}",
+                xlabel="Mel vector",
+            )
             plt.draw()
             plt.pause(0.001)
             plt.show()
