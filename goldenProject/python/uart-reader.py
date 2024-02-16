@@ -125,11 +125,11 @@ if __name__ == "__main__":
                 file.write(f"{y_predict}\n")
                 file.close()
                 
-                # plt.figure()
-                # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
-                # plt.draw()
-                # plt.pause(0.001)
-                # plt.show()
+                plt.figure()
+                plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
+                plt.draw()
+                plt.pause(0.001)
+                plt.show()
 
     except KeyboardInterrupt:
         print("\n\nProgram interrupted. Shutting down server")
