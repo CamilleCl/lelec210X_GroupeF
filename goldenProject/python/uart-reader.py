@@ -12,11 +12,19 @@ from serial.tools import list_ports
 import pickle
 import socket
 
+import requests
+import json
+
+hostname = "http://130.104.96.147:5000"
+key = "jc5jE0qHTmt1l-0EYOYJ3HzxEB8vIb6qtNm6dI3w"
+
+
+
 from classification.utils.plots import plot_specgram
 
 # creating the socket
 host = socket.gethostname()
-port = 5002
+port = 5003
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -119,17 +127,23 @@ if __name__ == "__main__":
                 # y_predict = model.predict(np.hstack((melvec_normalized, np.zeros((1,80)))))
                 y_predict = model.predict(melvec_normalized)
 
-                print(f'predicted class: {y_predict}')
+                print(f'predicted class: {y_predict[0]}')
 
-                file = open(result_filename, 'a')
-                file.write(f"{y_predict}\n")
-                file.close()
+                response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict[0]}")
+
+                # All responses are JSON dictionaries
+                response_as_dict = json.loads(response.text)
+                print(f'server response : {response_as_dict}')
+
+                # file = open(result_filename, 'a')
+                # file.write(f"{y_predict}\n")
+                # file.close()
                 
-                plt.figure()
-                plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
-                plt.draw()
-                plt.pause(0.001)
-                plt.show()
+                # plt.figure()
+                # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
+                # plt.draw()
+                # plt.pause(0.001)
+                # plt.show()
 
     except KeyboardInterrupt:
         print("\n\nProgram interrupted. Shutting down server")
