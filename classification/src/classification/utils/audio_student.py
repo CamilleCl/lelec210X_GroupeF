@@ -150,7 +150,7 @@ class AudioUtil:
         
         return audio
 
-    def echo(audio, nechos=2) -> Tuple[ndarray, int]:
+    def add_echo(audio, nechos=2) -> Tuple[ndarray, int]:
         """
         Add echo to the audio signal by convolving it with an impulse response. The taps are regularly spaced in time and each is twice smaller than the previous one.
 
