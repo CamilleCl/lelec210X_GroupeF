@@ -92,7 +92,7 @@ def create_app() -> Flask:
 
     @app.route("/")
     def _index():
-        readme_file = open("README.md")
+        readme_file = open(Path(__file__).parents[2].joinpath("README.md"))
         md_template_string = markdown.markdown(
             readme_file.read(), extensions=["fenced_code"]
         )
@@ -171,7 +171,7 @@ def ping():
     is_flag=True,
     help="Open documentation page in a web browser, only when serving on localhost.",
 )
-def serve(_open, _open_doc):
+def serve(_open: bool = False, _open_doc: bool = False):
     """Run a leaderboard server."""
     app = create_app()
 
