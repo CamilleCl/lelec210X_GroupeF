@@ -38,14 +38,13 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ADC_BUF_SIZE 10000
+#define ADC_BUF_SIZE 30000 //default: 10000
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 
 /* USER CODE END PM */
-
 
 /* Private variables ---------------------------------------------------------*/
 
@@ -55,6 +54,7 @@ volatile uint16_t ADCBuffer[2*ADC_BUF_SIZE]; /* ADC group regular conversion dat
 volatile uint16_t* ADCData1;
 volatile uint16_t* ADCData2;
 // volatile uint32_t power = 51;
+volatile uint8_t buffer[1]; //to receive data
 
 //volatile uint32_t ADC_value;
 
@@ -193,11 +193,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  __WFI();
-//	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
-//	HAL_Delay(500);
-//	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-//	HAL_Delay(500);
+	  HAL_UART_Receive(&hlpuart1, buffer, 1, 60000);
+
+	  //__WFI();
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+	HAL_Delay(500);
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+	HAL_Delay(500);
 	//printf("ADC_value = %lu \n", ADC_value);
     /* USER CODE END WHILE */
 
