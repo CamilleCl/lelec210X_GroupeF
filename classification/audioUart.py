@@ -24,7 +24,7 @@ from classification.utils.plots import plot_audio, plot_specgram
 
 SoundPerClasse = 20
 
-def playing_sound(SoundPerClasse, port = None, classes = None):
+def playing_sound(SoundPerClasse, classes = None):
     classe = 'birds'
     for i in range(SoundPerClasse):
             sound = dataset[classe, i]
@@ -32,15 +32,16 @@ def playing_sound(SoundPerClasse, port = None, classes = None):
             # target_dB = 25
             # x /= np.linalg.norm(x) * 10 ** (-target_dB / 20)
             print(f'Playing a "{get_cls_from_path(sound)}"')
-            
+            sd.play(x, fs)
+
             sleeptime = random.uniform(0, 4)
             print("sleeping for:", sleeptime, "seconds")
-            sleep(sleeptime)
+            time.sleep(sleeptime)
 
-            ser = serial.Serial(port = port, baudrate = 115200)
+            #ser = serial.Serial(port = port, baudrate = 115200)
             ser.write(bytearray('s','ascii'))
-        
-            sd.play(x, fs)
+            print("message sent to uart")
+            #ser.close()
 
             time.sleep(7-sleeptime)
 
@@ -61,6 +62,8 @@ if args.port is None:
     print("Launch this script with [-p PORT_REF] to access the communication port")
 
 else:
+    ser = serial.Serial(port = args.port, baudrate = 115200)
     dataset = Dataset()
     classes = dataset.list_classes()
-    playing_sound(SoundPerClasse, port=args.port, classes = classes)
+    playing_sound(SoundPerClasse, classes = classes)
+    ser.close()
