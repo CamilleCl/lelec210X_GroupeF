@@ -1,0 +1,2329 @@
+---------------------------------------------------------------
+LimeSuite Source (RX) info
+
+##################
+Connecting to device
+##################
+LimeSuite version: 22.09.1-myriadrf1~ubuntu20.04
+gr-limesdr version: v1.0-compat-xxx-xunknown
+##################
+Device list:
+Nr.:0 device:LimeSDR Mini, media=USB 3.0, module=FT601, addr=24607:1027, serial=1D74EF675B5C46
+##################
+INFO: device_handler::open_device(): no serial number. Using first device in the list.
+Use "LimeUtil --find" in terminal to find prefered device serial.
+Using device: LimeSDR-Mini(1D74EF675B5C46) GW: 1.29 FW: 6
+##################
+
+INFO: device_handler::enable_channels(): SISO CH0 set for device number 0.
+INFO: device_handler::set_samp_rate(): set sampling rate: 0.4 MS/s.
+INFO: device_handler::set_rf_freq(): RF frequency set [RX]: 870 MHz.
+INFO: device_handler::set_analog_filter(): INFO: device_handler::set_digital_filter(): digital filter CH0 [RX]: 0.4 MHz.
+INFO: device_handler::set_gain(): 
+Clearing running sum before changing gain 
+Actual : Short = 0 /  Long = 0
+Clear : Short = 0 /  Long = 0
+Set gain [RX] CH0: 10 dB.
+Running : Short = 0 /  Long = 0
+INFO: device_handler::set_antenna(): CH0 antenna set [RX]: LNAW.
+INFO: device_handler::calibrate(): INFO: device_handler::set_dspcfg_preamble(): INFO: source_impl::init_stream(): source channel 0 (device nr. 0) stream setup done.
+[SYNC] New preamble detected @ 1 (CFO 78.78 Hz, STO 1)
+2.7334822e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 7.66 dB (2048 samples)
+[SYNC] New preamble detected @ 7049 (CFO -39.99 Hz, STO 1)
+[MAC] Error in CRC, packet dropped [140  77  70 128   0   0  41  77 171  65 189   0  91 247   5  41 212 128
+  82   8 169 136  24 128 162   2 192 179 221 124  98   2 138 113  33  11
+ 104 147  16 133 128  24 127  50 148 214 148   1 172 130   1  80 244 160
+ 174   5  40  65  40 148   0 224  17 129   4 139   1   8 100  16 100 128
+  96   2   9 200  16 200  34   1   6  20  64 152  19 119  89  64  40   1
+  18  54   8 216  48 131  65   8  10  89] [152]
+--- 1 packets received with 1 error(s) ---
+2.8458298e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 7.86 dB (4096 samples)
+[SYNC] New preamble detected @ 14102 (CFO -41.23 Hz, STO 6)
+2.8900704e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 7.94 dB (512 samples)
+[SYNC] New preamble detected @ 21149 (CFO 81.19 Hz, STO 5)
+[MAC] Error in CRC, packet dropped [ 61 101   9 111  63 159   9  95 246 115 175 123  62 249 122 153 187 246
+ 247 245 251  22 131 229 253 122 194 137  91 228 112 236  41 223 255  31
+  42 147  61 190 102 136 255 243 237 216 108 241  62 127 158 222  95 251
+ 250 170  42  47  27  60 226 217 163 173  47 181 229  54 157 127 191 127
+ 215 239  19 118 253 243 118 215 198 223 187 255 127  36 183 117 253 223
+ 255 118 253 155  76 252 181  87 211 233] [115]
+--- 2 packets received with 2 error(s) ---
+2.9517741e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 8.05 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [ 91 174 127  23 222  24 222 254 117 113 127  83 125 255 255 238 157  13
+ 178 108  23 247 211 157 107  79  51 252 183  93 254 251 249  58 206 239
+ 255 255 251 251 173 209 223 205 188  59 151 208 110  74 126 227 238 166
+ 110 187 221  70 238  11 162 241 153  77 138 110   5  13 253  99 133  54
+ 190 249 174 238  77 202  19 111  65 158   7 180 197 210 121 214 101  31
+  63 181 222  11 144 126 153 121 194 191] [52]
+--- 3 packets received with 3 error(s) ---
+[SYNC] New preamble detected @ 28197 (CFO -126.27 Hz, STO 5)
+2.9781363e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 8.09 dB (1727 samples)
+[MAC] Error in CRC, packet dropped [ 13  26   0 214 176  81  83  57 157  40 128  40 125 136  24   0 128 208
+  96  16  12  64 128   8   4   1 192  25  44  68 136   5  10  84 105  32
+  10  35  32  73   8  45  75 154 168   3 160 230 192  70  74 138  32 167
+  61   1 158   0  90 104   0 162  50 129  51  57  32  33 145 201 166 134
+ 136  23  77 229 130 220 173 112 226  37   6 162 133  19  66  73  69   3
+ 226  37 100  20   0  50  32 146  88  92] [90]
+--- 4 packets received with 4 error(s) ---
+[MAC] Error in CRC, packet dropped [ 47 159 158 159 126  94 191 189 175 239 250 254 238 255 231 247 205 147
+ 251 239 251 118 230 215  59 101 253 134 211 102 122 111 174  91 134 111
+ 187 175 191 253 253  21  34 245 255 224 174 227 252 242 253 134  23  61
+ 255 168 119 255  63 239  86  89  78 222 236 246 231  94 249 251 125 243
+ 219 183 127 143 187 127 189 129 231 238 188 216 251  55 118 171  85 214
+ 190  49 252 244 251   2 230 182  70 119] [11]
+--- 5 packets received with 5 error(s) ---
+[SYNC] New preamble detected @ 35242 (CFO -1783.11 Hz, STO 2)
+5.277429e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.96 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [106 255 175 249 214 251 223 189 251 189 251 119 133 223 142 253 127 239
+ 101 199 191  69  87 109 223 223  10 239 245 238 217 215 206 214 127 118
+ 174 255 255 191 223 190 175 191 246 236 229 207 239 223 125 222 207  75
+ 238 235 159  86  56  94 207 206 119 100 191 238 114 111 221 223 255 119
+ 155 247  87 182 236 182 255 180 217 222 245 214 218 255 222 251 191  95
+ 234 219 151 115 199 223 223 190 188 218] [87]
+--- 6 packets received with 6 error(s) ---
+[SYNC] New preamble detected @ 42294 (CFO 2369.06 Hz, STO 6)
+6.3287234e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.35 dB (512 samples)
+[MAC] Error in CRC, packet dropped [160  99   3  97   8  98   9 194 195 192 132  48  66  72 135  13 160 195
+   7 163  19  34  31  34 195 140   4  44 135 108 227 104  76 100  41 107
+ 196  71 140 137  15  70   4  22  10  86 195 158  71 196  35  68 199  37
+ 143 205 207 184   8  40 132 161   0  32  89  64  97  44 216 111 128 167
+ 143  66  30  70  78  87 138 187  92 206  82  14 217 205 153  93 154 170
+   4  57   8  32 224   2   0  20  65   9] [0]
+--- 7 packets received with 7 error(s) ---
+[SYNC] New preamble detected @ 49341 (CFO -264.87 Hz, STO 5)
+5.053897e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.79 dB (4096 samples)
+[MAC] Error in CRC, packet dropped [111 124 224 214 223 122 239 254 252 189 253 252 251 191 193 111 243 231
+ 225 251 246 251 223 155 251 115 135  59 191 147 249 115  99 123 109 223
+ 246 251 243 125 222 249  15 189 183 127 223 127  99 235 125 239  34 163
+ 242 251 223 127  30 159  63 222 255 255 231  95 125 159 167 247 231 251
+ 220 251  45 221  63 183 255 253 231 255 123 253 119 173 238 245 223 231
+ 254 117 231 255 252 218 202 237 245 141] [42]
+--- 8 packets received with 8 error(s) ---
+[SYNC] New preamble detected @ 56386 (CFO 3422.86 Hz, STO 2)
+5.807151e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.45 dB (512 samples)
+[MAC] Error in CRC, packet dropped [139  10 203  10  73 141  72 132  72 143  73   9  73 125 206  10  70  20
+ 198   5 103 138 240 134   0 144 129  17  17 225 146  16 146  18 210  18
+  83 157 209 132  80 150  89  22  89 229  78  18  70   4 198  21  70 154
+ 232  28  56 136 176 200 160   6   0 136   0   0   0  10  16   0   2  32
+   0  64   0  20  20  16  10  18   4   0  16   2   0   1   0   1 128 128
+  16   0 133 160  21   8  88   0  10  64] [4]
+--- 9 packets received with 9 error(s) ---
+[SYNC] New preamble detected @ 63433 (CFO 1539.33 Hz, STO 1)
+5.5812916e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.03 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [ 40  80  88 128 136  98  24  99  44 112 148  64 194  64  83  72 113 212
+ 177  68  25  17   9  33   9  49  41  48 201  49 105  33  41  40 121 140
+ 168 145  24 161  40 163 151 176 196 177  87 161  99 168 178   8  34  18
+  10  34  26  34  42  33 138  50  74  34  72  40 233 136 139 147  56 163
+  42 162 152 193 200 178 214 162 230 160 243   2  99  15  29 136 142  90
+  21 196   4   0  40   4 174  10   3   9] [13]
+--- 10 packets received with 10 error(s) ---
+[SYNC] New preamble detected @ 70480 (CFO 3334.22 Hz, STO 0)
+4.9398034e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.29 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [ 33 153  65 145 106 209 130  16 161  16  32  88  35  60 130 134 160  52
+ 216  64 163  35 130  35 133   3 129  19  34  99 129  83 161 146 209 178
+ 243 219   4  17 140  25 196  88  39  58 196 136  33 114 240  66 246 165
+   4 100   9 165  65 100 231 102 135   4 162 158 225 149 230  80   7  24
+  36  20  60  33 128 128   8  12   2  16  80 138   0 128  64  32  40   0
+   0   0   0 194   0  32  16   9   0  16] [16]
+--- 11 packets received with 11 error(s) ---
+[SYNC] New preamble detected @ 77533 (CFO 3293.02 Hz, STO 5)
+5.086496e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.66 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [227   2  32 132 112   0 152 195  73   3 133 113  69  17 195  66 196   8
+ 100  70 100 134  36 196 164  98  36  69 164 133 167 145 226  10  34  68
+  98 132 178 134 115 103  26  71  70 133 134 211 200   0  72  72 104 142
+  40 136 168 202  41  73  44 137  36 177 166  18  38  72  98 140 162 138
+ 115 239  58  75  75 137 138 227 206   8 206  20  83  36 160   0  80 136
+ 195 138  68  96   8   0   0  96   0   2] [1]
+--- 12 packets received with 12 error(s) ---
+[SYNC] New preamble detected @ 84579 (CFO 1159.67 Hz, STO 3)
+5.2215455e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.15 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [ 34  98  34 227  34  66 162  49  34  66  98 130 163 141  96 196  48   4
+ 120 132 136 229 205   5 133  17  69   9 229 196 231 132  52 134 100 134
+  36 194 165   5  37 115 167  26 163  69  99  12  33 136 112 204 176 195
+  73   9  89  97  73  17 201  73 203   8  75 154 104 139  41 194 173  11
+  45  99 173  51 167  73 237  28  36  72 120  65   0  21  11  34 104 112
+  11 184 152  24  12 236  33  18  99 128] [0]
+--- 13 packets received with 13 error(s) ---
+[SYNC] New preamble detected @ 91629 (CFO -471.46 Hz, STO 5)
+4.5404744e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.69 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [239 239 227 254 231 255 214 251 143 255 247 247 134 254 151 206 203 239
+ 231 252 186 239 255 239 235 239 207 109 247 127 207 255 207 251 127 255
+  63 246 182 255 223 255 239 255 255 188 207 157 143 207 127 248 185 252
+ 191 253 254 251 217 249 251 125 223 255 191 215 251 254 127 110 252 245
+ 189 255 223 247 127 255 223 253 191 255 255 190 223 253 249 237 230 107
+ 189 162 104 211 102  48  85 114  36 171] [221]
+--- 14 packets received with 14 error(s) ---
+[SYNC] New preamble detected @ 98673 (CFO -1930.66 Hz, STO 1)
+5.211068e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.19 dB (4096 samples)
+[SYNC] New preamble detected @ 105727 (CFO -386.96 Hz, STO 7)
+4.7814694e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.09 dB (2048 samples)
+[SYNC] New preamble detected @ 112768 (CFO 3485.72 Hz, STO 0)
+5.124915e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.51 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [157  78 251 222 251 239 156 214 255 235 253 235 223 127 159 239 247 187
+ 217 233  27 249 127 251 221 223 250 255 122 109 239 121 190 239 255 255
+ 139  95 127 255 218 127 253 247  95 215 222 255 109 181 208 179  81 179
+ 255 215  93 243  55 247 214 247 159 122 109 243 190 119  23 255 255 222
+  59 239 125 239 245 255 246 250 121 218 237 181 255 175  31 252  27 251
+ 255 254 188 126 251  62 221 159 126 102] [209]
+--- 15 packets received with 15 error(s) ---
+[MAC] Error in CRC, packet dropped [103 246 234  95 254 223  61 239 239 182 152 234 152 219 159 253 189 220
+ 180 188 251 238 255 254 191 213 188 246 240 254 223  95 250 175 247 223
+ 123 215 125 239 127 239 185 139 155 147  95  91  57 253 117  47 183  61
+ 255  95 235 207  57 117 153 253 223 215 245 231 103 108 247  86 255 238
+ 195 223 207 143 174 231 191 222 138  74 245  59 187   0 229 252 243  21
+  94 188  81 185 187  90  52 221 244 253] [145]
+--- 16 packets received with 16 error(s) ---
+[SYNC] New preamble detected @ 119820 (CFO 820.94 Hz, STO 4)
+5.274019e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.97 dB (703 samples)
+[MAC] Error in CRC, packet dropped [136 100 137  12 130  10 206  21 195  24  96  17 162  18   3 193   4  19
+  20  37  20   7 149  19 154  16 209  24 146  28 147 202 148  28 148 108
+ 132  42 157  21 134  24 194  33 192  34   3 133   4  39  36  69  36  71
+  37  35  60  48 162  40 162  40 163  11 180  36 148  14 150  78 165  46
+ 144  16 209  33 161  16   0  64   0   0   0   4 128 192  32  96 144  64
+   0  34   4   1 144   0   8   0  32  36] [0]
+--- 17 packets received with 17 error(s) ---
+[MAC] Error in CRC, packet dropped [132 198  10  66 132 227 133  99 134 144 194  24 136 137   9 137  49 138
+   8  74  10 235  10  89 141  72 132  72 138  73   9  77  37 206  10  70
+  28 199  13 103 142 177 196  16 144 145  17  17  33 146  18 210  18 146
+  18  83 137  81 132  88 151  81  17  89 101  78  18  70  52 198  21  71
+ 154 232  28  40 136 176 200 166  88   0  68  41 245 128 135 206 130  46
+  40 180  82 205 203   3  90 206 137  65] [97]
+--- 18 packets received with 18 error(s) ---
+[SYNC] New preamble detected @ 126866 (CFO 1640.93 Hz, STO 2)
+4.750035e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.27 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [203  12  25 138   8  78  40  65 169  10  63 227 247  51  97  73 166   4
+  44  74 104  64   4  33 169 179   8 182 144 170 140  66 137   0 194   0
+  64  44  13  42   8 136  93 136  44  28  33  21   6  17  34 136  20  17
+  52 132  64  73 128  42   8 128  57 136 132  36 135   5 128  80 194  24
+   2 194 130   0  47   1  17  50 132  16   5  87 132   3 128  49   2  33
+  24 136  36 208  66 208   4   2 190  71] [65]
+--- 19 packets received with 19 error(s) ---
+[SYNC] New preamble detected @ 133919 (CFO 3723.31 Hz, STO 7)
+4.987537e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.08 dB (4096 samples)
+[MAC] Error in CRC, packet dropped [113   2   1 134  80 130 176 129 207   2  79  35  71  17  75 194 172  12
+  36   0  36   2  36  68 160  97  32  69 225 132 163 221  66  30   2  64
+  66   2 150  68 222 226  62 133  78 141   7 182 200  24 104  64   8   4
+  96   0 160 139  32  72 100 136 165 177  98  10  18  64  98   4 178  10
+ 214 131  62  77  74 137   3 178 200   8 138  24 179  96 128 232   0   0
+  33 100   0  20 212  64  17  16   0   0] [8]
+--- 20 packets received with 20 error(s) ---
+[SYNC] New preamble detected @ 140964 (CFO -2517.63 Hz, STO 4)
+5.5300654e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.17 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [237 255 219 155  95 251 116 127 246 254 239 126 246 250 245  87 253 239
+ 127 183 255 251 182 251  87 253 247 113 251 223  99 223 187 247 255 237
+ 222 183  95 127 222 254 189 127 251 214 251 214 251 239 251 247 254  59
+ 127 123 175 189 114 203 247 157 251 173 122 239 189 251 186 247 255 247
+ 255 219 254 246 215 186 255 182 218 254 223 255 254 111  94 251 127 255
+ 253 247 118 253 223 206 127 239 115 235] [253]
+--- 21 packets received with 21 error(s) ---
+[SYNC] New preamble detected @ 148014 (CFO -2506.83 Hz, STO 6)
+5.321669e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.81 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [255 254 255 103 125 190 253  95  57 231 157 249 125 221 255 151 223 255
+ 239 247 207 191  85  31 253 251 202  42 255  95 239 255 255 190 199 127
+ 215 254 239 175 186 191 190 159 191 214 254 253 255 175 223 125 234 223
+  75 239 218 223 124  85 127 255 252 255 238 183 239 223 255 217 255 251
+ 247 147 180 158 191 255 150 255 124 251 254 189 215 223 255 254 251 191
+ 127 170 251 215 219 215  93 201 246  29] [231]
+--- 22 packets received with 22 error(s) ---
+[SYNC] New preamble detected @ 155057 (CFO -2546.83 Hz, STO 1)
+4.2890022e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -11.41 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [247 125 254 255 252 255 251 255 237 239 126 250 255 127 119 255 237  94
+ 108 255 122 238 251 214 216 231 255 255 191 223 254 255 245 255 255 255
+ 249 254 125 239 251 219 255 239 255 254 255 251 219 254 255 190 254 255
+ 255 223 253 223 123 255 255 255 253 247 251 191 255 255 187 125 183 175
+ 245 255 255 255 255 255 253 251 215 255 223 255 253 127 245 223 255 239
+  93 255 175  63 207 203 117 191 223 127] [255]
+--- 23 packets received with 23 error(s) ---
+[SYNC] New preamble detected @ 162105 (CFO 1554.18 Hz, STO 1)
+5.0038363e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.00 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [  9   4  28  15  15  77  22 109  11  16 134  19  81  18  49 182  50 152
+  36 150  28 146  30 178   7 177   9 153  23 138  55 174 121 136  45 138
+  17  42  30 122  15  97  36  49  35  34  97  34  98  32  67 168  36 170
+  44 226  14 195  40 129 101 150  35 158 125 140  28 172  43  10 126  91
+  15 112 104  48  51 192 161  32   4 207  16  32 106 202   9   8  13   2
+  70   8  65   4  24 136  16 135  33  80] [163]
+--- 24 packets received with 24 error(s) ---
+[SYNC] New preamble detected @ 169155 (CFO 2996.69 Hz, STO 3)
+4.5032198e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.00 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [  6  38   8  47 184  23 206  48 128 102   8  72  45   4  48  76  80 157
+  80  29  20 126  76  34  64 114  92 123  79  43  16 113  16 247  17  40
+  52 127 132 112   2 134  76 136 207  20 208 140 208  84 144 218 212 204
+ 220 193 140 182 144 176 143  26 120 139 249  58 112 114 118 154  64  66
+ 100   6 132  67  32  34   1 160  96   0  14  24  16   1  32 172  36  33
+   2  11  68  20   1 136 173   0  32   0] [0]
+--- 25 packets received with 25 error(s) ---
+[SYNC] New preamble detected @ 176207 (CFO -553.45 Hz, STO 7)
+4.4729498e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.27 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [220  93 169 178 159 170 183 206 190 255 175 208 255 117 231 222 120 156
+ 247  23  68 117 178  98 224 209  75 212 187 200 253  57 230 105 229 132
+ 243 159 114 158 231  50 145 102 119 239 180   7  88  29 239 146 134  68
+  87 143 151  28 146 254 125  73 190 238 117  94 182  73  36 254 211   5
+ 127 206 202  55 241 127  93 232 251 174 214 121 220 239  15  22 233 255
+ 183 177  63  92 146  94 251 185 119 255] [249]
+--- 26 packets received with 26 error(s) ---
+[SYNC] New preamble detected @ 183252 (CFO -430.79 Hz, STO 4)
+4.4030963e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.97 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [255 211 251 191 255 143 251 250 255 255 214 198 191 199 239 255 255 189
+ 239 223 239 142 231 239 239  28 111 255 254 247 255 223 255  63 127 255
+ 247 251 251 206 255  15 255 255 191 246 238 207 173 191 255 235 239 235
+ 239 125 250  56 127 239 252 243 253 223 127 115 127 255 255 255 255  95
+ 254 157 255 222 255 255 191 223 189 127 255 219 191 255 255  93 251 252
+ 245 191 249 247  91 251 103 163 125 234] [255]
+--- 27 packets received with 27 error(s) ---
+[SYNC] New preamble detected @ 190299 (CFO 3358.78 Hz, STO 3)
+5.47069e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.35 dB (4096 samples)
+[MAC] Error in CRC, packet dropped [144 152 198  72  80 156  96 164 113 213  57 195  17  19  33  33  44  49
+  65  25  71  73  35  73  49 105  32 137  17  73  33 233 184 185 193  72
+ 199 184 195 168 176 212  33 142  50  18  34  34  40 114  66  34  70  90
+  66  90 113  42  97 138  50 136  34  73  44 184 194  73 206 185 198 168
+ 240 217   3  11  17  22  24   1 128  16  16   4   0  12   0   0   0   0
+   1   4  64   0 160  32   0  20   2  16] [16]
+--- 28 packets received with 28 error(s) ---
+[SYNC] New preamble detected @ 197345 (CFO 856.88 Hz, STO 1)
+4.5893722e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.32 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [ 33  56 227  92 110  70   3 136  56 200  26 123  12  46  38  48 103  32
+ 245  44 113  46  85  40  33  46  25 122  21  58  43  32 195  32 199  20
+ 196  30 162   8  72 202  63 202  12  91 214 112 108  80 211  64 209 110
+ 133 232  81 202  25  74  25  74  77  34  97  34 207  66 136   4 131   1
+ 244   3  66 140 154  37 145 196   1  20   0 235 204  69  32   3  18  71
+  64  16   8 104  17 241   8 185   0 139] [68]
+--- 29 packets received with 29 error(s) ---
+[SYNC] New preamble detected @ 204396 (CFO 1943.02 Hz, STO 4)
+5.1109447e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.56 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [  0 102  65   4  16 222  28  76  48 243  20  87 180  88 244 108  66  24
+  76  72  88 198 200 218 192 166 204 114 200 230 202 222 130  98  44  78
+  40 202  96 230 160  52 108  77 104 217 236  44 134  20 132 140 139  21
+ 152 138 161  35 152 147 136  51 140  31   4  38  69 159 233  26  61 246
+  48  48  32 196 105 189 108  45 201 176 138 207 130  66   4 112   2 200
+  49  80  66   1  69   2   4  64  88  14] [147]
+--- 30 packets received with 30 error(s) ---
+[SYNC] New preamble detected @ 211443 (CFO -1844.80 Hz, STO 3)
+4.3681695e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.36 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [191 191 254 248 212 230 221 214 205 189 215 254 212 158 117 159  87 235
+ 207  61 111  91 247 107  85 218 230 187 127 230 187 247 186 139 189  25
+ 254 125 223 159 223 223 234 255 219 239  75 254  78 219 223 154 223 119
+ 238 247  75 251 235 115 126 247 247 231 247 151 182 219  22 252 190 245
+ 215 179 215 117 250 255 219 238 219 151 251 233  95 149 209 231 236 237
+ 255 143 173  92  86 235 223 222 119 215] [67]
+--- 31 packets received with 31 error(s) ---
+[SYNC] New preamble detected @ 218493 (CFO -1570.82 Hz, STO 5)
+5.160424e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.37 dB (4096 samples)
+[MAC] Error in CRC, packet dropped [ 53 247  19 149 119 187 150 117 151 217  22  31 188  85 220 251 219  99
+ 139 231 223 231 255 223 235  46 255 218 250 156 175 183 254  43 125 247
+  62 243  46 181 232 123  63 223 123 157 250 111 154 245 189 207 189 215
+ 247 179 216  79  74 190 203 254  75 111 243 111  93 251 125 217 239 183
+  72 123 111 187  95  61 122 239  55 241 170 111 194 193  37 156 251 251
+ 227  47 222 239 155  51 102 239 177 207] [255]
+--- 32 packets received with 32 error(s) ---
+[SYNC] New preamble detected @ 225543 (CFO -2548.81 Hz, STO 7)
+5.064376e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.75 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [254  94 238 245 233 125 127 223 239 158 117 126 239 247 127 235 255 254
+ 174 251 106 250 175 255 235 243  59 255 255 223 191 247 179 223 191 117
+ 215  61 215 221 249  93 251 175 255 230 254 127  87 255 215 122 223 127
+ 119 254 247 211 251 254 119 191 125 247 123 151 247 255 189 127 255 189
+ 245 221 175 231 247 174 189 222 190 171 158 254 223 118 222 251 223  98
+ 253 190 191 191 255 251 239 239 239 173] [207]
+--- 33 packets received with 33 error(s) ---
+[SYNC] New preamble detected @ 232585 (CFO 2900.02 Hz, STO 1)
+4.7477064e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.28 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [ 33 194   6  65  28 129  15  33 131 177 130  41 132 157   4  29  33 142
+   4 196  30  69  31  77 135  72   8  72   6 192  75  68 138 206  34  70
+ 136 135   9   2 154 180   8  60   4 188 213  28 137 138 111  10 138  75
+  14  75  15  80  16  80   7  80 134  73 144 206  98  70 144 199   1  91
+  18 132  20  36 132 180 135  20 147 148 119  20 146  19  23 147 149  86
+   8  81 156  81 192 188  18  37   6  97] [40]
+--- 34 packets received with 34 error(s) ---
+[SYNC] New preamble detected @ 239638 (CFO -2038.73 Hz, STO 6)
+5.2867426e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.93 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [245 230 255 245 154 229 203 254 240 181 223 124 245 182 247 223 127 223
+ 125 239 255 247 123 171 241  91 191 255 117 255 167 125 127 253 127 191
+ 245 221 191 199 181 125 124 253 235  47 247  94 255 214 251 239 199 247
+ 175 219 223 111 253  63 246 183 223 247 255 255 253 191  85 222 255 255
+ 159 127 225  61 231 123 213 250 243 247 239 252 122 255 247  81 188 191
+ 239 255 255  30 251 109 121 223 191 254] [255]
+--- 35 packets received with 35 error(s) ---
+[SYNC] New preamble detected @ 246681 (CFO 951.87 Hz, STO 1)
+5.248323e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.06 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [ 15  18 238  14  73 133 200  70 106 221  75 136 203  23  70  11  71   4
+ 230 141 183 138 200 195   0 152 185  17 145 160 146  28  59  19  18 155
+  82 133 208 193  88  91 121 144 235 199  67  18 118  13 230  21 231 130
+ 232  30  24 204 184 174  40  93  63 170 102 140  52  99   2 199 146  20
+  65  32 227  11   4 132  16  31 158 228   9  35 138  83   0 239 198 161
+  96 221  11 136   0 154 224 240   2  34] [96]
+--- 36 packets received with 36 error(s) ---
+[SYNC] New preamble detected @ 253734 (CFO 3373.36 Hz, STO 6)
+5.2704434e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.98 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [ 42  68  36  67 178  20  36  16  56  16 188  88   1   4  71 200   4 218
+  28   0  72  49  16  33 182 172  26  64 162  64  66 200  82 202  38 176
+ 246 167 118  41 236  44  52  17 197   8   4   9 138 136  44 128 161 183
+ 156  17 149 189  11 241  66 184 135 137 194  12  62  48 150 114 126 247
+  44 104 116 129 128 192  71 136 136   6   0  64  16 192 129  32   0   2
+  40   2  64   2   0 112   0   6   0   4] [64]
+--- 37 packets received with 37 error(s) ---
+[SYNC] New preamble detected @ 260776 (CFO 614.01 Hz, STO 0)
+5.2203814e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.16 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [ 52 124 236  80  86  48 238  28 215 140 205  88 216  94   8  32 216 225
+  42 233 112 232 254 216 166 128 230 152 239 156 116 177 246 163 116  33
+  92 108 190  16 198  17  14 129  20 156 189 177  49 162  57 160 185  45
+  27 241 139 145  71  17  71  28  53 225 215 182 116 162 118  41  54 131
+ 132 205 141   8 148  79   4  19 132  27 129 168 210  83 160  20 191 214
+  77  17  77  66  84   4  68  89 232   8] [131]
+--- 38 packets received with 38 error(s) ---
+[SYNC] New preamble detected @ 267829 (CFO 3626.69 Hz, STO 5)
+4.458979e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.40 dB (1024 samples)
+[SYNC] New preamble detected @ 274873 (CFO -2732.76 Hz, STO 1)
+4.9339826e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.32 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [ 69  14  18 136  56 138  10 138  28  90  22  33   4  34  34  36  35  38
+ 103  32  17  38  41  36  41  36  13  51  17  50  39  20  37  20 243  24
+  56  52  50 180  60 182  26  65 136 194  66  68  66  68 199  76  65  68
+  73  68  73  70  29  98  17  66  75  52  77  52 211  16  73  16  83  20
+  92  22  30 224  88  96  34 161  32   0   0   0   0   0   0   2   0   0
+ 128  64   0   0   0   0   0   0   0  34] [0]
+--- 39 packets received with 39 error(s) ---
+[SYNC] New preamble detected @ 281922 (CFO -2357.19 Hz, STO 2)
+5.1214226e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.52 dB (4096 samples)
+[MAC] Error in CRC, packet dropped [223 253 229 173 190 255 223 255 249 125 255 253 247 255 239 219 237 255
+ 231 255 189 243 255 251 254 247 174 183 127 183 251 255 254 183 255 191
+ 239 255 254 253 191 123 159 255 255 255 255 223 207 222 251 239  93 247
+ 237 247 182 238  29 127 255 255 247 255 252 190 255 254 223 255 255 247
+ 191 247  95 255 255 127 243 255 255 218 247 158 255 222 217 255 191 255
+ 254 251 255 245 250 255 255 255 239 255] [255]
+--- 40 packets received with 40 error(s) ---
+[SYNC] New preamble detected @ 288971 (CFO 0.00 Hz, STO 3)
+5.2809213e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.95 dB (4096 samples)
+[MAC] Error in CRC, packet dropped [251 247 190 254 222 253 251 249 151 223 239  95 127 223  79 239 191 238
+ 109 254 255 102 237 191 127 244 197 236 239 247 251 255 110 190 237 254
+ 214 251 214 127 255 110 239 214 199 206 251 221 251 190 111 104 239 189
+ 190 239 251  47 235 188 191 174 247 254 254  55 205 114 237 246 255 255
+ 251 251 251 127 235 254 231 207 185 254 190 251 182 217 255 118 247 167
+ 253 255 255  45  91 251 171 183 247 238] [239]
+--- 41 packets received with 41 error(s) ---
+[SYNC] New preamble detected @ 296017 (CFO 3055.20 Hz, STO 1)
+5.408986e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.53 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [219 124 126 191 179 214 191  95 125 221 253 215 181 204 101 200 239 203
+ 254 212 106 215 218  91 218 237  59 127 166 124 254 108  91 107 239 252
+ 115  63 254  59 251 111 125 175 109 158 132 152 205 139 175 153 238 147
+ 150 187 151 222 250 223 126 221 187 248 186 235 238 120 211 123 167 121
+ 187 254 247 213 235 231  69 230 255 218 230  63 252 231 149 180  88 170
+ 235  63 246 183 191 151 120 168 185  33] [212]
+--- 42 packets received with 42 error(s) ---
+[SYNC] New preamble detected @ 303068 (CFO 3262.15 Hz, STO 4)
+4.6982615e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.58 dB (2303 samples)
+[MAC] Error in CRC, packet dropped [ 12 227   2 112   0 145   3   9 195 136  49   4 132 133   4 133  25  71
+   4  71   6  69   6  69 229  72   8  76  32 196  17  70 136 194  10  98
+ 140 227 143  19 138 148  15  12  36 142  52 140 137 142  28  74 138  79
+ 130  75 141  88  16  88  97  92  33  68 145 192  18  98 156 195  13  35
+  18 228  23  20  68 148 101  20 145 150   4 148 154 211  10  87  21  80
+ 136  80 154 112 192 130   0   0   7   0] [128]
+--- 43 packets received with 43 error(s) ---
+[SYNC] New preamble detected @ 310117 (CFO -957.06 Hz, STO 5)
+4.6292197e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.03 dB (1727 samples)
+[MAC] Error in CRC, packet dropped [ 47 140 164 134  75 141 234 252  96  13 227 132  10 156 226   3   7 132
+ 254 141 190 174 208  75   8 208 168 145  81 168 184   0  56   9  48 139
+  56 213 192  66 116  11 223 137 195 206  66   2  66 214  70 143 162 130
+ 252  31  12 156 248  44  48   0  62   3   0  16   0   0   1   2  16 134
+  32  10   0 128   0   2  32  96   2   0  40   0 104 128   0  22   0  68
+   8  64   4   0   0 113  96  97 128  68] [16]
+--- 44 packets received with 44 error(s) ---
+[MAC] Error in CRC, packet dropped [239 255  31 121 253 223 147 254 215 238 191 231 255 167  54 246  63 247
+ 247 191 189 191 251 190 123 191  63 175 251 175  55 254  63 255 255 255
+  45 253 255 254 247 223 123 239  63 231 123 230 118 231 126 207 253 237
+ 127 254 239 127 223 255 189 238 125 255 127 255 255 254 239 255 255 187
+ 247 190 127 240 127 251 243 227 189 219 191  87 189 220 235 223 190 254
+ 220 110  61 155 235 127  46 236 159 255] [255]
+--- 45 packets received with 45 error(s) ---
+[SYNC] New preamble detected @ 317167 (CFO -2521.15 Hz, STO 7)
+5.1319006e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.48 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [223 127 175 247 222 187 247 254 111 173  99 254 251 215 251 215  61 250
+ 215 247 239 251 237 250 244 245 237 239 245 239 126 201 223 235 255 236
+ 141 125 215  59 175  97 251 255 219 231 115 236 155 255 125 234 173 253
+ 238 254 223 131 181  94 247 126 245 239 157 223 238 121 254 251  28 255
+ 127 207  87  90 239 124 217 109 251  94 251 249  63 127 189 119 223 127
+ 223  91 247  94 114 109 173  79 223 247] [125]
+--- 46 packets received with 46 error(s) ---
+[SYNC] New preamble detected @ 324215 (CFO 2987.85 Hz, STO 7)
+5.209904e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.19 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [ 40  80  88 128 136  67  28  99  44  48 148  64 194  88  83  72  97 208
+ 177  15  17  17   9  33   9  33  41   0 137  49  73  33 105  40 121 132
+ 136 145  24 161  40 179 156 160 198 177 214 161  99 232 242  14  34  18
+  26  34  26  34  42  33  10  50  74  34 106  40 105 136 137 146  56 162
+  40 162 152 193 200 178 150 162 230 184 211   2  67  13  21 136   0 128
+   5 134  32   0 112  10  16   8  69  40] [0]
+--- 47 packets received with 47 error(s) ---
+[SYNC] New preamble detected @ 331256 (CFO 1211.61 Hz, STO 0)
+4.5451316e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.66 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [ 60 195 135 240  49 208  65 243 227 131  35   5 171 129  27  34 235 193
+  26 233 147 209 178 243  91   4  25 140  24 194  80  54 120 196 216 227
+ 178 240  82 246 165   4  71  11  45 195 167 181 110  71 196 224 156 240
+ 156 212  85  27  30  52  22  56 189  32  16  80   2  81   0 232  18   3
+  35  86  80  76  66 192 136   3  89 180 139  83 128  61 120  22 161  40
+   0  16  64   3  19  93  34 146   8  46] [129]
+--- 48 packets received with 48 error(s) ---
+[SYNC] New preamble detected @ 338309 (CFO -2111.88 Hz, STO 5)
+5.3996723e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.56 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [191 227 255 247 211 255 215 125 251 255 159 255 246 223 239 255 255 251
+ 255 191 231 189  63 238 223 189 239 237  93 239 255 111 239 111 158 255
+ 223 127 254 255 223 255 251 255 111 254 255 255 237 255 175 255 246 255
+ 255 252 222 187 255 253 123 254 247 254 223 255 154 255 191 122 158 127
+ 223 255 223 255 127 255 255 255 221 255 189 255 190 253  30 191 254 255
+ 230 251 120 237  95 142 239 247 243 210] [230]
+--- 49 packets received with 49 error(s) ---
+[SYNC] New preamble detected @ 345352 (CFO 264.87 Hz, STO 0)
+5.332729e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.77 dB (4096 samples)
+[SYNC] New preamble detected @ 352400 (CFO -1499.67 Hz, STO 0)
+[MAC] Error in CRC, packet dropped [ 16 192  10   1 140 161 135  49   3 152  66  44 132 141   4 133 113  68
+  12  69 142  71  14  69 139  88   8  72 195 197  97  68 136 198  62  66
+ 136 131   3  34 155 164  10  28  68 156  70  12 139 142  60 202 143  75
+  30  74 143  80  24  80   6  64 195 104 176 200  50 198 144 195  29  67
+  18 180  16  52 132 148 165  28 147 150 101  22 147 243   6 211  53  83
+   8  81 148  80 195  22   3  53 219 180] [64]
+--- 50 packets received with 50 error(s) ---
+4.809411e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.94 dB (4096 samples)
+[SYNC] New preamble detected @ 359450 (CFO 1844.80 Hz, STO 2)
+5.1307364e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.49 dB (4096 samples)
+[SYNC] New preamble detected @ 366502 (CFO -1682.48 Hz, STO 6)
+5.0841675e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.67 dB (4096 samples)
+handler caught exception: could not broadcast input array from shape (99,) into shape (100,)
+[SYNC] New preamble detected @ 373544 (CFO 227.12 Hz, STO 0)
+4.885591e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.55 dB (1407 samples)
+[SYNC] New preamble detected @ 380595 (CFO 2402.24 Hz, STO 3)
+4.594611e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.28 dB (4096 samples)
+[SYNC] New preamble detected @ 387640 (CFO -2301.87 Hz, STO 0)
+4.7651702e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.18 dB (2048 samples)
+[SYNC] New preamble detected @ 394688 (CFO -2138.99 Hz, STO 0)
+5.4020006e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.55 dB (1024 samples)
+[SYNC] New preamble detected @ 401743 (CFO -1965.33 Hz, STO 7)
+4.8408447e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.77 dB (1024 samples)
+[SYNC] New preamble detected @ 408790 (CFO 1801.55 Hz, STO 6)
+4.9834625e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.09 dB (4096 samples)
+[SYNC] New preamble detected @ 415832 (CFO 2542.16 Hz, STO 0)
+4.6865847e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.65 dB (4096 samples)
+[SYNC] New preamble detected @ 422884 (CFO -2684.71 Hz, STO 4)
+4.2121633e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -12.75 dB (1024 samples)
+[SYNC] New preamble detected @ 429934 (CFO -1050.28 Hz, STO 6)
+5.3496103e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.72 dB (2048 samples)
+[SYNC] New preamble detected @ 436980 (CFO 3849.82 Hz, STO 4)
+5.611561e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.95 dB (2048 samples)
+[SYNC] New preamble detected @ 444026 (CFO 330.81 Hz, STO 2)
+6.065609e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.87 dB (1024 samples)
+[SYNC] New preamble detected @ 451074 (CFO 2868.65 Hz, STO 2)
+5.3548496e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.70 dB (4096 samples)
+[SYNC] New preamble detected @ 458121 (CFO -137.15 Hz, STO 1)
+4.8361875e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.80 dB (2048 samples)
+[SYNC] New preamble detected @ 465175 (CFO -1600.78 Hz, STO 7)
+5.3426254e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.74 dB (2048 samples)
+[SYNC] New preamble detected @ 472222 (CFO -2798.07 Hz, STO 6)
+5.1773054e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.31 dB (2048 samples)
+[SYNC] New preamble detected @ 479267 (CFO 3253.31 Hz, STO 3)
+4.7360646e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.35 dB (1024 samples)
+[SYNC] New preamble detected @ 486312 (CFO -1965.33 Hz, STO 0)
+4.9805516e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.11 dB (1024 samples)
+[SYNC] New preamble detected @ 493364 (CFO -1793.12 Hz, STO 4)
+5.0387627e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.86 dB (512 samples)
+[SYNC] New preamble detected @ 500413 (CFO -974.74 Hz, STO 5)
+5.970142e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.08 dB (512 samples)
+[SYNC] New preamble detected @ 507457 (CFO 2900.02 Hz, STO 1)
+5.317012e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.82 dB (4096 samples)
+[SYNC] New preamble detected @ 514507 (CFO -2684.71 Hz, STO 3)
+5.304206e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.87 dB (2048 samples)
+[SYNC] New preamble detected @ 521556 (CFO 1799.06 Hz, STO 4)
+5.247159e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.06 dB (2048 samples)
+[SYNC] New preamble detected @ 528604 (CFO -2423.78 Hz, STO 4)
+5.0830033e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.67 dB (2048 samples)
+[SYNC] New preamble detected @ 535652 (CFO -1682.48 Hz, STO 4)
+4.1958643e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -13.10 dB (1024 samples)
+[SYNC] New preamble detected @ 542700 (CFO -2400.18 Hz, STO 4)
+4.6603898e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.82 dB (2048 samples)
+[SYNC] New preamble detected @ 549746 (CFO -2162.43 Hz, STO 2)
+5.215725e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.17 dB (2048 samples)
+[SYNC] New preamble detected @ 556799 (CFO -695.00 Hz, STO 7)
+5.1423785e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.44 dB (2048 samples)
+[SYNC] New preamble detected @ 563840 (CFO -2445.67 Hz, STO 0)
+5.513766e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.22 dB (2048 samples)
+[SYNC] New preamble detected @ 570891 (CFO 2807.37 Hz, STO 3)
+4.7279147e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.40 dB (2048 samples)
+[SYNC] New preamble detected @ 577941 (CFO -1844.80 Hz, STO 5)
+5.371731e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.65 dB (2048 samples)
+[SYNC] New preamble detected @ 584987 (CFO -2235.81 Hz, STO 3)
+5.2262027e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.13 dB (2048 samples)
+[SYNC] New preamble detected @ 592033 (CFO -1737.28 Hz, STO 1)
+5.008493e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.98 dB (2048 samples)
+[SYNC] New preamble detected @ 599080 (CFO -2467.89 Hz, STO 0)
+6.296125e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.41 dB (1024 samples)
+[SYNC] New preamble detected @ 606135 (CFO 2254.94 Hz, STO 7)
+4.3658412e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.39 dB (1024 samples)
+[SYNC] New preamble detected @ 613179 (CFO 3353.42 Hz, STO 3)
+5.0981384e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.61 dB (2048 samples)
+[SYNC] New preamble detected @ 620230 (CFO 3594.87 Hz, STO 6)
+4.6324485e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.01 dB (2048 samples)
+[SYNC] New preamble detected @ 627278 (CFO 3370.30 Hz, STO 6)
+3.9560342e-07 4e-07 4e-07
+[SYNC] Estimated SNR: nan dB (1024 samples)
+[SYNC] New preamble detected @ 634326 (CFO -708.61 Hz, STO 6)
+5.7629103e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.56 dB (1024 samples)
+[SYNC] New preamble detected @ 641373 (CFO -1280.20 Hz, STO 5)
+4.808246e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.95 dB (2048 samples)
+[SYNC] New preamble detected @ 648419 (CFO 2065.62 Hz, STO 3)
+4.5719088e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.45 dB (2048 samples)
+[SYNC] New preamble detected @ 655467 (CFO -2608.93 Hz, STO 3)
+5.1877834e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.27 dB (2048 samples)
+[SYNC] New preamble detected @ 662517 (CFO -2268.12 Hz, STO 5)
+5.0480764e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.82 dB (512 samples)
+[SYNC] New preamble detected @ 669561 (CFO -2281.65 Hz, STO 1)
+4.9700736e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.15 dB (2048 samples)
+[SYNC] New preamble detected @ 676608 (CFO -2673.66 Hz, STO 0)
+4.89207e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.52 dB (1024 samples)
+[SYNC] New preamble detected @ 683659 (CFO -2630.21 Hz, STO 3)
+4.7011375e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.56 dB (2048 samples)
+[SYNC] New preamble detected @ 690709 (CFO -578.17 Hz, STO 5)
+5.6919305e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.74 dB (767 samples)
+[SYNC] New preamble detected @ 697754 (CFO 2585.75 Hz, STO 2)
+5.0981384e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.61 dB (2048 samples)
+[SYNC] New preamble detected @ 704800 (CFO 825.60 Hz, STO 0)
+4.5544454e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.58 dB (1024 samples)
+[SYNC] New preamble detected @ 711852 (CFO -627.74 Hz, STO 4)
+4.6731964e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.74 dB (1024 samples)
+[SYNC] New preamble detected @ 718899 (CFO 1280.20 Hz, STO 3)
+4.852487e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.71 dB (2048 samples)
+[SYNC] New preamble detected @ 725946 (CFO -2011.64 Hz, STO 2)
+5.1319006e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.48 dB (1024 samples)
+[SYNC] New preamble detected @ 732997 (CFO 520.55 Hz, STO 5)
+5.080675e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.68 dB (2048 samples)
+[SYNC] New preamble detected @ 740045 (CFO -2590.55 Hz, STO 5)
+4.5695802e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.47 dB (2048 samples)
+[SYNC] New preamble detected @ 747093 (CFO 2366.47 Hz, STO 5)
+4.3355712e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.76 dB (1024 samples)
+[SYNC] New preamble detected @ 754139 (CFO 2830.81 Hz, STO 3)
+4.917101e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.40 dB (4096 samples)
+[SYNC] New preamble detected @ 761184 (CFO -2150.26 Hz, STO 0)
+5.114437e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.55 dB (4096 samples)
+[SYNC] New preamble detected @ 768235 (CFO 2010.49 Hz, STO 3)
+5.3453334e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.73 dB (2303 samples)
+[SYNC] New preamble detected @ 775284 (CFO -2339.59 Hz, STO 4)
+5.2145606e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.18 dB (2048 samples)
+[SYNC] New preamble detected @ 782332 (CFO 1611.01 Hz, STO 4)
+4.773319e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.14 dB (512 samples)
+[SYNC] New preamble detected @ 789382 (CFO -1159.67 Hz, STO 6)
+5.2238744e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.14 dB (2048 samples)
+[SYNC] New preamble detected @ 796430 (CFO -264.87 Hz, STO 6)
+5.442748e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.43 dB (2048 samples)
+[SYNC] New preamble detected @ 803472 (CFO 1356.71 Hz, STO 0)
+4.929326e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.34 dB (2048 samples)
+[SYNC] New preamble detected @ 810520 (CFO -588.27 Hz, STO 0)
+4.7477067e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.28 dB (1024 samples)
+[SYNC] New preamble detected @ 817573 (CFO 2136.30 Hz, STO 5)
+4.2424332e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -12.17 dB (512 samples)
+[SYNC] New preamble detected @ 824621 (CFO -2674.79 Hz, STO 5)
+5.092317e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.64 dB (2048 samples)
+[SYNC] New preamble detected @ 831669 (CFO -2299.40 Hz, STO 5)
+5.830435e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.40 dB (512 samples)
+[SYNC] New preamble detected @ 838715 (CFO -2238.11 Hz, STO 3)
+4.958431e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.20 dB (2048 samples)
+[SYNC] New preamble detected @ 845761 (CFO -1475.73 Hz, STO 1)
+4.193536e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -13.15 dB (1024 samples)
+[SYNC] New preamble detected @ 852811 (CFO 2579.63 Hz, STO 3)
+4.843173e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.76 dB (512 samples)
+[SYNC] New preamble detected @ 859856 (CFO 1364.85 Hz, STO 0)
+5.015478e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.95 dB (2048 samples)
+[SYNC] New preamble detected @ 866904 (CFO -264.87 Hz, STO 0)
+5.114438e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.55 dB (2048 samples)
+[SYNC] New preamble detected @ 873959 (CFO -2281.65 Hz, STO 7)
+4.78729e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.06 dB (1024 samples)
+[SYNC] New preamble detected @ 881006 (CFO 1070.98 Hz, STO 6)
+4.7407212e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.32 dB (512 samples)
+[SYNC] New preamble detected @ 888050 (CFO -2522.70 Hz, STO 2)
+4.6021785e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.22 dB (2048 samples)
+[SYNC] New preamble detected @ 895103 (CFO -2521.15 Hz, STO 7)
+5.377552e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.63 dB (2048 samples)
+[SYNC] New preamble detected @ 902149 (CFO -1209.58 Hz, STO 5)
+6.067937e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.87 dB (1024 samples)
+[SYNC] New preamble detected @ 909195 (CFO 2860.13 Hz, STO 3)
+5.6604586e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.82 dB (1024 samples)
+[SYNC] New preamble detected @ 916246 (CFO -2445.67 Hz, STO 6)
+4.801261e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.98 dB (2048 samples)
+[SYNC] New preamble detected @ 923289 (CFO 1241.58 Hz, STO 1)
+5.4382815e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.44 dB (1759 samples)
+[SYNC] New preamble detected @ 930342 (CFO -2560.41 Hz, STO 6)
+5.1214226e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.52 dB (2048 samples)
+[SYNC] New preamble detected @ 937386 (CFO -2459.52 Hz, STO 2)
+4.727915e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.40 dB (2048 samples)
+[SYNC] New preamble detected @ 944434 (CFO -2248.66 Hz, STO 2)
+5.481168e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.31 dB (1024 samples)
+[SYNC] New preamble detected @ 951486 (CFO -2046.94 Hz, STO 6)
+5.7605814e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.56 dB (512 samples)
+[SYNC] New preamble detected @ 958529 (CFO 0.00 Hz, STO 1)
+5.0346875e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.87 dB (4096 samples)
+[SYNC] New preamble detected @ 965580 (CFO 3689.59 Hz, STO 4)
+5.0166426e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.95 dB (2048 samples)
+[SYNC] New preamble detected @ 972629 (CFO 2522.70 Hz, STO 5)
+5.219217e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.16 dB (2048 samples)
+[SYNC] New preamble detected @ 979677 (CFO -475.19 Hz, STO 5)
+4.9549385e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.22 dB (2048 samples)
+[SYNC] New preamble detected @ 986726 (CFO -152.96 Hz, STO 6)
+5.0224634e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.92 dB (1024 samples)
+[SYNC] New preamble detected @ 993772 (CFO 2455.73 Hz, STO 4)
+4.7255867e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.41 dB (2048 samples)
+[SYNC] New preamble detected @ 1000817 (CFO 580.96 Hz, STO 1)
+5.134229e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.47 dB (2048 samples)
+[SYNC] New preamble detected @ 1007868 (CFO 2860.13 Hz, STO 4)
+4.386797e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.15 dB (512 samples)
+[SYNC] New preamble detected @ 1014916 (CFO -2583.88 Hz, STO 4)
+4.5404744e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.69 dB (1024 samples)
+[SYNC] New preamble detected @ 1021964 (CFO -1664.06 Hz, STO 4)
+4.8268737e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.85 dB (2048 samples)
+[SYNC] New preamble detected @ 1029009 (CFO -731.89 Hz, STO 1)
+5.08766e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.66 dB (2048 samples)
+[SYNC] New preamble detected @ 1036056 (CFO -2260.42 Hz, STO 0)
+5.3891944e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.59 dB (2048 samples)
+[SYNC] New preamble detected @ 1043110 (CFO 3049.94 Hz, STO 6)
+4.831531e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.82 dB (1024 samples)
+[SYNC] New preamble detected @ 1050158 (CFO 1760.15 Hz, STO 6)
+4.7465423e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.29 dB (2048 samples)
+[SYNC] New preamble detected @ 1057200 (CFO 2659.04 Hz, STO 0)
+5.051569e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.80 dB (2048 samples)
+[SYNC] New preamble detected @ 1064248 (CFO -2046.94 Hz, STO 0)
+4.7791406e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.10 dB (2048 samples)
+[SYNC] New preamble detected @ 1071298 (CFO -240.85 Hz, STO 2)
+4.7826336e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.09 dB (2048 samples)
+[SYNC] New preamble detected @ 1078349 (CFO -1844.80 Hz, STO 5)
+4.302973e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -11.21 dB (512 samples)
+[SYNC] New preamble detected @ 1085398 (CFO -102.00 Hz, STO 6)
+5.124915e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.51 dB (2048 samples)
+[SYNC] New preamble detected @ 1092447 (CFO 3125.00 Hz, STO 7)
+5.1901117e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.26 dB (2048 samples)
+[SYNC] New preamble detected @ 1099488 (CFO -2306.01 Hz, STO 0)
+4.902548e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.47 dB (2048 samples)
+[SYNC] New preamble detected @ 1106540 (CFO -2467.89 Hz, STO 4)
+5.093481e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.63 dB (2048 samples)
+[SYNC] New preamble detected @ 1113585 (CFO -2430.00 Hz, STO 1)
+4.866458e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.64 dB (1024 samples)
+[SYNC] New preamble detected @ 1120632 (CFO 3241.99 Hz, STO 0)
+5.0015075e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.01 dB (2048 samples)
+[SYNC] New preamble detected @ 1127686 (CFO -516.07 Hz, STO 6)
+5.979456e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.06 dB (512 samples)
+[SYNC] New preamble detected @ 1134735 (CFO 3268.75 Hz, STO 7)
+5.0713606e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.72 dB (4096 samples)
+[SYNC] New preamble detected @ 1141779 (CFO 2579.63 Hz, STO 3)
+5.265787e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.00 dB (2048 samples)
+[SYNC] New preamble detected @ 1148826 (CFO -2194.97 Hz, STO 2)
+6.133133e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.73 dB (512 samples)
+[SYNC] New preamble detected @ 1155877 (CFO 1737.28 Hz, STO 5)
+6.0353386e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.93 dB (512 samples)
+[SYNC] New preamble detected @ 1162927 (CFO -2497.26 Hz, STO 7)
+5.1353936e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.47 dB (2048 samples)
+[SYNC] New preamble detected @ 1169968 (CFO 1356.71 Hz, STO 0)
+5.741954e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.61 dB (512 samples)
+[SYNC] New preamble detected @ 1177022 (CFO -2043.57 Hz, STO 6)
+4.2598967e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -11.87 dB (4096 samples)
+[SYNC] New preamble detected @ 1184071 (CFO -951.87 Hz, STO 7)
+4.5822154e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.37 dB (1087 samples)
+[SYNC] New preamble detected @ 1191118 (CFO 2134.41 Hz, STO 6)
+4.880428e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.57 dB (2048 samples)
+[SYNC] New preamble detected @ 1198160 (CFO 1611.01 Hz, STO 0)
+4.7116154e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.50 dB (2048 samples)
+[SYNC] New preamble detected @ 1205215 (CFO 1563.93 Hz, STO 7)
+4.719765e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.45 dB (2048 samples)
+[SYNC] New preamble detected @ 1212261 (CFO -2134.41 Hz, STO 5)
+5.637174e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.88 dB (1024 samples)
+[SYNC] New preamble detected @ 1219305 (CFO -2205.52 Hz, STO 1)
+6.039995e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.92 dB (1024 samples)
+[SYNC] New preamble detected @ 1226357 (CFO 1138.16 Hz, STO 5)
+5.9142593e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.20 dB (512 samples)
+[SYNC] New preamble detected @ 1233400 (CFO 1713.67 Hz, STO 0)
+5.4113144e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.52 dB (1024 samples)
+[SYNC] New preamble detected @ 1240451 (CFO -1059.38 Hz, STO 3)
+5.425285e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.48 dB (1024 samples)
+[SYNC] New preamble detected @ 1247503 (CFO -2360.87 Hz, STO 7)
+4.4147384e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.84 dB (1024 samples)
+[SYNC] New preamble detected @ 1254549 (CFO -1259.59 Hz, STO 5)
+5.2005896e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.23 dB (4096 samples)
+[SYNC] New preamble detected @ 1261594 (CFO -752.80 Hz, STO 2)
+5.1074517e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.58 dB (2048 samples)
+[SYNC] New preamble detected @ 1268640 (CFO 539.25 Hz, STO 0)
+5.1074517e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.58 dB (2048 samples)
+[SYNC] New preamble detected @ 1275693 (CFO -527.41 Hz, STO 5)
+5.255308e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.03 dB (1024 samples)
+[SYNC] New preamble detected @ 1282736 (CFO 831.68 Hz, STO 0)
+6.463773e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.10 dB (512 samples)
+[SYNC] New preamble detected @ 1289789 (CFO -1844.80 Hz, STO 5)
+4.251747e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -12.01 dB (1024 samples)
+[SYNC] New preamble detected @ 1296836 (CFO 3055.20 Hz, STO 4)
+6.156418e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.68 dB (512 samples)
+[SYNC] New preamble detected @ 1303882 (CFO 203.87 Hz, STO 2)
+6.007397e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.99 dB (512 samples)
+[SYNC] New preamble detected @ 1310934 (CFO 3125.00 Hz, STO 6)
+6.147104e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.70 dB (512 samples)
+[SYNC] New preamble detected @ 1317978 (CFO -2178.68 Hz, STO 2)
+5.0364343e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.87 dB (4096 samples)
+[SYNC] New preamble detected @ 1325031 (CFO 2279.76 Hz, STO 7)
+4.5777298e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.40 dB (2048 samples)
+[SYNC] New preamble detected @ 1332077 (CFO -2238.11 Hz, STO 5)
+5.481168e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.31 dB (1024 samples)
+[SYNC] New preamble detected @ 1339125 (CFO -2199.69 Hz, STO 5)
+4.7640054e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.19 dB (1024 samples)
+[SYNC] New preamble detected @ 1346169 (CFO -2317.11 Hz, STO 1)
+5.1319006e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.48 dB (2048 samples)
+[SYNC] New preamble detected @ 1353220 (CFO 2093.15 Hz, STO 4)
+4.773319e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.14 dB (2048 samples)
+[SYNC] New preamble detected @ 1360266 (CFO 2369.06 Hz, STO 2)
+4.0887556e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -16.54 dB (1024 samples)
+[SYNC] New preamble detected @ 1367315 (CFO 3323.78 Hz, STO 3)
+5.1773054e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.31 dB (2048 samples)
+[SYNC] New preamble detected @ 1374364 (CFO 2602.51 Hz, STO 4)
+4.8396805e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.78 dB (2048 samples)
+[SYNC] New preamble detected @ 1381411 (CFO -2150.26 Hz, STO 3)
+4.7686626e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.16 dB (2048 samples)
+[SYNC] New preamble detected @ 1388460 (CFO -974.74 Hz, STO 4)
+5.467197e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.36 dB (1024 samples)
+[SYNC] New preamble detected @ 1395511 (CFO -2582.27 Hz, STO 7)
+5.548693e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.12 dB (2048 samples)
+[SYNC] New preamble detected @ 1402554 (CFO -919.48 Hz, STO 2)
+5.1842903e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.29 dB (2048 samples)
+[SYNC] New preamble detected @ 1409606 (CFO -1844.80 Hz, STO 6)
+4.584715e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.35 dB (2048 samples)
+[SYNC] New preamble detected @ 1416653 (CFO 3508.86 Hz, STO 5)
+4.771573e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.15 dB (4096 samples)
+[SYNC] New preamble detected @ 1423701 (CFO 3067.34 Hz, STO 5)
+4.9549385e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.22 dB (4096 samples)
+[SYNC] New preamble detected @ 1430744 (CFO 3179.50 Hz, STO 0)
+5.0981384e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.61 dB (4096 samples)
+[SYNC] New preamble detected @ 1437797 (CFO -2065.62 Hz, STO 5)
+6.972457e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -1.29 dB (383 samples)
+[SYNC] New preamble detected @ 1444845 (CFO -2544.04 Hz, STO 5)
+4.7942757e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.02 dB (1024 samples)
+[SYNC] New preamble detected @ 1451893 (CFO -1374.92 Hz, STO 5)
+5.059719e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.77 dB (2048 samples)
+[SYNC] New preamble detected @ 1458939 (CFO 2430.00 Hz, STO 3)
+4.3216005e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.95 dB (2048 samples)
+[SYNC] New preamble detected @ 1465984 (CFO 1138.16 Hz, STO 0)
+4.811739e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.93 dB (2048 samples)
+[SYNC] New preamble detected @ 1473039 (CFO 1895.80 Hz, STO 7)
+5.9142593e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.20 dB (512 samples)
+[SYNC] New preamble detected @ 1480085 (CFO -1844.80 Hz, STO 5)
+4.1306677e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -14.86 dB (1024 samples)
+[SYNC] New preamble detected @ 1487134 (CFO -2301.87 Hz, STO 6)
+4.4636357e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.36 dB (1024 samples)
+[SYNC] New preamble detected @ 1494176 (CFO 2910.13 Hz, STO 0)
+5.0119854e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.97 dB (2048 samples)
+[SYNC] New preamble detected @ 1501224 (CFO 1664.06 Hz, STO 0)
+4.8152316e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.91 dB (1024 samples)
+[SYNC] New preamble detected @ 1508276 (CFO -2031.17 Hz, STO 4)
+5.023628e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.92 dB (2048 samples)
+[SYNC] New preamble detected @ 1515326 (CFO -2339.59 Hz, STO 6)
+5.8234497e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.41 dB (1024 samples)
+[SYNC] New preamble detected @ 1522375 (CFO 4256.53 Hz, STO 7)
+4.968909e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.16 dB (2048 samples)
+[SYNC] New preamble detected @ 1529418 (CFO -1229.20 Hz, STO 2)
+5.3158476e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.83 dB (1024 samples)
+[SYNC] New preamble detected @ 1536466 (CFO -799.57 Hz, STO 2)
+4.79835e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.00 dB (4096 samples)
+[SYNC] New preamble detected @ 1543517 (CFO -670.83 Hz, STO 5)
+4.58879e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.32 dB (4096 samples)
+[SYNC] New preamble detected @ 1550567 (CFO -1812.18 Hz, STO 7)
+5.007329e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.99 dB (4096 samples)
+[SYNC] New preamble detected @ 1557612 (CFO -1664.06 Hz, STO 4)
+6.233644e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.53 dB (319 samples)
+[SYNC] New preamble detected @ 1564659 (CFO -2560.41 Hz, STO 3)
+5.1156013e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.55 dB (1024 samples)
+[SYNC] New preamble detected @ 1571705 (CFO 3358.78 Hz, STO 1)
+4.829202e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.83 dB (512 samples)
+[SYNC] New preamble detected @ 1578758 (CFO 1949.48 Hz, STO 6)
+5.872347e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.30 dB (1024 samples)
+[SYNC] New preamble detected @ 1585803 (CFO -440.29 Hz, STO 3)
+4.7546916e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.24 dB (2048 samples)
+[SYNC] New preamble detected @ 1592848 (CFO 1237.42 Hz, STO 0)
+4.8268737e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.85 dB (1024 samples)
+[SYNC] New preamble detected @ 1599903 (CFO -1200.10 Hz, STO 7)
+5.195351e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.25 dB (4096 samples)
+[SYNC] New preamble detected @ 1606951 (CFO -2082.06 Hz, STO 7)
+4.9555206e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.22 dB (4096 samples)
+[SYNC] New preamble detected @ 1613999 (CFO -1561.07 Hz, STO 7)
+5.5370504e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.15 dB (2048 samples)
+[SYNC] New preamble detected @ 1621043 (CFO -1975.20 Hz, STO 3)
+5.935215e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.15 dB (1024 samples)
+[SYNC] New preamble detected @ 1628090 (CFO 1495.90 Hz, STO 2)
+6.277497e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.45 dB (512 samples)
+[SYNC] New preamble detected @ 1635143 (CFO -2265.23 Hz, STO 7)
+4.7593488e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.22 dB (1024 samples)
+[SYNC] New preamble detected @ 1642185 (CFO -642.09 Hz, STO 1)
+4.7116157e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.50 dB (2048 samples)
+[SYNC] New preamble detected @ 1649236 (CFO -2819.53 Hz, STO 4)
+4.7593488e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.22 dB (1024 samples)
+[SYNC] New preamble detected @ 1656281 (CFO 1059.38 Hz, STO 1)
+5.103959e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.59 dB (2048 samples)
+[SYNC] New preamble detected @ 1663330 (CFO -2532.59 Hz, STO 2)
+4.692988e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.61 dB (2048 samples)
+[SYNC] New preamble detected @ 1670381 (CFO -2753.07 Hz, STO 5)
+5.7815373e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.51 dB (1024 samples)
+[SYNC] New preamble detected @ 1677431 (CFO -2384.04 Hz, STO 7)
+4.7465426e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.29 dB (2048 samples)
+[SYNC] New preamble detected @ 1684474 (CFO -1255.79 Hz, STO 2)
+5.325162e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.80 dB (1024 samples)
+[SYNC] New preamble detected @ 1691525 (CFO -2529.92 Hz, STO 5)
+4.79544e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.01 dB (2048 samples)
+[SYNC] New preamble detected @ 1698575 (CFO -994.63 Hz, STO 7)
+4.951446e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.24 dB (2048 samples)
+[SYNC] New preamble detected @ 1705617 (CFO -2359.48 Hz, STO 1)
+5.179634e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.30 dB (2048 samples)
+[SYNC] New preamble detected @ 1712671 (CFO -785.41 Hz, STO 7)
+5.755925e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.58 dB (512 samples)
+[SYNC] New preamble detected @ 1719717 (CFO 460.59 Hz, STO 5)
+4.8350233e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.80 dB (2048 samples)
+[SYNC] New preamble detected @ 1726761 (CFO -1644.59 Hz, STO 1)
+5.128408e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.50 dB (2048 samples)
+[SYNC] New preamble detected @ 1733813 (CFO -1502.14 Hz, STO 5)
+6.119163e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.76 dB (512 samples)
+[SYNC] New preamble detected @ 1740858 (CFO 2841.28 Hz, STO 2)
+4.645255e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.92 dB (1024 samples)
+[SYNC] New preamble detected @ 1747904 (CFO 3181.04 Hz, STO 0)
+5.010821e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.97 dB (1024 samples)
+[SYNC] New preamble detected @ 1754958 (CFO -2871.37 Hz, STO 6)
+4.9398034e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.29 dB (2048 samples)
+[SYNC] New preamble detected @ 1762006 (CFO -2714.85 Hz, STO 6)
+4.4077532e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.92 dB (2048 samples)
+[SYNC] New preamble detected @ 1769049 (CFO -752.80 Hz, STO 1)
+4.2750315e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -11.63 dB (2048 samples)
+[SYNC] New preamble detected @ 1776097 (CFO 0.00 Hz, STO 1)
+5.337386e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.76 dB (4096 samples)
+[SYNC] New preamble detected @ 1783147 (CFO -1664.06 Hz, STO 3)
+5.216307e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.17 dB (4096 samples)
+[SYNC] New preamble detected @ 1790193 (CFO -2185.89 Hz, STO 1)
+4.5829688e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.36 dB (4096 samples)
+[SYNC] New preamble detected @ 1797244 (CFO 1621.91 Hz, STO 4)
+4.7482885e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.28 dB (4096 samples)
+[SYNC] New preamble detected @ 1804292 (CFO 475.19 Hz, STO 4)
+5.463457e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.37 dB (1407 samples)
+[SYNC] New preamble detected @ 1811338 (CFO -2301.87 Hz, STO 2)
+6.06328e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.88 dB (512 samples)
+[SYNC] New preamble detected @ 1818384 (CFO -1933.86 Hz, STO 0)
+5.872347e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.30 dB (1024 samples)
+[SYNC] New preamble detected @ 1825435 (CFO 3238.65 Hz, STO 3)
+4.6731964e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.74 dB (2048 samples)
+[SYNC] New preamble detected @ 1832486 (CFO -2653.54 Hz, STO 6)
+4.1143687e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -15.44 dB (1024 samples)
+[SYNC] New preamble detected @ 1839529 (CFO 1495.90 Hz, STO 1)
+5.1272434e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.50 dB (1024 samples)
+[SYNC] New preamble detected @ 1846579 (CFO 2929.48 Hz, STO 3)
+4.9921937e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.05 dB (2048 samples)
+[SYNC] New preamble detected @ 1853627 (CFO -2396.43 Hz, STO 3)
+4.6743602e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.73 dB (2048 samples)
+[SYNC] New preamble detected @ 1860674 (CFO 3125.00 Hz, STO 2)
+4.766334e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.18 dB (2048 samples)
+[SYNC] New preamble detected @ 1867725 (CFO 1015.34 Hz, STO 5)
+4.7779764e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.11 dB (1024 samples)
+[SYNC] New preamble detected @ 1874774 (CFO 1247.86 Hz, STO 6)
+6.612794e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -1.85 dB (512 samples)
+[SYNC] New preamble detected @ 1881818 (CFO 520.55 Hz, STO 2)
+4.256404e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -11.93 dB (1024 samples)
+[SYNC] New preamble detected @ 1888871 (CFO -1965.33 Hz, STO 7)
+4.6860026e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.66 dB (2048 samples)
+[SYNC] New preamble detected @ 1895914 (CFO -2944.27 Hz, STO 2)
+6.0493096e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.90 dB (512 samples)
+[SYNC] New preamble detected @ 1902960 (CFO -700.04 Hz, STO 0)
+4.7657522e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.18 dB (4096 samples)
+[SYNC] New preamble detected @ 1910015 (CFO 2684.71 Hz, STO 7)
+5.2355165e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.10 dB (2048 samples)
+[SYNC] New preamble detected @ 1917063 (CFO 3065.62 Hz, STO 7)
+5.3542675e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.70 dB (2048 samples)
+[SYNC] New preamble detected @ 1924111 (CFO -1400.74 Hz, STO 7)
+6.3380367e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.33 dB (1024 samples)
+[SYNC] New preamble detected @ 1931153 (CFO 406.67 Hz, STO 1)
+4.9444606e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.27 dB (2048 samples)
+[SYNC] New preamble detected @ 1938203 (CFO -2378.41 Hz, STO 3)
+4.251747e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -12.01 dB (1024 samples)
+[SYNC] New preamble detected @ 1945248 (CFO -142.04 Hz, STO 0)
+5.346118e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.73 dB (1024 samples)
+[SYNC] New preamble detected @ 1952297 (CFO -428.48 Hz, STO 1)
+5.326326e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.79 dB (2048 samples)
+[SYNC] New preamble detected @ 1959348 (CFO 3068.96 Hz, STO 4)
+4.8618006e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.67 dB (1024 samples)
+[SYNC] New preamble detected @ 1966394 (CFO 3732.37 Hz, STO 2)
+5.2966385e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.89 dB (4096 samples)
+[SYNC] New preamble detected @ 1973440 (CFO 1317.39 Hz, STO 0)
+4.8030074e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.97 dB (4096 samples)
+[SYNC] New preamble detected @ 1980490 (CFO -1455.26 Hz, STO 2)
+5.122587e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.52 dB (512 samples)
+[SYNC] New preamble detected @ 1987536 (CFO -1582.11 Hz, STO 0)
+4.9444606e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.27 dB (2048 samples)
+[SYNC] New preamble detected @ 1994584 (CFO 2876.64 Hz, STO 0)
+5.08766e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.66 dB (1024 samples)
+[SYNC] New preamble detected @ 2001638 (CFO 3723.31 Hz, STO 6)
+4.805336e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.96 dB (4096 samples)
+[SYNC] New preamble detected @ 2008685 (CFO 802.79 Hz, STO 5)
+4.344885e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.64 dB (2048 samples)
+[SYNC] New preamble detected @ 2015728 (CFO 706.63 Hz, STO 0)
+5.2133964e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.18 dB (1024 samples)
+[SYNC] New preamble detected @ 2022777 (CFO 2851.03 Hz, STO 1)
+5.101631e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.60 dB (1024 samples)
+[SYNC] New preamble detected @ 2029828 (CFO 2961.58 Hz, STO 4)
+5.1272434e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.50 dB (2048 samples)
+[SYNC] New preamble detected @ 2036873 (CFO -1978.86 Hz, STO 1)
+5.076018e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.70 dB (2048 samples)
+[SYNC] New preamble detected @ 2043927 (CFO 1570.82 Hz, STO 7)
+4.3996036e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.00 dB (2048 samples)
+[SYNC] New preamble detected @ 2050971 (CFO -2358.27 Hz, STO 3)
+4.8356054e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.80 dB (4096 samples)
+[SYNC] New preamble detected @ 2058021 (CFO -631.27 Hz, STO 5)
+4.85889e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.68 dB (4096 samples)
+[SYNC] New preamble detected @ 2065070 (CFO 3186.21 Hz, STO 6)
+4.11204e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -15.53 dB (1024 samples)
+[SYNC] New preamble detected @ 2072118 (CFO -748.91 Hz, STO 6)
+5.979456e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.06 dB (512 samples)
+[SYNC] New preamble detected @ 2079166 (CFO -1709.97 Hz, STO 6)
+4.6545688e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.86 dB (2048 samples)
+[SYNC] New preamble detected @ 2086215 (CFO -1844.80 Hz, STO 7)
+4.6941523e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.61 dB (2048 samples)
+[SYNC] New preamble detected @ 2093259 (CFO -1875.88 Hz, STO 3)
+6.659363e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -1.77 dB (512 samples)
+[SYNC] New preamble detected @ 2100306 (CFO -2359.48 Hz, STO 2)
+5.077764e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.70 dB (4096 samples)
+[SYNC] New preamble detected @ 2107359 (CFO -2467.89 Hz, STO 7)
+5.0993026e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.61 dB (2048 samples)
+[SYNC] New preamble detected @ 2114402 (CFO 2078.58 Hz, STO 2)
+4.880428e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.57 dB (2048 samples)
+[SYNC] New preamble detected @ 2121455 (CFO -2189.92 Hz, STO 7)
+4.7430495e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.31 dB (1024 samples)
+[SYNC] New preamble detected @ 2128499 (CFO -2136.30 Hz, STO 3)
+5.016642e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.95 dB (2048 samples)
+[SYNC] New preamble detected @ 2135545 (CFO 220.82 Hz, STO 1)
+4.3332426e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.79 dB (2048 samples)
+[SYNC] New preamble detected @ 2142598 (CFO 404.61 Hz, STO 6)
+5.06554e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.74 dB (2048 samples)
+[SYNC] New preamble detected @ 2149640 (CFO -1031.85 Hz, STO 0)
+5.467197e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.36 dB (2048 samples)
+[SYNC] New preamble detected @ 2156695 (CFO 549.11 Hz, STO 7)
+4.6027606e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.22 dB (4096 samples)
+[SYNC] New preamble detected @ 2163743 (CFO -1649.27 Hz, STO 7)
+5.534722e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.16 dB (2048 samples)
+[SYNC] New preamble detected @ 2170791 (CFO 124.30 Hz, STO 7)
+5.872347e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.30 dB (1024 samples)
+[SYNC] New preamble detected @ 2177833 (CFO -1704.01 Hz, STO 1)
+4.924669e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.36 dB (1024 samples)
+[SYNC] New preamble detected @ 2184881 (CFO -708.61 Hz, STO 1)
+4.8041716e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.97 dB (4096 samples)
+[SYNC] New preamble detected @ 2191929 (CFO 2630.21 Hz, STO 1)
+4.6371053e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.98 dB (2048 samples)
+[SYNC] New preamble detected @ 2198978 (CFO 2034.12 Hz, STO 2)
+5.3763875e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.63 dB (2048 samples)
+[SYNC] New preamble detected @ 2206026 (CFO 321.91 Hz, STO 2)
+4.6755247e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.72 dB (1024 samples)
+[SYNC] New preamble detected @ 2213073 (CFO 2799.59 Hz, STO 1)
+4.9200116e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.38 dB (1024 samples)
+[SYNC] New preamble detected @ 2220122 (CFO -1753.69 Hz, STO 2)
+4.8105744e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.93 dB (4096 samples)
+[SYNC] New preamble detected @ 2227170 (CFO -2467.89 Hz, STO 2)
+5.266951e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.99 dB (2048 samples)
+[SYNC] New preamble detected @ 2234221 (CFO -974.74 Hz, STO 5)
+5.2646226e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.00 dB (2048 samples)
+[SYNC] New preamble detected @ 2241269 (CFO -2544.04 Hz, STO 5)
+5.427613e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.47 dB (1024 samples)
+[SYNC] New preamble detected @ 2248317 (CFO 1755.40 Hz, STO 5)
+4.5195185e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.86 dB (1024 samples)
+[SYNC] New preamble detected @ 2255364 (CFO -2315.33 Hz, STO 4)
+4.7279144e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.40 dB (4096 samples)
+[SYNC] New preamble detected @ 2262412 (CFO -2467.89 Hz, STO 4)
+5.5649923e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.08 dB (512 samples)
+[SYNC] New preamble detected @ 2269462 (CFO -2409.39 Hz, STO 6)
+6.12382e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.75 dB (1024 samples)
+[SYNC] New preamble detected @ 2276507 (CFO -2594.91 Hz, STO 3)
+6.705932e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -1.70 dB (512 samples)
+[SYNC] New preamble detected @ 2283554 (CFO -2171.09 Hz, STO 2)
+4.936311e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.31 dB (4096 samples)
+[SYNC] New preamble detected @ 2290601 (CFO -1194.34 Hz, STO 1)
+4.6638826e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.80 dB (2048 samples)
+[SYNC] New preamble detected @ 2297654 (CFO -2203.03 Hz, STO 6)
+5.039927e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.85 dB (2048 samples)
+[SYNC] New preamble detected @ 2304703 (CFO -2215.84 Hz, STO 7)
+5.2273674e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.13 dB (2048 samples)
+[SYNC] New preamble detected @ 2311745 (CFO -2093.15 Hz, STO 1)
+5.9142593e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.20 dB (512 samples)
+[SYNC] New preamble detected @ 2318794 (CFO 3871.60 Hz, STO 2)
+5.3286544e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.79 dB (2048 samples)
+[SYNC] New preamble detected @ 2325846 (CFO -2674.79 Hz, STO 6)
+5.3437896e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.74 dB (2048 samples)
+[SYNC] New preamble detected @ 2332889 (CFO -1631.84 Hz, STO 1)
+4.7756475e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.12 dB (2048 samples)
+[SYNC] New preamble detected @ 2339942 (CFO 3262.15 Hz, STO 6)
+4.8262916e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.85 dB (4096 samples)
+[SYNC] New preamble detected @ 2346989 (CFO 3297.89 Hz, STO 5)
+5.1109447e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.56 dB (1024 samples)
+[SYNC] New preamble detected @ 2354038 (CFO -996.48 Hz, STO 6)
+5.0783467e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.69 dB (2048 samples)
+[SYNC] New preamble detected @ 2361084 (CFO 2128.52 Hz, STO 4)
+4.960759e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.19 dB (2048 samples)
+[SYNC] New preamble detected @ 2368132 (CFO 2764.28 Hz, STO 4)
+5.6825786e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.76 dB (2048 samples)
+[SYNC] New preamble detected @ 2375176 (CFO -2501.90 Hz, STO 0)
+4.340228e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.70 dB (1024 samples)
+[SYNC] New preamble detected @ 2382228 (CFO -1501.03 Hz, STO 4)
+5.05739e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.78 dB (512 samples)
+[SYNC] New preamble detected @ 2389277 (CFO -539.25 Hz, STO 5)
+5.590605e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.00 dB (1024 samples)
+[SYNC] New preamble detected @ 2396327 (CFO -2659.04 Hz, STO 7)
+5.33564e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.76 dB (2048 samples)
+[SYNC] New preamble detected @ 2403369 (CFO 1221.70 Hz, STO 1)
+4.992776e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.05 dB (4096 samples)
+[SYNC] New preamble detected @ 2410423 (CFO -2600.73 Hz, STO 7)
+6.286811e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.43 dB (512 samples)
+[SYNC] New preamble detected @ 2417470 (CFO 1427.50 Hz, STO 6)
+5.102795e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.60 dB (2048 samples)
+[SYNC] New preamble detected @ 2424519 (CFO 1844.80 Hz, STO 7)
+5.124915e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.51 dB (2048 samples)
+[SYNC] New preamble detected @ 2431564 (CFO 3834.87 Hz, STO 4)
+4.733736e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.37 dB (1024 samples)
+[SYNC] New preamble detected @ 2438614 (CFO 1726.65 Hz, STO 6)
+4.968327e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.16 dB (4096 samples)
+[SYNC] New preamble detected @ 2445658 (CFO 2655.13 Hz, STO 2)
+5.076018e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.70 dB (1024 samples)
+[SYNC] New preamble detected @ 2452705 (CFO 2614.42 Hz, STO 1)
+4.79544e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.01 dB (2048 samples)
+[SYNC] New preamble detected @ 2459753 (CFO -1702.75 Hz, STO 1)
+5.0597185e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.77 dB (1024 samples)
+[SYNC] New preamble detected @ 2466805 (CFO -1844.80 Hz, STO 5)
+5.4439124e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.43 dB (512 samples)
+[SYNC] New preamble detected @ 2473850 (CFO 785.41 Hz, STO 2)
+4.7197653e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.45 dB (2048 samples)
+[SYNC] New preamble detected @ 2480898 (CFO 1844.80 Hz, STO 2)
+4.879264e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.58 dB (2048 samples)
+[SYNC] New preamble detected @ 2487950 (CFO -1664.06 Hz, STO 6)
+6.172717e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.65 dB (1024 samples)
+[SYNC] New preamble detected @ 2494995 (CFO -2123.56 Hz, STO 3)
+4.5032195e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.00 dB (2048 samples)
+[SYNC] New preamble detected @ 2502042 (CFO 520.55 Hz, STO 2)
+5.01606e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.95 dB (4096 samples)
+[SYNC] New preamble detected @ 2509090 (CFO -1012.10 Hz, STO 2)
+6.0772504e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.85 dB (512 samples)
+[SYNC] New preamble detected @ 2516139 (CFO -1019.19 Hz, STO 3)
+4.901384e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.47 dB (2048 samples)
+[SYNC] New preamble detected @ 2523185 (CFO 1956.85 Hz, STO 1)
+4.6638826e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.80 dB (1024 samples)
+[SYNC] New preamble detected @ 2530235 (CFO -128.31 Hz, STO 3)
+5.0736895e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.71 dB (4096 samples)
+[SYNC] New preamble detected @ 2537280 (CFO -2845.26 Hz, STO 0)
+4.957267e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.21 dB (1024 samples)
+[SYNC] New preamble detected @ 2544335 (CFO -2935.67 Hz, STO 7)
+4.974148e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.13 dB (4096 samples)
+[SYNC] New preamble detected @ 2551381 (CFO -2281.65 Hz, STO 5)
+5.010821e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.97 dB (2048 samples)
+[SYNC] New preamble detected @ 2558425 (CFO -724.82 Hz, STO 1)
+5.102795e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.60 dB (2048 samples)
+[SYNC] New preamble detected @ 2565479 (CFO -1726.65 Hz, STO 7)
+5.290235e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.91 dB (512 samples)
+[SYNC] New preamble detected @ 2572521 (CFO 1676.77 Hz, STO 1)
+5.29722e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.89 dB (4096 samples)
+[SYNC] New preamble detected @ 2579570 (CFO 2508.29 Hz, STO 2)
+4.9083695e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.44 dB (2048 samples)
+[SYNC] New preamble detected @ 2586622 (CFO 2645.05 Hz, STO 6)
+5.5626634e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.08 dB (1024 samples)
+[SYNC] New preamble detected @ 2593668 (CFO -1307.27 Hz, STO 4)
+4.4054246e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.94 dB (1024 samples)
+[SYNC] New preamble detected @ 2600714 (CFO 2881.70 Hz, STO 2)
+4.7151084e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.48 dB (2048 samples)
+[SYNC] New preamble detected @ 2607767 (CFO 2369.06 Hz, STO 7)
+5.1784696e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.31 dB (2048 samples)
+[SYNC] New preamble detected @ 2614810 (CFO -2260.42 Hz, STO 2)
+5.2937276e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.90 dB (2048 samples)
+[SYNC] New preamble detected @ 2621862 (CFO 1640.93 Hz, STO 6)
+3.851254e-07 4e-07 4e-07
+[SYNC] Estimated SNR: nan dB (512 samples)
+[SYNC] New preamble detected @ 2628908 (CFO 839.91 Hz, STO 4)
+4.5358178e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.73 dB (2048 samples)
+[SYNC] New preamble detected @ 2635956 (CFO -2214.64 Hz, STO 4)
+5.4252854e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.48 dB (2048 samples)
+[SYNC] New preamble detected @ 2643004 (CFO -1427.50 Hz, STO 4)
+5.318176e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.82 dB (2048 samples)
+[SYNC] New preamble detected @ 2650049 (CFO 193.94 Hz, STO 1)
+5.676758e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.78 dB (1024 samples)
+[SYNC] New preamble detected @ 2657103 (CFO 3125.00 Hz, STO 7)
+4.6621358e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.81 dB (4096 samples)
+[SYNC] New preamble detected @ 2664146 (CFO -2017.68 Hz, STO 2)
+5.197097e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.24 dB (2048 samples)
+[SYNC] New preamble detected @ 2671195 (CFO 2313.24 Hz, STO 3)
+4.6266274e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.05 dB (2048 samples)
+[SYNC] New preamble detected @ 2678242 (CFO -2430.00 Hz, STO 2)
+4.7814694e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.09 dB (2048 samples)
+[SYNC] New preamble detected @ 2685295 (CFO -2747.20 Hz, STO 7)
+5.11502e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.55 dB (4096 samples)
+[SYNC] New preamble detected @ 2692337 (CFO -2600.73 Hz, STO 1)
+4.8187246e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.89 dB (2048 samples)
+[SYNC] New preamble detected @ 2699390 (CFO -2046.94 Hz, STO 6)
+4.887413e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.54 dB (2048 samples)
+[SYNC] New preamble detected @ 2706433 (CFO 1059.38 Hz, STO 1)
+4.859472e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.68 dB (2048 samples)
+[SYNC] New preamble detected @ 2713483 (CFO -642.09 Hz, STO 3)
+5.053897e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.79 dB (2048 samples)
+[SYNC] New preamble detected @ 2720532 (CFO -2269.48 Hz, STO 4)
+5.0841675e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.67 dB (2048 samples)
+[SYNC] New preamble detected @ 2727580 (CFO -1427.50 Hz, STO 4)
+4.770409e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.15 dB (4096 samples)
+[SYNC] New preamble detected @ 2734624 (CFO -2415.13 Hz, STO 0)
+4.6499116e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.89 dB (1024 samples)
+[SYNC] New preamble detected @ 2741675 (CFO -1927.68 Hz, STO 3)
+5.205829e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.21 dB (4096 samples)
+[SYNC] New preamble detected @ 2748720 (CFO -2101.14 Hz, STO 0)
+5.078346e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.69 dB (1024 samples)
+[SYNC] New preamble detected @ 2755775 (CFO 2054.02 Hz, STO 7)
+4.4252164e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.73 dB (2048 samples)
+[SYNC] New preamble detected @ 2762823 (CFO -706.63 Hz, STO 7)
+4.6242988e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.07 dB (2048 samples)
+[SYNC] New preamble detected @ 2769864 (CFO -2288.14 Hz, STO 0)
+5.9422007e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.14 dB (512 samples)
+[SYNC] New preamble detected @ 2776916 (CFO -2424.96 Hz, STO 4)
+5.1319006e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.48 dB (2048 samples)
+[SYNC] New preamble detected @ 2783964 (CFO -203.87 Hz, STO 4)
+4.609164e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.17 dB (2048 samples)
+[SYNC] New preamble detected @ 2791014 (CFO -2718.33 Hz, STO 6)
+5.2238744e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.14 dB (2048 samples)
+[SYNC] New preamble detected @ 2798062 (CFO -2173.13 Hz, STO 6)
+5.7955083e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.48 dB (1024 samples)
+[SYNC] New preamble detected @ 2805108 (CFO -1244.99 Hz, STO 4)
+5.653473e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.84 dB (512 samples)
+[SYNC] New preamble detected @ 2812159 (CFO -2491.81 Hz, STO 7)
+4.899056e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.48 dB (2048 samples)
+[SYNC] New preamble detected @ 2819205 (CFO -2871.37 Hz, STO 5)
+4.8606364e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.67 dB (2048 samples)
+[SYNC] New preamble detected @ 2826252 (CFO -2574.52 Hz, STO 4)
+5.336804e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.76 dB (512 samples)
+[SYNC] New preamble detected @ 2833298 (CFO -2273.28 Hz, STO 2)
+4.651658e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.88 dB (4096 samples)
+[SYNC] New preamble detected @ 2840347 (CFO -2405.62 Hz, STO 3)
+4.999179e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.02 dB (2048 samples)
+[SYNC] New preamble detected @ 2847393 (CFO -2038.73 Hz, STO 1)
+4.5666695e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.49 dB (4096 samples)
+[SYNC] New preamble detected @ 2854446 (CFO 3553.48 Hz, STO 6)
+5.0707786e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.72 dB (4096 samples)
+[SYNC] New preamble detected @ 2861488 (CFO 3276.02 Hz, STO 0)
+5.4683613e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.35 dB (2048 samples)
+[SYNC] New preamble detected @ 2868537 (CFO -2057.20 Hz, STO 1)
+5.0713606e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.72 dB (2048 samples)
+[SYNC] New preamble detected @ 2875587 (CFO 1280.20 Hz, STO 3)
+5.244249e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.07 dB (4096 samples)
+[SYNC] New preamble detected @ 2882637 (CFO 1673.77 Hz, STO 5)
+5.4951386e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.27 dB (2048 samples)
+[SYNC] New preamble detected @ 2889682 (CFO -2437.21 Hz, STO 2)
+4.6173133e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.12 dB (4096 samples)
+[SYNC] New preamble detected @ 2896730 (CFO -672.83 Hz, STO 2)
+5.110944e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.56 dB (2048 samples)
+[SYNC] New preamble detected @ 2903782 (CFO -1844.80 Hz, STO 6)
+5.024792e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.91 dB (1024 samples)
+[SYNC] New preamble detected @ 2910830 (CFO -2304.06 Hz, STO 6)
+7.0551994e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -1.17 dB (512 samples)
+[SYNC] New preamble detected @ 2917874 (CFO -2017.68 Hz, STO 2)
+5.4124786e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.52 dB (2048 samples)
+[SYNC] New preamble detected @ 2924925 (CFO -1631.84 Hz, STO 5)
+5.497467e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.27 dB (1024 samples)
+[SYNC] New preamble detected @ 2931974 (CFO -2573.37 Hz, STO 6)
+5.3181765e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.82 dB (2048 samples)
+[SYNC] New preamble detected @ 2939020 (CFO -2065.62 Hz, STO 4)
+4.78729e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.06 dB (1024 samples)
+[SYNC] New preamble detected @ 2946065 (CFO 4154.62 Hz, STO 1)
+4.2994805e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -11.26 dB (2048 samples)
+[SYNC] New preamble detected @ 2953119 (CFO -1895.80 Hz, STO 7)
+5.287907e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.92 dB (1024 samples)
+[SYNC] New preamble detected @ 2960167 (CFO -2254.94 Hz, STO 7)
+5.719834e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.67 dB (2048 samples)
+[SYNC] New preamble detected @ 2967211 (CFO -2003.87 Hz, STO 3)
+5.0911524e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.64 dB (2048 samples)
+[SYNC] New preamble detected @ 2974261 (CFO -1255.79 Hz, STO 5)
+4.786126e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.07 dB (2048 samples)
+[SYNC] New preamble detected @ 2981305 (CFO 3245.54 Hz, STO 1)
+4.959595e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.20 dB (4096 samples)
+[SYNC] New preamble detected @ 2988358 (CFO 3910.41 Hz, STO 6)
+4.77623e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.12 dB (4096 samples)
+[SYNC] New preamble detected @ 2995405 (CFO 3565.29 Hz, STO 5)
+5.369402e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.66 dB (2048 samples)
+[SYNC] New preamble detected @ 3002449 (CFO 3188.15 Hz, STO 1)
+4.950282e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.24 dB (2048 samples)
+[SYNC] New preamble detected @ 3009496 (CFO -1640.93 Hz, STO 0)
+4.796604e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.01 dB (1024 samples)
+[SYNC] New preamble detected @ 3016550 (CFO -107.51 Hz, STO 6)
+5.737297e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.62 dB (512 samples)
+[SYNC] New preamble detected @ 3023597 (CFO -2800.91 Hz, STO 5)
+4.770991e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.15 dB (4096 samples)
+[SYNC] New preamble detected @ 3030647 (CFO -2418.37 Hz, STO 7)
+4.6534046e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.87 dB (2048 samples)
+[SYNC] New preamble detected @ 3037695 (CFO -2418.37 Hz, STO 7)
+5.1284076e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.50 dB (4096 samples)
+[SYNC] New preamble detected @ 3044739 (CFO -324.09 Hz, STO 3)
+5.1109447e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.56 dB (1024 samples)
+[SYNC] New preamble detected @ 3051788 (CFO 1844.80 Hz, STO 4)
+4.879264e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.58 dB (2048 samples)
+[SYNC] New preamble detected @ 3058835 (CFO 3549.69 Hz, STO 3)
+4.78729e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.06 dB (2048 samples)
+[SYNC] New preamble detected @ 3065883 (CFO 2273.28 Hz, STO 3)
+4.5334895e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.75 dB (1024 samples)
+[SYNC] New preamble detected @ 3072930 (CFO -2439.87 Hz, STO 2)
+4.829202e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.83 dB (2048 samples)
+[SYNC] New preamble detected @ 3079982 (CFO -2101.14 Hz, STO 6)
+5.23377e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.11 dB (4096 samples)
+[SYNC] New preamble detected @ 3087025 (CFO -1980.77 Hz, STO 1)
+5.147036e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.42 dB (2048 samples)
+[SYNC] New preamble detected @ 3094079 (CFO -2782.00 Hz, STO 7)
+5.166827e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.35 dB (2048 samples)
+[SYNC] New preamble detected @ 3101122 (CFO -2319.99 Hz, STO 2)
+4.6941523e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.61 dB (512 samples)
+[SYNC] New preamble detected @ 3108175 (CFO 695.00 Hz, STO 7)
+4.733736e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.37 dB (4096 samples)
+[SYNC] New preamble detected @ 3115218 (CFO 2293.32 Hz, STO 2)
+4.85598e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.70 dB (2048 samples)
+[SYNC] New preamble detected @ 3122265 (CFO -2482.91 Hz, STO 1)
+4.961924e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.19 dB (2048 samples)
+[SYNC] New preamble detected @ 3129312 (CFO 2254.94 Hz, STO 0)
+4.703466e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.55 dB (2048 samples)
+[SYNC] New preamble detected @ 3136361 (CFO -2138.99 Hz, STO 1)
+5.119094e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.53 dB (2048 samples)
+[SYNC] New preamble detected @ 3143413 (CFO 520.55 Hz, STO 5)
+4.309958e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -11.11 dB (2048 samples)
+[SYNC] New preamble detected @ 3150463 (CFO 2891.22 Hz, STO 7)
+5.683743e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.76 dB (1024 samples)
+[SYNC] New preamble detected @ 3157510 (CFO -2038.73 Hz, STO 6)
+5.546365e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.13 dB (1024 samples)
+[SYNC] New preamble detected @ 3164557 (CFO 2728.43 Hz, STO 5)
+5.32749e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.79 dB (1024 samples)
+[SYNC] New preamble detected @ 3171603 (CFO -1589.62 Hz, STO 3)
+4.6638826e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.80 dB (2048 samples)
+[SYNC] New preamble detected @ 3178652 (CFO 1371.31 Hz, STO 4)
+5.171484e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.33 dB (2048 samples)
+[SYNC] New preamble detected @ 3185701 (CFO 90.41 Hz, STO 5)
+4.6731964e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.74 dB (2048 samples)
+[SYNC] New preamble detected @ 3192746 (CFO -2137.79 Hz, STO 2)
+4.796604e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.01 dB (1024 samples)
+[SYNC] New preamble detected @ 3199798 (CFO 695.00 Hz, STO 6)
+4.965417e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.17 dB (4096 samples)
+[SYNC] New preamble detected @ 3206844 (CFO -2378.41 Hz, STO 4)
+4.9398034e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.29 dB (2048 samples)
+[SYNC] New preamble detected @ 3213892 (CFO -507.34 Hz, STO 4)
+5.0387627e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.86 dB (2048 samples)
+[SYNC] New preamble detected @ 3220941 (CFO 1019.19 Hz, STO 5)
+4.5928647e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.29 dB (2048 samples)
+[SYNC] New preamble detected @ 3227990 (CFO -2495.98 Hz, STO 6)
+5.134229e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.47 dB (2048 samples)
+[SYNC] New preamble detected @ 3235039 (CFO -2630.21 Hz, STO 7)
+5.269861e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.98 dB (4096 samples)
+[SYNC] New preamble detected @ 3242087 (CFO -2304.06 Hz, STO 7)
+5.229696e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.12 dB (2048 samples)
+[SYNC] New preamble detected @ 3249131 (CFO -290.62 Hz, STO 3)
+4.9921937e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.05 dB (2048 samples)
+[SYNC] New preamble detected @ 3256181 (CFO 305.47 Hz, STO 5)
+4.7674985e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.17 dB (2048 samples)
+[SYNC] New preamble detected @ 3263228 (CFO -930.03 Hz, STO 4)
+6.435832e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.15 dB (512 samples)
+[SYNC] New preamble detected @ 3270274 (CFO -919.48 Hz, STO 2)
+4.935147e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.31 dB (2048 samples)
+[SYNC] New preamble detected @ 3277327 (CFO -834.13 Hz, STO 7)
+4.475278e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.25 dB (1024 samples)
+[SYNC] New preamble detected @ 3284372 (CFO -1029.62 Hz, STO 4)
+5.4357633e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.45 dB (2048 samples)
+[SYNC] New preamble detected @ 3291419 (CFO -2101.14 Hz, STO 3)
+5.6395027e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.87 dB (512 samples)
+[SYNC] New preamble detected @ 3298465 (CFO -99.45 Hz, STO 1)
+5.1936047e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.25 dB (2048 samples)
+[SYNC] New preamble detected @ 3305516 (CFO -1937.31 Hz, STO 4)
+5.4811676e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.31 dB (1024 samples)
+[SYNC] New preamble detected @ 3312567 (CFO 1339.59 Hz, STO 7)
+4.92234e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.37 dB (512 samples)
+[SYNC] New preamble detected @ 3319610 (CFO -2583.88 Hz, STO 2)
+4.8408447e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.77 dB (2048 samples)
+[SYNC] New preamble detected @ 3326663 (CFO 2078.58 Hz, STO 7)
+4.6627184e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.81 dB (2048 samples)
+[SYNC] New preamble detected @ 3333710 (CFO 3067.34 Hz, STO 6)
+5.2401737e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.09 dB (2048 samples)
+[SYNC] New preamble detected @ 3340755 (CFO 1415.03 Hz, STO 3)
+4.729079e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.39 dB (1024 samples)
+[SYNC] New preamble detected @ 3347800 (CFO 92.52 Hz, STO 0)
+4.578894e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.39 dB (2048 samples)
+[SYNC] New preamble detected @ 3354853 (CFO 3125.00 Hz, STO 5)
+4.7057944e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.53 dB (2048 samples)
+[SYNC] New preamble detected @ 3361896 (CFO 1732.22 Hz, STO 0)
+4.5940288e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.28 dB (1024 samples)
+[SYNC] New preamble detected @ 3368945 (CFO -1200.10 Hz, STO 1)
+5.165663e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.35 dB (4096 samples)
+[SYNC] New preamble detected @ 3375992 (CFO -2623.31 Hz, STO 0)
+6.0423235e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.92 dB (1024 samples)
+[SYNC] New preamble detected @ 3383040 (CFO 2684.71 Hz, STO 0)
+4.888578e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.53 dB (2048 samples)
+[SYNC] New preamble detected @ 3390093 (CFO -2649.81 Hz, STO 5)
+4.916519e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.40 dB (2048 samples)
+[SYNC] New preamble detected @ 3397140 (CFO 2025.53 Hz, STO 4)
+5.676758e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.78 dB (512 samples)
+[SYNC] New preamble detected @ 3404191 (CFO -2185.89 Hz, STO 7)
+4.8548156e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.70 dB (1024 samples)
+[SYNC] New preamble detected @ 3411239 (CFO 527.41 Hz, STO 7)
+4.916519e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.40 dB (2048 samples)
+[SYNC] New preamble detected @ 3418281 (CFO 2235.81 Hz, STO 1)
+5.1062875e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.58 dB (2048 samples)
+[SYNC] New preamble detected @ 3425333 (CFO -2339.59 Hz, STO 5)
+4.475278e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.25 dB (1024 samples)
+[SYNC] New preamble detected @ 3432377 (CFO 290.62 Hz, STO 1)
+4.8361875e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.80 dB (1024 samples)
+[SYNC] New preamble detected @ 3439425 (CFO 1448.23 Hz, STO 1)
+4.829202e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.83 dB (1024 samples)
+[SYNC] New preamble detected @ 3446479 (CFO 1070.98 Hz, STO 7)
+4.9898654e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.06 dB (2048 samples)
+[SYNC] New preamble detected @ 3453524 (CFO -2299.40 Hz, STO 4)
+5.984113e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.04 dB (1024 samples)
+[SYNC] New preamble detected @ 3460568 (CFO -2321.17 Hz, STO 0)
+5.3088627e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.85 dB (2048 samples)
+[SYNC] New preamble detected @ 3467620 (CFO -2501.90 Hz, STO 4)
+5.1342295e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.47 dB (1024 samples)
+[SYNC] New preamble detected @ 3474667 (CFO 1124.25 Hz, STO 3)
+4.4030963e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.97 dB (1024 samples)
+[SYNC] New preamble detected @ 3481714 (CFO 1844.80 Hz, STO 2)
+5.239009e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.09 dB (2048 samples)
+[SYNC] New preamble detected @ 3488764 (CFO -2123.56 Hz, STO 4)
+4.4962343e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.06 dB (2048 samples)
+[SYNC] New preamble detected @ 3495815 (CFO 946.32 Hz, STO 7)
+4.8501585e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.73 dB (1024 samples)
+[SYNC] New preamble detected @ 3502862 (CFO -1350.00 Hz, STO 6)
+4.78729e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.06 dB (1024 samples)
+[SYNC] New preamble detected @ 3509910 (CFO -1484.07 Hz, STO 6)
+4.9176833e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.39 dB (512 samples)
+[SYNC] New preamble detected @ 3516953 (CFO 2517.63 Hz, STO 1)
+5.273936e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.97 dB (2048 samples)
+[SYNC] New preamble detected @ 3524002 (CFO -2476.06 Hz, STO 2)
+4.7314074e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.38 dB (1024 samples)
+[SYNC] New preamble detected @ 3531055 (CFO -2074.72 Hz, STO 7)
+5.397344e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.57 dB (512 samples)
+[SYNC] New preamble detected @ 3538101 (CFO 1143.06 Hz, STO 5)
+5.476511e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.33 dB (1024 samples)
+[SYNC] New preamble detected @ 3545144 (CFO -2123.56 Hz, STO 0)
+4.879846e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.58 dB (4096 samples)
+[SYNC] New preamble detected @ 3552198 (CFO -902.40 Hz, STO 6)
+4.7605133e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.21 dB (2048 samples)
+[SYNC] New preamble detected @ 3559242 (CFO -1664.06 Hz, STO 2)
+5.755925e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.58 dB (1024 samples)
+[SYNC] New preamble detected @ 3566295 (CFO -396.57 Hz, STO 7)
+4.7127799e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.49 dB (1024 samples)
+[SYNC] New preamble detected @ 3573337 (CFO 675.53 Hz, STO 1)
+4.776812e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.12 dB (2048 samples)
+[SYNC] New preamble detected @ 3580389 (CFO 1793.12 Hz, STO 5)
+4.9316543e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.33 dB (2048 samples)
+[SYNC] New preamble detected @ 3587437 (CFO 1956.85 Hz, STO 5)
+5.1482e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.42 dB (1024 samples)
+[SYNC] New preamble detected @ 3594483 (CFO 1495.90 Hz, STO 3)
+4.1818936e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -13.42 dB (512 samples)
+[SYNC] New preamble detected @ 3601529 (CFO -1937.31 Hz, STO 1)
+5.145871e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.43 dB (512 samples)
+[SYNC] New preamble detected @ 3608581 (CFO -1737.28 Hz, STO 5)
+4.7628416e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.20 dB (2048 samples)
+[SYNC] New preamble detected @ 3615625 (CFO -2560.41 Hz, STO 1)
+4.921176e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.38 dB (2048 samples)
+[SYNC] New preamble detected @ 3622679 (CFO -2049.41 Hz, STO 7)
+5.31352e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.84 dB (1024 samples)
+[SYNC] New preamble detected @ 3629721 (CFO -2695.23 Hz, STO 1)
+5.2622937e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.01 dB (512 samples)
+[SYNC] New preamble detected @ 3636770 (CFO 1082.83 Hz, STO 2)
+5.1877834e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.27 dB (2048 samples)
+[SYNC] New preamble detected @ 3643816 (CFO 1844.80 Hz, STO 0)
+4.698809e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.58 dB (2048 samples)
+[SYNC] New preamble detected @ 3650869 (CFO 1280.20 Hz, STO 5)
+4.214492e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -12.71 dB (1024 samples)
+[SYNC] New preamble detected @ 3657917 (CFO -2521.15 Hz, STO 5)
+5.326326e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.79 dB (2048 samples)
+[SYNC] New preamble detected @ 3664962 (CFO 1480.41 Hz, STO 2)
+6.084236e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.83 dB (1024 samples)
+[SYNC] New preamble detected @ 3672010 (CFO -1949.48 Hz, STO 2)
+5.11793e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.54 dB (512 samples)
+[SYNC] New preamble detected @ 3679058 (CFO 627.74 Hz, STO 2)
+5.1575137e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.39 dB (2048 samples)
+[SYNC] New preamble detected @ 3686109 (CFO -2718.33 Hz, STO 5)
+4.672032e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.75 dB (2048 samples)
+[SYNC] New preamble detected @ 3693153 (CFO -2254.94 Hz, STO 1)
+5.259965e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.02 dB (1024 samples)
+[SYNC] New preamble detected @ 3700205 (CFO -2165.62 Hz, STO 5)
+4.1469667e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -14.35 dB (1024 samples)
+[SYNC] New preamble detected @ 3707250 (CFO -203.87 Hz, STO 2)
+4.5253398e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.82 dB (2048 samples)
+[SYNC] New preamble detected @ 3714303 (CFO 2714.85 Hz, STO 7)
+5.1435427e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.44 dB (2048 samples)
+[SYNC] New preamble detected @ 3721350 (CFO -2675.71 Hz, STO 6)
+5.346118e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.73 dB (1024 samples)
+[SYNC] New preamble detected @ 3728397 (CFO 1554.18 Hz, STO 5)
+5.0620474e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.76 dB (1024 samples)
+[SYNC] New preamble detected @ 3735445 (CFO 2965.93 Hz, STO 5)
+5.7652386e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.55 dB (512 samples)
+[SYNC] New preamble detected @ 3742489 (CFO -1374.92 Hz, STO 1)
+4.866457e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.64 dB (2048 samples)
+[SYNC] New preamble detected @ 3749543 (CFO 264.87 Hz, STO 7)
+4.8629647e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.66 dB (2048 samples)
+[SYNC] New preamble detected @ 3756589 (CFO -2418.37 Hz, STO 5)
+5.064376e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.75 dB (2048 samples)
+[SYNC] New preamble detected @ 3763633 (CFO -1937.31 Hz, STO 1)
+6.151761e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.69 dB (512 samples)
+[SYNC] New preamble detected @ 3770682 (CFO -2413.61 Hz, STO 2)
+4.3635126e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.42 dB (512 samples)
+[SYNC] New preamble detected @ 3777728 (CFO -377.80 Hz, STO 0)
+5.2576365e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.03 dB (2048 samples)
+[SYNC] New preamble detected @ 3784778 (CFO -1444.92 Hz, STO 2)
+5.570813e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.06 dB (2048 samples)
+[SYNC] New preamble detected @ 3791827 (CFO 1280.20 Hz, STO 3)
+4.7424675e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.31 dB (4096 samples)
+[SYNC] New preamble detected @ 3798878 (CFO 2784.79 Hz, STO 6)
+6.5149993e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.02 dB (512 samples)
+[SYNC] New preamble detected @ 3805926 (CFO 2488.73 Hz, STO 6)
+4.8961454e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.50 dB (4096 samples)
+[SYNC] New preamble detected @ 3812969 (CFO 3397.10 Hz, STO 1)
+4.8315303e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.82 dB (2048 samples)
+[SYNC] New preamble detected @ 3820023 (CFO -1814.65 Hz, STO 7)
+5.287907e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.92 dB (1024 samples)
+[SYNC] New preamble detected @ 3827068 (CFO -2707.71 Hz, STO 4)
+4.7477067e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.28 dB (2048 samples)
+[SYNC] New preamble detected @ 3834114 (CFO 1255.79 Hz, STO 2)
+4.8548156e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.70 dB (2048 samples)
+[SYNC] New preamble detected @ 3841165 (CFO 2445.67 Hz, STO 5)
+5.009657e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.98 dB (2048 samples)
+[SYNC] New preamble detected @ 3848212 (CFO -482.84 Hz, STO 4)
+5.8537194e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.34 dB (1024 samples)
+[SYNC] New preamble detected @ 3855260 (CFO -2376.09 Hz, STO 4)
+4.8292026e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.83 dB (1024 samples)
+[SYNC] New preamble detected @ 3862307 (CFO -2076.31 Hz, STO 3)
+6.240242e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.52 dB (512 samples)
+[SYNC] New preamble detected @ 3869353 (CFO -2288.14 Hz, STO 1)
+5.180798e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.30 dB (2048 samples)
+[SYNC] New preamble detected @ 3876403 (CFO -1844.80 Hz, STO 3)
+5.078346e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.69 dB (2048 samples)
+[SYNC] New preamble detected @ 3883453 (CFO -1611.01 Hz, STO 5)
+5.245995e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.07 dB (2048 samples)
+[SYNC] New preamble detected @ 3890498 (CFO -2387.52 Hz, STO 2)
+4.78729e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.06 dB (2048 samples)
+[SYNC] New preamble detected @ 3897547 (CFO 2006.01 Hz, STO 3)
+4.892071e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.52 dB (4096 samples)
+[SYNC] New preamble detected @ 3904597 (CFO 3011.35 Hz, STO 5)
+4.932818e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.32 dB (2048 samples)
+[SYNC] New preamble detected @ 3911644 (CFO 2017.68 Hz, STO 4)
+4.6371053e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.98 dB (2048 samples)
+[SYNC] New preamble detected @ 3918695 (CFO 3125.00 Hz, STO 7)
+5.031777e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.88 dB (1024 samples)
+[SYNC] New preamble detected @ 3925737 (CFO -2481.07 Hz, STO 1)
+4.903713e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.46 dB (2048 samples)
+[SYNC] New preamble detected @ 3932790 (CFO -2684.71 Hz, STO 6)
+4.7570205e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.23 dB (1024 samples)
+[SYNC] New preamble detected @ 3939838 (CFO -1905.54 Hz, STO 6)
+4.97182e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.14 dB (4096 samples)
+[SYNC] New preamble detected @ 3946880 (CFO -2409.39 Hz, STO 0)
+5.485825e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.30 dB (1024 samples)
+[SYNC] New preamble detected @ 3953928 (CFO 3181.04 Hz, STO 0)
+5.103959e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.59 dB (512 samples)
+[SYNC] New preamble detected @ 3960976 (CFO 527.41 Hz, STO 0)
+5.100467e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.60 dB (2048 samples)
+[SYNC] New preamble detected @ 3968028 (CFO -198.78 Hz, STO 4)
+5.317594e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.82 dB (4096 samples)
+[SYNC] New preamble detected @ 3975078 (CFO -1777.93 Hz, STO 6)
+6.370635e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.27 dB (512 samples)
+[SYNC] New preamble detected @ 3982121 (CFO 1254.20 Hz, STO 1)
+5.0329413e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.88 dB (4096 samples)
+[SYNC] New preamble detected @ 3989169 (CFO -2043.57 Hz, STO 1)
+4.4461723e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.53 dB (2048 samples)
+[SYNC] New preamble detected @ 3996217 (CFO 974.74 Hz, STO 1)
+5.0981384e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.61 dB (2048 samples)
+[SYNC] New preamble detected @ 4003264 (CFO 253.63 Hz, STO 0)
+4.8152316e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.91 dB (2048 samples)
+[SYNC] New preamble detected @ 4010312 (CFO -1059.38 Hz, STO 0)
+4.3373177e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.74 dB (4096 samples)
+[SYNC] New preamble detected @ 4017361 (CFO -1280.20 Hz, STO 1)
+5.136558e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.46 dB (4096 samples)
+[SYNC] New preamble detected @ 4024414 (CFO 360.72 Hz, STO 6)
+5.0946454e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.63 dB (1024 samples)
+[SYNC] New preamble detected @ 4031460 (CFO -681.90 Hz, STO 4)
+5.4805855e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.32 dB (4096 samples)
+[SYNC] New preamble detected @ 4038510 (CFO 2194.97 Hz, STO 6)
+5.8793324e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.28 dB (1024 samples)
+[SYNC] New preamble detected @ 4045555 (CFO 0.00 Hz, STO 3)
+5.830435e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.40 dB (512 samples)
+[SYNC] New preamble detected @ 4052604 (CFO -2321.17 Hz, STO 4)
+6.384606e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.25 dB (512 samples)
+[SYNC] New preamble detected @ 4059653 (CFO -1073.70 Hz, STO 5)
+5.347282e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.73 dB (2048 samples)
+[SYNC] New preamble detected @ 4066699 (CFO 859.77 Hz, STO 3)
+4.845501e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.75 dB (1024 samples)
+[SYNC] New preamble detected @ 4073747 (CFO -2265.23 Hz, STO 3)
+4.8129033e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.92 dB (1024 samples)
+[SYNC] New preamble detected @ 4080797 (CFO -2360.87 Hz, STO 5)
+4.1772367e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -13.54 dB (512 samples)
+[SYNC] New preamble detected @ 4087846 (CFO -2404.46 Hz, STO 6)
+5.3437896e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.74 dB (1024 samples)
+[SYNC] New preamble detected @ 4094891 (CFO -169.21 Hz, STO 3)
+4.7255864e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.41 dB (2048 samples)
+[SYNC] New preamble detected @ 4101936 (CFO 1799.06 Hz, STO 0)
+4.8129033e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.92 dB (2048 samples)
+[SYNC] New preamble detected @ 4108986 (CFO 1197.32 Hz, STO 2)
+4.6784353e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.71 dB (4096 samples)
+[SYNC] New preamble detected @ 4116033 (CFO -2150.26 Hz, STO 1)
+4.772155e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.14 dB (2048 samples)
+[SYNC] New preamble detected @ 4123083 (CFO -685.13 Hz, STO 3)
+5.1534386e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.40 dB (4096 samples)
+[SYNC] New preamble detected @ 4130133 (CFO -2467.89 Hz, STO 5)
+5.0055826e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.00 dB (4096 samples)
+[SYNC] New preamble detected @ 4137176 (CFO -2273.28 Hz, STO 0)
+5.122005e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.52 dB (4096 samples)
+[SYNC] New preamble detected @ 4144226 (CFO -1146.14 Hz, STO 2)
+4.7593488e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.22 dB (2048 samples)
+[SYNC] New preamble detected @ 4151275 (CFO 3508.86 Hz, STO 3)
+6.0353386e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.93 dB (1024 samples)
+[SYNC] New preamble detected @ 4158324 (CFO -1280.20 Hz, STO 4)
+5.4020006e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.55 dB (1024 samples)
+[SYNC] New preamble detected @ 4165371 (CFO -2390.16 Hz, STO 3)
+5.6738475e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.78 dB (4096 samples)
+[SYNC] New preamble detected @ 4172421 (CFO -2526.69 Hz, STO 5)
+4.6592254e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.83 dB (2048 samples)
+[SYNC] New preamble detected @ 4179468 (CFO -1471.81 Hz, STO 4)
+5.051569e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.80 dB (2048 samples)
+[SYNC] New preamble detected @ 4186517 (CFO -1257.21 Hz, STO 5)
+5.2599654e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.02 dB (2048 samples)
+[SYNC] New preamble detected @ 4193561 (CFO 2304.06 Hz, STO 1)
+5.877004e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.29 dB (512 samples)
+[SYNC] New preamble detected @ 4200608 (CFO -2659.04 Hz, STO 0)
+4.7349e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.36 dB (2048 samples)
+[SYNC] New preamble detected @ 4207656 (CFO -1986.84 Hz, STO 0)
+5.045166e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.83 dB (4096 samples)
+[SYNC] New preamble detected @ 4214710 (CFO -2481.07 Hz, STO 6)
+5.8211214e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.42 dB (512 samples)
+[SYNC] New preamble detected @ 4221756 (CFO -1498.01 Hz, STO 4)
+4.9339826e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.32 dB (2048 samples)
+[SYNC] New preamble detected @ 4228800 (CFO 297.86 Hz, STO 0)
+4.901384e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.47 dB (1024 samples)
+[SYNC] New preamble detected @ 4235855 (CFO 3421.38 Hz, STO 7)
+4.7989323e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.00 dB (1024 samples)
+[SYNC] New preamble detected @ 4242897 (CFO 1844.80 Hz, STO 1)
+4.7640057e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.19 dB (1024 samples)
+[SYNC] New preamble detected @ 4249947 (CFO -1777.93 Hz, STO 3)
+4.7768117e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.12 dB (4096 samples)
+[SYNC] New preamble detected @ 4256996 (CFO -1691.84 Hz, STO 4)
+5.050405e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.81 dB (2048 samples)
+[SYNC] New preamble detected @ 4264043 (CFO 1427.50 Hz, STO 3)
+5.310027e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.85 dB (2048 samples)
+[SYNC] New preamble detected @ 4271095 (CFO 2992.42 Hz, STO 7)
+4.842009e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.77 dB (2048 samples)
+[SYNC] New preamble detected @ 4278142 (CFO -2318.65 Hz, STO 6)
+4.979387e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.11 dB (4096 samples)
+[SYNC] New preamble detected @ 4285190 (CFO 2364.30 Hz, STO 6)
+4.433366e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.65 dB (1024 samples)
+[SYNC] New preamble detected @ 4292237 (CFO 88.40 Hz, STO 5)
+4.3774833e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.25 dB (1024 samples)
+[SYNC] New preamble detected @ 4299287 (CFO -1417.35 Hz, STO 7)
+5.086496e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.66 dB (2048 samples)
+[SYNC] New preamble detected @ 4306332 (CFO 0.00 Hz, STO 4)
+6.354336e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -2.30 dB (1024 samples)
+[SYNC] New preamble detected @ 4313378 (CFO 2908.19 Hz, STO 2)
+4.4729495e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -9.27 dB (1024 samples)
+[SYNC] New preamble detected @ 4320429 (CFO -2522.70 Hz, STO 5)
+4.610328e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.16 dB (1024 samples)
+[SYNC] New preamble detected @ 4327476 (CFO 785.41 Hz, STO 4)
+4.8781e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.59 dB (2048 samples)
+[SYNC] New preamble detected @ 4334523 (CFO -2339.59 Hz, STO 3)
+4.7151082e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.48 dB (2048 samples)
+[SYNC] New preamble detected @ 4341572 (CFO -2339.59 Hz, STO 4)
+4.754692e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.24 dB (4096 samples)
+[SYNC] New preamble detected @ 4348621 (CFO -2150.26 Hz, STO 5)
+4.702302e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.56 dB (4096 samples)
+[SYNC] New preamble detected @ 4355665 (CFO -2031.17 Hz, STO 1)
+4.703466e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.55 dB (1024 samples)
+[SYNC] New preamble detected @ 4362713 (CFO 2522.70 Hz, STO 1)
+4.9758944e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.13 dB (1024 samples)
+[SYNC] New preamble detected @ 4369760 (CFO 0.00 Hz, STO 0)
+5.2250385e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.14 dB (2048 samples)
+[SYNC] New preamble detected @ 4376810 (CFO 0.00 Hz, STO 2)
+5.1202585e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.53 dB (2048 samples)
+[SYNC] New preamble detected @ 4383863 (CFO 321.91 Hz, STO 7)
+5.0632116e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.75 dB (2048 samples)
+[SYNC] New preamble detected @ 4390909 (CFO -861.63 Hz, STO 5)
+5.2459944e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.07 dB (2048 samples)
+[SYNC] New preamble detected @ 4397955 (CFO -3227.00 Hz, STO 3)
+5.7908517e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.49 dB (1024 samples)
+[SYNC] New preamble detected @ 4405006 (CFO 894.10 Hz, STO 6)
+5.2506516e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.05 dB (1024 samples)
+[SYNC] New preamble detected @ 4412048 (CFO -1799.06 Hz, STO 0)
+4.3419746e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -10.68 dB (4096 samples)
+[SYNC] New preamble detected @ 4419102 (CFO 520.55 Hz, STO 6)
+5.347282e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.73 dB (2048 samples)
+[SYNC] New preamble detected @ 4426150 (CFO -2497.26 Hz, STO 6)
+4.853651e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.71 dB (4096 samples)
+[SYNC] New preamble detected @ 4433193 (CFO -2201.49 Hz, STO 1)
+4.729079e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.39 dB (2048 samples)
+[SYNC] New preamble detected @ 4440242 (CFO -1582.11 Hz, STO 2)
+4.7447958e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.30 dB (4096 samples)
+[SYNC] New preamble detected @ 4447290 (CFO -1437.18 Hz, STO 2)
+4.973566e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.14 dB (1024 samples)
+[SYNC] New preamble detected @ 4454336 (CFO 68.59 Hz, STO 0)
+5.2797566e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.95 dB (2048 samples)
+[SYNC] New preamble detected @ 4461390 (CFO -2529.92 Hz, STO 6)
+5.618546e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -3.93 dB (1024 samples)
+[SYNC] New preamble detected @ 4468438 (CFO -371.93 Hz, STO 6)
+4.6941523e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.61 dB (4096 samples)
+[SYNC] New preamble detected @ 4475485 (CFO 2093.15 Hz, STO 5)
+5.0114033e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.97 dB (4096 samples)
+[SYNC] New preamble detected @ 4482534 (CFO 3370.30 Hz, STO 6)
+4.994522e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.04 dB (4096 samples)
+[SYNC] New preamble detected @ 4489581 (CFO -2123.56 Hz, STO 5)
+4.7640057e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.19 dB (1024 samples)
+[SYNC] New preamble detected @ 4496624 (CFO -614.01 Hz, STO 0)
+5.5649923e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.08 dB (1024 samples)
+[SYNC] New preamble detected @ 4503678 (CFO -639.65 Hz, STO 6)
+5.4183e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -4.50 dB (1024 samples)
+[SYNC] New preamble detected @ 4510721 (CFO 3334.22 Hz, STO 1)
+4.583551e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.36 dB (4096 samples)
+[SYNC] New preamble detected @ 4517773 (CFO -2359.48 Hz, STO 5)
+4.5474602e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -8.64 dB (2048 samples)
+[SYNC] New preamble detected @ 4524823 (CFO 2722.72 Hz, STO 7)
+5.11793e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.54 dB (1024 samples)
+[SYNC] New preamble detected @ 4531870 (CFO 3408.72 Hz, STO 6)
+5.093481e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.63 dB (2048 samples)
+[SYNC] New preamble detected @ 4538914 (CFO 3293.02 Hz, STO 2)
+5.089988e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.65 dB (2048 samples)
+[SYNC] New preamble detected @ 4545962 (CFO 1945.08 Hz, STO 2)
+5.151693e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.41 dB (2048 samples)
+[SYNC] New preamble detected @ 4553014 (CFO -2656.56 Hz, STO 6)
+4.7267503e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.41 dB (2048 samples)
+[SYNC] New preamble detected @ 4560062 (CFO 801.02 Hz, STO 6)
+5.1272434e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.50 dB (512 samples)
+
+##################
+INFO: device_handler::close_device(): Disconnected from device number 0.
+##################
+

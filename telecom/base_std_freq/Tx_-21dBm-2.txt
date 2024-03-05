@@ -1,0 +1,224 @@
+---------------------------------------------------------------
+LimeSuite Source (RX) info
+
+##################
+Connecting to device
+##################
+LimeSuite version: 22.09.1-myriadrf1~ubuntu20.04
+gr-limesdr version: v1.0-compat-xxx-xunknown
+##################
+Device list:
+Nr.:0 device:LimeSDR Mini, media=USB 3.0, module=FT601, addr=24607:1027, serial=1D74EF675B5C46
+##################
+INFO: device_handler::open_device(): no serial number. Using first device in the list.
+Use "LimeUtil --find" in terminal to find prefered device serial.
+Using device: LimeSDR-Mini(1D74EF675B5C46) GW: 1.29 FW: 6
+##################
+
+INFO: device_handler::enable_channels(): SISO CH0 set for device number 0.
+INFO: device_handler::set_samp_rate(): set sampling rate: 0.4 MS/s.
+INFO: device_handler::set_rf_freq(): RF frequency set [RX]: 870 MHz.
+INFO: device_handler::set_analog_filter(): INFO: device_handler::set_digital_filter(): digital filter CH0 [RX]: 0.4 MHz.
+INFO: device_handler::set_gain(): 
+Clearing running sum before changing gain 
+Actual : Short = 0 /  Long = 0
+Clear : Short = 0 /  Long = 0
+Set gain [RX] CH0: 10 dB.
+Running : Short = 0 /  Long = 0
+INFO: device_handler::set_antenna(): CH0 antenna set [RX]: LNAW.
+INFO: device_handler::calibrate(): INFO: device_handler::set_dspcfg_preamble(): INFO: source_impl::init_stream(): source channel 0 (device nr. 0) stream setup done.
+[SYNC] New preamble detected @ 5 (CFO 38.82 Hz, STO 5)
+2.9884472e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 8.11 dB (2048 samples)
+[SYNC] New preamble detected @ 7054 (CFO 177.71 Hz, STO 6)
+2.9669093e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 8.07 dB (4096 samples)
+[MAC] Error in CRC, packet dropped [  0  34 128  32  68   0   0   1  32 192   0   8   0  16   4 138  76  84
+ 128  33   0 129   0   0  85  69   1 192  64  32   3  16  10  40 144   0
+  35  65 130  16   0  70  35  41   4  55   5   6 102  20   6 148   5   5
+  40 155  26  64  80  50 128   0  73  66   0  43  10  10 148  34 168   2
+   0 128  64  32   1  16 128 136  36 128   0   0   1  32 140  20 112 129
+ 113  19   1   0   4 156  50  95 248  12] [41]
+--- 1 packets received with 1 error(s) ---
+[SYNC] New preamble detected @ 14096 (CFO 123.66 Hz, STO 0)
+2.909571e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 7.98 dB (4096 samples)
+[SYNC] New preamble detected @ 21148 (CFO 0.00 Hz, STO 4)
+2.9427804e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 8.03 dB (2303 samples)
+[MAC] Error in CRC, packet dropped [  0  16   4   4  21   0  35   8 100  21 228 193  72   0   5   3 224 160
+   0  34   0  13   4  81   1   2 136   9   0   0   0  34   0 112   2  16
+   2  64   8   2  16  32  65 128  17  41  32  64 128   0  66   1  97   0
+   0 129  18  12  18 162  73 128   0  32  16  51   8   8  64   1   2  20
+  16  28 136   1 128   3  34  12   0   8   0  34 192   0  18   0  16   8
+  17  80  16 241   0 132  64  74   0  12] [34]
+--- 2 packets received with 2 error(s) ---
+[MAC] Error in CRC, packet dropped [128  18  13 128   8  48  80  50   8  65 167   0   1   1  48   9 249  76
+  32 151 160 192  88  49 156   0  92 134   0 133   2   8   3  19  28 129
+  58  36 171   9 242 239 163  80  10 128  14  72 169 138 104   6  96 137
+  36 195  96  11 161   0 216  12 160 220  90  37 170  37  10 248   7  65
+   0  24 112  81  40  96 176   4 153 163 129  64 170  99 252  69 213  76
+  73 126 192 200  84  20  23   5 173 208] [2]
+--- 3 packets received with 3 error(s) ---
+[SYNC] New preamble detected @ 28193 (CFO 172.89 Hz, STO 1)
+2.9325647e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 8.02 dB (4096 samples)
+[MAC] Error in CRC, packet dropped [191 119 252 231 247 251 235  79  59 191 107  25 247 246 239 125 228 230
+ 251   3 247 245 150 159  92 216 254 247 189 187 122 209 123 175 221 243
+ 115 248 239  22 157  95 253 207 197 150 229 191 251  49 126 123 188 249
+  45 247   9 115  68 148 225   7 132 181 221 243 237 198 187 245 204 238
+ 159 219 255 159 119 243 218 253 255  81 219 195 253  49  95 237 239 252
+  94  78 155 252 176  15 255 157 246 254] [223]
+--- 4 packets received with 4 error(s) ---
+[MAC] Error in CRC, packet dropped [ 80   0  17  96 128  16  37  46 132   7  42  36 128  20 139   0   0  82
+   1  36 203 209 212   7  64 128  66  32   0  22   2  24  39  74 146  16
+ 130   8  98   0  66   0   8   3   5  88 145 162   2 136 113  16 148   2
+   0  72  16  22   0   3 160 148   0   0   4   0 130  73  69  16 132 192
+  51 106 212 148 236  18 228  93 101 158  16 103 144 144 167  35 150 216
+ 206 172  44 226 212  90 110 249  44 180] [22]
+--- 5 packets received with 5 error(s) ---
+[SYNC] New preamble detected @ 35243 (CFO 2262.09 Hz, STO 3)
+4.6359412e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -7.99 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [103 129  65 145  64 246   6  18   0 176  16  80  98  49 138 145 226  48
+ 196  64 166 161   2   3   1  47  33  71  34 231  19   3  34 162 194 178
+ 199  84   4  20  34  20   2  20  36  84   1 148  36  16  68  80  84 179
+  13  17  96  49  68  81  69  33   3 139 100  45  68 205  65 230   5 132
+  22  42  16   0 160   0 128  16   0 128  16 128   0  64  32  20  67 128
+  32 132  32 146   8   1   0   4  28   0] [128]
+--- 6 packets received with 6 error(s) ---
+[SYNC] New preamble detected @ 42291 (CFO 2788.61 Hz, STO 3)
+5.0341055e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.87 dB (512 samples)
+[MAC] Error in CRC, packet dropped [133  68  18  68 132 199   5  67   2 192  12  96   8 209   9   1 192 131
+  15  10  34 138   3 138 137 142   8  77  12  77  12  73 141  74  12  74
+ 134  74  70  10 143  68  16  68  32 194   1  66 152 194  18  98 136 227
+ 133  11 146 212  17  20 196 148  37  20 145 148   2 148 146 149  19  83
+  21 208   8  80 158  96 192   0   0  12 128   1   0  32 136   4   1   0
+   0   0   8 128  11   1   0   8   0   0] [2]
+--- 7 packets received with 7 error(s) ---
+[SYNC] New preamble detected @ 49341 (CFO -248.36 Hz, STO 5)
+4.2284626e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -12.43 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [247 251 255 203 231 251 122 251 195  91 254 255 223 186 243 127 230  95
+ 254 255 254 255  55 255 207 206 255 254 253 246 214 255 150 255 191  63
+ 251 255 247 239 223 255 119 238 119 255 223 255 255 191 246 250 253  31
+  92 157 243 113 100 231 194 238  68 121 206 250  25   7 133 176 219 215
+ 177 242 191   6 232 221 128  36 239  15  84  82 235 250  86 229 231  57
+ 147 118  92  44  41 239 124 167 127  60] [93]
+--- 8 packets received with 8 error(s) ---
+[SYNC] New preamble detected @ 56386 (CFO 227.12 Hz, STO 2)
+3.987468e-07 4e-07 4e-07
+[SYNC] Estimated SNR: nan dB (2048 samples)
+[MAC] Error in CRC, packet dropped [119   5 167  25 175  24  23 166  99 173 150  41  12  56 196  33  48  32
+ 236 232 221 232  62 193 226 136 207 138 245  88 200  65  64  61 167 141
+   1  18   3 134 151 238 107 204  79  90 166 152 182 162 217 100 128 195
+ 146   7 206  78 220 217 132  66 155  37  55 161  65 130  13 200 207  81
+  13  17  98   1  40 144  93  56 141 193 174   1 215  90  82  78 188 206
+  29  33  24   9 223  26  32 133  55  64] [10]
+--- 9 packets received with 9 error(s) ---
+[SYNC] New preamble detected @ 63435 (CFO -1732.22 Hz, STO 3)
+4.0899198e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -16.48 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [238 247 238 119 255 143 254 127 247 237 246 239 247 159 123 255 121 147
+ 127  59  95 239 215 187 214 255 222 127 247 222 159 254 151 158 247 222
+ 179 238 223 191 255 239 253 238 255 183 223 190 223 249 254 191 247 255
+ 245 231 255 223 247 223 109 255 111  55 238 253 175 255 255 191 191 187
+ 247 255 247 253 183 126 179 213 185 239 229 229 231 255 251 125 187  63
+ 247 191 239 127 191 254 255 158 238 245] [255]
+--- 10 packets received with 10 error(s) ---
+[SYNC] New preamble detected @ 70483 (CFO -1768.29 Hz, STO 3)
+3.8262232e-07 4e-07 4e-07
+[SYNC] Estimated SNR: nan dB (4096 samples)
+[MAC] Error in CRC, packet dropped [254 253  91 255 187 238 125 236 126 235 221 239 255 255 223 123 255 123
+ 159 122 119  63 239 111 231 243 189 179 255 191  55 255 253 251 166 187
+ 118 187 223 187 233 253 119 255 119 222 255 223 190 223 121 239  46 239
+ 253 252 127 253 223 127 219 239  56 221 251  63 255 125 109 113 159 247
+ 249 190 215 235 119 255 237 115 181 239 109 151 253 187 246 111 254 127
+ 254 239 197 255 190 254 254 141 233 187] [191]
+--- 11 packets received with 11 error(s) ---
+[SYNC] New preamble detected @ 77535 (CFO 1042.94 Hz, STO 7)
+3.8512542e-07 4e-07 4e-07
+[SYNC] Estimated SNR: nan dB (2048 samples)
+[MAC] Error in CRC, packet dropped [ 97 162   3  35 132  34   5 224  98 104 129   9 192 225 226 199 179  98
+  16 194  22  66 206 230 202 215   4  23  34 151  67  14  71 228  97  38
+  39 164 198 116 243 181 130  53 159  33  15   1 101 160 142  40 172 120
+  72 224  65 101  29   7 192 197 152 141 236  78   8  30   3  95 132  29
+  77 220 142  25 193  57 225  57 174 186  52  58   0 184 121  87 151  19
+ 197 151  65 162   5  19 112   2  41  65] [7]
+--- 12 packets received with 12 error(s) ---
+[SYNC] New preamble detected @ 84580 (CFO 689.32 Hz, STO 4)
+3.825641e-07 4e-07 4e-07
+[SYNC] Estimated SNR: nan dB (4096 samples)
+[MAC] Error in CRC, packet dropped [105  10  35  12  37 140  58 144 176 114  18 113  20  50  38  49 152  50
+ 170  52  47  60 119  64  65  66  97  68  17  66  77  66   9  98  73 100
+  69  36 207  16 209  18  67  20  71  28  83  28  57 146  82 212  92  86
+  26  96  64  96 170 177 104  24  27 144  33  96  88 221 113   5  33 112
+  66 100  17  44 148 114  85 129 116   9  40 126 133 172 224 168 224  69
+ 152  19 198  35 103  32 164  84  35 188] [137]
+--- 13 packets received with 13 error(s) ---
+[SYNC] New preamble detected @ 91626 (CFO 2421.90 Hz, STO 2)
+5.1644986e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -5.36 dB (512 samples)
+[MAC] Error in CRC, packet dropped [ 50 202   2   1   8 133  15  33 131 160   0   0 132 147   4  23  65 142
+   5   6  35  70  54  69 133  88   8  72   0  72  16  72 137 200 130  64
+ 156 211  13  87  34 196  60 196 136 132   7   4  13 140   6  44 138 189
+  27  29   5 144  64  16 144 177   0 209  49  16  32  85  22  81  18  81
+ 135  65   4 192 144 227  27 205  68 206  18  70  60 196  21 197 134 152
+  16 152 129 176 208   1  20  72   0   1] [0]
+--- 14 packets received with 14 error(s) ---
+[SYNC] New preamble detected @ 98676 (CFO -305.47 Hz, STO 4)
+4.866457e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -6.64 dB (1024 samples)
+[MAC] Error in CRC, packet dropped [249 253 247 249 227 177 253  91 203  91 255 219 255 249 247  95 223 223
+ 247 255 251 255 206 253 199 255 190 191 159 255 251 255 255 255 243 239
+  99 251 123 238  30 126  61 239 127 255  87 191 255 223 246 255 230 189
+ 255 223 187 159 183 255 246 255 255 255 247 251 247 127 167 127 255 179
+ 151 255 255 191 252 234 185 220  96 106 181  91 252 143 229  94  89 124
+  11  95 250 157 110  63 220  33 241 185] [85]
+--- 15 packets received with 15 error(s) ---
+[SYNC] New preamble detected @ 105727 (CFO 494.79 Hz, STO 7)
+4.0503363e-07 4e-07 4e-07
+[SYNC] Estimated SNR: -19.00 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [ 54  71 160 131  33 146  22 156 152  52 134 180 133  28 147 156   4  24
+ 178 151  82 179  21 116  40 242  24  98 192 136   1  32  80  32 144  61
+  68 226 201 170 140 198 136  16  28  12 129  41  66   1  64 180  80   4
+ 192   0   2   0  64 196  68 176 103  32  91 101   4  64   2 204  10 128
+ 174  72   8  25 248   0  16 132  25 211   4  40 192 157 209   6  42   0
+  37   0  79  14 146  81 156 194   0  26] [89]
+--- 16 packets received with 16 error(s) ---
+[SYNC] New preamble detected @ 112772 (CFO 820.94 Hz, STO 4)
+3.893166e-07 4e-07 4e-07
+[SYNC] Estimated SNR: nan dB (2048 samples)
+[MAC] Error in CRC, packet dropped [  2  74  16 195  17  67 146 225   4  97 132 177   5  17 131 142 165  14
+  34 142  35 134 133 136  16  72 136 201   8  73   9  73 132  72 138  73
+   9  89  67  76  36  76 136 197   9  69  28 199  10 199  12 229  13  37
+ 150 144 130  16 144 145  19  17  33 146  17 146  18 210  18 211 153  81
+  12  81 148  81  22  81 133  82 210  90  71  78  53  70 147 200  24  72
+ 152 241 133 103 208  16 196 208 160  44] [16]
+--- 17 packets received with 17 error(s) ---
+[SYNC] New preamble detected @ 119816 (CFO 2579.63 Hz, STO 0)
+3.7860573e-07 4e-07 4e-07
+[SYNC] Estimated SNR: nan dB (1024 samples)
+[MAC] Error in CRC, packet dropped [ 49 194   2  66   0 193  13  97 130 176 128  16 132 153   5  13  67 142
+   5  14  34 198  18 199 133  72   8  72 136  72   4  72 137  72 130  72
+ 138 201   9  67  34 196  36  68 136 197   9  69  12 197   6  37 142 165
+  11  29  69 144  66  16 144 145  17 145  49 218  16  82  18  81  18  81
+ 143  81 140  80 146  81  19  69  69 206  18  78  53 198  53  71 146 200
+  24  72 136 176 129   4   0  67 136 161] [0]
+--- 18 packets received with 18 error(s) ---
+[SYNC] New preamble detected @ 126867 (CFO 2423.78 Hz, STO 3)
+3.758116e-07 4e-07 4e-07
+[SYNC] Estimated SNR: nan dB (1024 samples)
+[MAC] Error in CRC, packet dropped [ 20  39  24  45 154  22 194  16  38  68   8 104  77   4  80  68  80  52
+  80  56  84  76 108   2  96  35  40 114  14  26  80  98  95  59  81 178
+  86 122  16 130  16   6   4  11   4 103  16 147  20  46  94   8  28 212
+ 160 136 193  36 160  44 180 140 160  48 140 220 200  88 154 174 132  98
+ 130 211  66   0  32   0   0  85  18  70 192 194  64  32  16  16 130   0
+ 128   0 128 131  38   4   6   2  16   8] [20]
+--- 19 packets received with 19 error(s) ---
+
+##################
+INFO: device_handler::close_device(): Disconnected from device number 0.
+##################
+

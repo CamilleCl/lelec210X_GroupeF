@@ -20,7 +20,7 @@ class Chain:
     preamble = PREAMBLE
     sync_word = SYNC_WORD
 
-    payload_len = 150  # Number of bits per packet
+    payload_len = 100  # Number of bits per packet
 
     ## Simulation parameters
     n_packets = 1000  # Number of sent packets
@@ -32,7 +32,7 @@ class Chain:
     cfo_val = 0
     cfo_range = 10000  # defines the CFO range when random (in Hz) #(1000 in old repo)
 
-    snr_range = np.arange(-10, 25)
+    snr_range = np.arange(-10, 30)
 
     ## Lowpass filter parameters
     numtaps = 100
@@ -168,20 +168,43 @@ class BasicChain(Chain):
         Estimates symbol timing (fractional) based on phase shifts.
         """
         R = self.osr_rx
+        N = 8
 
-        # Computation of derivatives of phase function
-        phase_function = np.unwrap(np.angle(y))
-        phase_derivative_1 = phase_function[1:] - phase_function[:-1]
-        phase_derivative_2 = np.abs(phase_derivative_1[1:] - phase_derivative_1[:-1])
+        fd = self.freq_dev  # Frequency deviation, Delta_f
+        B = self.bit_rate  # B=1/T
+        ph = 2 * np.pi * fd * (np.arange(R) / R) / B  # Phase of reference waveform
 
-        sum_der_saved = -np.inf
+        s = np.zeros(R * N)
+        for i in range(N):
+            if(i%2 == 0):
+                s[R*i:R*(i+1)] = ph
+            else:
+                s[R*i:R*(i+1)] = -ph + 2 * np.pi * fd / B
+
+        corr_saved = -np.inf
         save_i = 0
-        for i in range(0, R):
-            sum_der = np.sum(phase_derivative_2[i::R])  # Sum every R samples
 
-            if sum_der > sum_der_saved:
-                sum_der_saved = sum_der
+        for i in range(R):
+            corr_func = np.exp(1j * np.roll(s, i))
+            corr_abs = np.abs(np.sum((corr_func - np.mean(corr_func)) * (y[:N*R] - np.mean(y[:N*R]))))
+
+            if corr_abs > corr_saved:
+                corr_saved = corr_abs
                 save_i = i
+
+        # # Computation of derivatives of phase function
+        # phase_function = np.unwrap(np.angle(y))
+        # phase_derivative_1 = phase_function[1:] - phase_function[:-1]
+        # phase_derivative_2 = np.abs(phase_derivative_1[1:] - phase_derivative_1[:-1])
+
+        # sum_der_saved = -np.inf
+        # save_i = 0
+        # for i in range(0, R):
+        #     sum_der = np.sum(phase_derivative_2[i::R])  # Sum every R samples
+
+        #     if sum_der > sum_der_saved:
+        #         sum_der_saved = sum_der
+        #         save_i = i
 
         return np.mod(save_i + 1, R)
 

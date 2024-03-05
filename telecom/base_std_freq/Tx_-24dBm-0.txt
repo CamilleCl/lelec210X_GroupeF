@@ -1,0 +1,84 @@
+---------------------------------------------------------------
+LimeSuite Source (RX) info
+
+##################
+Connecting to device
+##################
+LimeSuite version: 22.09.1-myriadrf1~ubuntu20.04
+gr-limesdr version: v1.0-compat-xxx-xunknown
+##################
+Device list:
+Nr.:0 device:LimeSDR Mini, media=USB 3.0, module=FT601, addr=24607:1027, serial=1D74EF675B5C46
+##################
+INFO: device_handler::open_device(): no serial number. Using first device in the list.
+Use "LimeUtil --find" in terminal to find prefered device serial.
+Using device: LimeSDR-Mini(1D74EF675B5C46) GW: 1.29 FW: 6
+##################
+
+INFO: device_handler::enable_channels(): SISO CH0 set for device number 0.
+INFO: device_handler::set_samp_rate(): set sampling rate: 0.4 MS/s.
+INFO: device_handler::set_rf_freq(): RF frequency set [RX]: 870 MHz.
+INFO: device_handler::set_analog_filter(): INFO: device_handler::set_digital_filter(): digital filter CH0 [RX]: 0.4 MHz.
+INFO: device_handler::set_gain(): 
+Clearing running sum before changing gain 
+Actual : Short = 0 /  Long = 0
+Clear : Short = 0 /  Long = 0
+Set gain [RX] CH0: 10 dB.
+Running : Short = 0 /  Long = 0
+INFO: device_handler::set_antenna(): CH0 antenna set [RX]: LNAW.
+INFO: device_handler::calibrate(): INFO: device_handler::set_dspcfg_preamble(): INFO: source_impl::init_stream(): source channel 0 (device nr. 0) stream setup done.
+[SYNC] New preamble detected @ 6 (CFO -78.78 Hz, STO 6)
+2.938968e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 8.03 dB (2048 samples)
+[MAC] Error in CRC, packet dropped [111 255 255 223 246 230  59 255 175 243 187 251 253 255 183 239 250 111
+ 119 254 254  87 255 255 238 253 255 239 255 247 253 255 255 251 235 223
+ 255 250 255 220 212 245 118 229 133 159 143 215 159 187 243 203 246  47
+ 248 243 235  47  39 222 239 127 215 177 121 119 238 250 129 244 217 202
+ 242 199 100 223 236 149 208 191  53 247 224 248  59 234  87  88 219  35
+ 122 198 122 151  84 228 250 244 230 161] [63]
+--- 1 packets received with 1 error(s) ---
+[SYNC] New preamble detected @ 7051 (CFO 0.00 Hz, STO 3)
+2.8842492e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 7.93 dB (4096 samples)
+[SYNC] New preamble detected @ 14100 (CFO -180.73 Hz, STO 4)
+[MAC] Error in CRC, packet dropped [154 216   8  95 107  16  38 148 154 187 150 231 123 215 237 159 219 253
+ 255 231 221 189 189 235 229 159  35  71 103 127 191 151  77 235 252 191
+ 247  55 235  89  63 111 201 127 105  75 200 227 254 216  14  91 118  95
+ 248 119 255 255 114 189 232 219 127 154 174  95 225 247  95  89 239 251
+  61 233 153 127 255  47 149  14 255 204 119 254 237 248 255 253 173 253
+ 255   7 110 255 238 121  27 112  78 246] [184]
+--- 2 packets received with 2 error(s) ---
+2.959924e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 8.06 dB (4096 samples)
+[SYNC] New preamble detected @ 21144 (CFO -41.23 Hz, STO 0)
+2.9651628e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 8.07 dB (4096 samples)
+[MAC] Error in CRC, packet dropped [ 31 117 255  61 235 173  47 171 250 248 191 251 171  57 201 253 127 255
+ 243 248 255 127 178 239 254 207 186 255 225 255 255 127 255 255 255 255
+ 222 255 221 247 255 190 255 123 239 255 247 218 255  95 159 183 123 127
+ 253 255  78  15 157 252 255 187 183 255 215 255 250 255 181 254 159 251
+ 191 255 255 247 254 247 247 255 255 239 247 230 191  76 255 254 255 255
+ 171 179 250 251 175  84 119 189 246  87] [159]
+--- 3 packets received with 3 error(s) ---
+[SYNC] New preamble detected @ 28198 (CFO -119.93 Hz, STO 6)
+2.9616704e-06 4e-07 4e-07
+[SYNC] Estimated SNR: 8.06 dB (4096 samples)
+[MAC] Error in CRC, packet dropped [181 126  70 239 254 180 185 122 221 191 191 226 126 253 252 249 254 207
+ 238 234 191 191 115 223 111 251 255 254 185 221 218 175 126  13  79 139
+ 166 217 173 235 215  46  83 245 109 254 126 249  26 144 253  42 190 243
+ 253 102 255 255 169 223  59  71 221 246 154 247 199 239 255 251 223 255
+ 255 253  63 253 238 239 250 255 255 249  42 255 191 172 247 250 255 254
+ 191 242 126 255  77 148 151  48  83 205] [69]
+--- 4 packets received with 4 error(s) ---
+[MAC] Error in CRC, packet dropped [253 229 204 184  71 255 202 115 115 206 249 102 246 183  62  15 205 246
+ 251  72 110 251 111 190 205  31  72 162  47 225 253 251 253 249 231 191
+ 180  95 127 119 251 250 223 239 215 217 255 255 118  95 255 255 255 253
+ 119 179 127 239  95 211  93 189 254 237 251 159 254 255 207 242 107 127
+ 255 254 251  20 162  34 217  59 126 247 235 157 171 154 187 111 210 219
+ 251 142 124 183 120 207  97  69 251  95] [1]
+--- 5 packets received with 5 error(s) ---
+
+##################
+INFO: device_handler::close_device(): Disconnected from device number 0.
+##################
+

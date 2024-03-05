@@ -117,7 +117,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '3.5e-7'
+    value: 400e-09
   states:
     bus_sink: false
     bus_source: false
@@ -198,7 +198,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '40'
+    value: '20'
   states:
     bus_sink: false
     bus_source: false
