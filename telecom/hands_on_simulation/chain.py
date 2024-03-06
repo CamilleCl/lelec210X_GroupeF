@@ -12,7 +12,7 @@ class Chain:
 
     ## Communication parameters
     bit_rate = BIT_RATE
-    freq_dev = BIT_RATE / 4
+    freq_dev = BIT_RATE / 2
 
     osr_tx = 64
     osr_rx = 8
@@ -148,16 +148,51 @@ class BasicChain(Chain):
         """
         # TO DO: extract 2 blocks of size N*R at the start of y
 
-        N = 2
+        N = 1
         R = self.osr_rx
         B = self.bit_rate
 
+        repeat = 16
+
+        idx = 0
+
+        cfo_est_arr = np.zeros(repeat)
+
+        for i in range(repeat):
+            block1 = y[int(idx):int(idx+N*R)] 
+            block2 = y[int(idx+2*N*R):int(idx+3*N*R)]
+
+            cfo_est_arr[i] = np.angle(np.sum(block2 * np.conjugate(block1))) / (4*np.pi*N*1/B) # Default value, to change
+            idx = int(idx+N*R)
+
+        cfo_est = np.mean(cfo_est_arr)
+
+        return cfo_est
+
+
         block1 = y[:N*R] 
-        block2 = y[N*R:2*N*R]
+        block2 = y[2*N*R:3*N*R]
 
         # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
 
-        cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+        cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (4*np.pi*N*1/B) # Default value, to change
+
+        return cfo_est
+
+        repeat = 1
+
+        idx = 0
+
+        cfo_est_arr = np.zeros(repeat)
+
+        for i in range(repeat):
+            block1 = y[int(idx):int(idx+N*R)] 
+            block2 = y[int(idx+N*R):int(idx+2*N*R)]
+
+            cfo_est_arr[i] = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+            idx = int(idx+2*N*R)
+
+        cfo_est = np.mean(cfo_est_arr)
 
         return cfo_est
 

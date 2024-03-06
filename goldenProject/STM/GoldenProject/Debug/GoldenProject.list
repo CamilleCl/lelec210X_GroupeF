@@ -41,7 +41,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  18 .debug_line   0001c2d9  00000000  00000000  0006f5a5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    0011f874  00000000  00000000  0008b87e  2**0
+ 19 .debug_str    0011f875  00000000  00000000  0008b87e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  20 .debug_frame  00007098  00000000  00000000  001ab0f4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -1643,7 +1643,7 @@ void eval_radio(void)
  800115a:	f001 fb73 	bl	8002844 <S2LP_SetPALeveldBm>
 		}
 		DEBUG_PRINT("=== Configured PA level to %ld dBm, sending %d packets at this level\r\n", lvl, N_PACKETS);
- 800115e:	f44f 727a 	mov.w	r2, #1000	; 0x3e8
+ 800115e:	f242 7210 	movw	r2, #10000	; 0x2710
  8001162:	6f39      	ldr	r1, [r7, #112]	; 0x70
  8001164:	4823      	ldr	r0, [pc, #140]	; (80011f4 <eval_radio+0xf0>)
  8001166:	f007 fca3 	bl	8008ab0 <iprintf>
@@ -1676,16 +1676,16 @@ void eval_radio(void)
  8001198:	2180      	movs	r1, #128	; 0x80
  800119a:	4817      	ldr	r0, [pc, #92]	; (80011f8 <eval_radio+0xf4>)
  800119c:	f003 fc82 	bl	8004aa4 <HAL_GPIO_WritePin>
-				HAL_Delay(10);
- 80011a0:	200a      	movs	r0, #10
+				HAL_Delay(15);
+ 80011a0:	200f      	movs	r0, #15
  80011a2:	f001 ff67 	bl	8003074 <HAL_Delay>
 				HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PIN_RESET);
  80011a6:	2200      	movs	r2, #0
  80011a8:	2180      	movs	r1, #128	; 0x80
  80011aa:	4813      	ldr	r0, [pc, #76]	; (80011f8 <eval_radio+0xf4>)
  80011ac:	f003 fc7a 	bl	8004aa4 <HAL_GPIO_WritePin>
-				HAL_Delay(10);
- 80011b0:	200a      	movs	r0, #10
+				HAL_Delay(15);
+ 80011b0:	200f      	movs	r0, #15
  80011b2:	f001 ff5f 	bl	8003074 <HAL_Delay>
 			for(uint16_t j=0; j < PACKET_DELAY; j++) {
  80011b6:	f8b7 306c 	ldrh.w	r3, [r7, #108]	; 0x6c
@@ -1699,21 +1699,21 @@ void eval_radio(void)
  80011cc:	3301      	adds	r3, #1
  80011ce:	f8a7 306e 	strh.w	r3, [r7, #110]	; 0x6e
  80011d2:	f8b7 306e 	ldrh.w	r3, [r7, #110]	; 0x6e
- 80011d6:	f5b3 7f7a 	cmp.w	r3, #1000	; 0x3e8
- 80011da:	d3ca      	bcc.n	8001172 <eval_radio+0x6e>
+ 80011d6:	f242 720f 	movw	r2, #9999	; 0x270f
+ 80011da:	4293      	cmp	r3, r2
+ 80011dc:	d9c9      	bls.n	8001172 <eval_radio+0x6e>
 			}
 		}
 
 		printf("Packets sent\n");
- 80011dc:	4807      	ldr	r0, [pc, #28]	; (80011fc <eval_radio+0xf8>)
- 80011de:	f007 fccd 	bl	8008b7c <puts>
+ 80011de:	4807      	ldr	r0, [pc, #28]	; (80011fc <eval_radio+0xf8>)
+ 80011e0:	f007 fccc 	bl	8008b7c <puts>
 	for (int32_t lvl = MIN_PA_LEVEL; (lvl <= MAX_PA_LEVEL | !USE_BUTTON); lvl++) {
- 80011e2:	6f3b      	ldr	r3, [r7, #112]	; 0x70
- 80011e4:	3301      	adds	r3, #1
- 80011e6:	673b      	str	r3, [r7, #112]	; 0x70
+ 80011e4:	6f3b      	ldr	r3, [r7, #112]	; 0x70
+ 80011e6:	3301      	adds	r3, #1
+ 80011e8:	673b      	str	r3, [r7, #112]	; 0x70
 		if(USE_BUTTON) {
- 80011e8:	e7ab      	b.n	8001142 <eval_radio+0x3e>
- 80011ea:	bf00      	nop
+ 80011ea:	e7aa      	b.n	8001142 <eval_radio+0x3e>
  80011ec:	0800ac50 	.word	0x0800ac50
  80011f0:	20000364 	.word	0x20000364
  80011f4:	0800ac70 	.word	0x0800ac70
@@ -4941,7 +4941,7 @@ HAL_StatusTypeDef S2LP_Init(SPI_HandleTypeDef *spi_handle)
 
 	// Modulation and packet configuration
 	S2LP_SetModulation(MOD_2FSK, DATARATE, FREQDEV);
- 8002950:	f243 02d4 	movw	r2, #12500	; 0x30d4
+ 8002950:	f246 12a8 	movw	r2, #25000	; 0x61a8
  8002954:	f24c 3150 	movw	r1, #50000	; 0xc350
  8002958:	2000      	movs	r0, #0
  800295a:	f7ff ff33 	bl	80027c4 <S2LP_SetModulation>

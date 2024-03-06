@@ -67,7 +67,7 @@ CFO_list = CFO_list[np.where(CFO_list >= 6000)]
 
 print(f"{SNR_mean}, {packet_error_list[-1]}, {packet_received_list[-1]}")
 
-plt.figure()
-plt.hist(CFO_list, 50)
-plt.xlabel("CFO estimation [Hz]")
-plt.show()
+# plt.figure()
+# plt.hist(CFO_list, 50)
+# plt.xlabel("CFO estimation [Hz]")
+# plt.show()

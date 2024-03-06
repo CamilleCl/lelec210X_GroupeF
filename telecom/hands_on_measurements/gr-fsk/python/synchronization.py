@@ -20,45 +20,109 @@
 
 import numpy as np
 from gnuradio import gr
+from numba import njit
 
-
+@njit
 def cfo_estimation(y, B, R, Fdev):
     """
     Estimate CFO using Moose algorithm, on first samples of preamble
     """
-    
-    N = 2
 
-    block1 = y[:N*R] 
-    block2 = y[N*R:2*N*R]
+    # block1 = y[:N*R] 
+    # block2 = y[N*R:2*N*R]
 
-    # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
+    # # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
 
-    cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+    # cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+
+    # return cfo_est
+
+    # N = 2
+
+    # repeat = 4
+
+    # idx = 0
+
+    # cfo_est_arr = np.zeros(repeat)
+
+    # for i in range(repeat):
+    #     block1 = y[idx:idx+N*R] 
+    #     block2 = y[idx+N*R:idx+2*N*R]
+
+    #     cfo_est_arr[i] = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+    #     idx = idx+2*N*R
+
+    # cfo_est = np.mean(cfo_est_arr)
+
+    # # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
+
+    # #cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+
+    # return cfo_est
+
+    # repeat = 2
+
+    # idx = 0
+
+    # cfo_est_arr = np.zeros(repeat)
+
+    # for i in range(repeat):
+    #     block1 = y[idx:idx+N*R] 
+    #     block2 = y[idx+N*R:idx+2*N*R]
+
+    #     cfo_est_arr[i] = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+    #     idx = idx+2*N*R
+
+    # cfo_est = np.mean(cfo_est_arr)
+
+    # return cfo_est
+
+    N = 1
+    repeat = 16
+
+    idx = 0
+
+    cfo_est_arr = np.zeros(repeat)
+
+    for i in range(repeat):
+        block1 = y[int(idx):int(idx+N*R)] 
+        block2 = y[int(idx+2*N*R):int(idx+3*N*R)]
+
+        cfo_est_arr[i] = np.angle(np.sum(block2 * np.conjugate(block1))) / (4*np.pi*N*1/B) # Default value, to change
+        idx = int(idx+N*R)
+
+    cfo_est = np.mean(cfo_est_arr)
 
     return cfo_est
 
-
+@njit
 def sto_estimation(y, B, R, Fdev):
     """
     Estimate symbol timing (fractional) based on phase shifts
     """
-    phase_function = np.unwrap(np.angle(y))
-    phase_derivative_sign = phase_function[1:] - phase_function[:-1]
-    sign_derivative = np.abs(phase_derivative_sign[1:] - phase_derivative_sign[:-1])
+    N = 8
 
-    sum_der_saved = -np.inf
+    ph = 2 * np.pi * Fdev * (np.arange(R) / R) / B  # Phase of reference waveform
+
+    s = np.zeros(R * N)
+    for i in range(N):
+        if(i%2 == 0):
+            s[R*i:R*(i+1)] = ph
+        else:
+            s[R*i:R*(i+1)] = -ph + 2 * np.pi * Fdev / B
+
+    corr_saved = -np.inf
     save_i = 0
 
-    for i in range(0, R):
-        sum_der = np.sum(sign_derivative[i::R])
+    for i in range(R):
+        corr_func = np.exp(1j * np.roll(s, i))
+        corr_abs = np.abs(np.sum((corr_func - np.mean(corr_func)) * (y[:N*R] - np.mean(y[:N*R]))))
 
-        if sum_der > sum_der_saved:
-            sum_der_saved = sum_der
+        if corr_abs > corr_saved:
+            corr_saved = corr_abs
             save_i = i
 
     return np.mod(save_i + 1, R)
-
 
 class synchronization(gr.basic_block):
     """

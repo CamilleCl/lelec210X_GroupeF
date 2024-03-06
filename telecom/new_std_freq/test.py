@@ -8,7 +8,7 @@ ser = serial.Serial("/dev/ttyACM0",115200)
 
 tx_power_list = list(range(-15, 10, 1))
 
-repeat = 5
+repeat = 1
 
 for tx_power in tx_power_list:
     for i in range(repeat):
@@ -29,6 +29,6 @@ for tx_power in tx_power_list:
             continue
 
         # wait for the python program to end :(
-        time.sleep(30)
+        time.sleep(150)
 
     
