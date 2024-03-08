@@ -50,19 +50,18 @@ def parse_buffer(line):
     if line.startswith(PRINT_PREFIX):
         return bytes.fromhex(line[len(PRINT_PREFIX) :])
     else:
-        print(line)
+        #print(line)
         return None
 
 
-def reader(port=None):
-    ser = serial.Serial(port=port, baudrate=115200)
+def reader(ser):
     while True:
         line = ""
         while not line.endswith("\n"):
             line += ser.read_until(b"\n", size=2 * N_MELVECS * MELVEC_LENGTH).decode(
                 "ascii"
             )
-            print(line)
+        print(line)
         line = line.strip()
         buffer = parse_buffer(line)
         if buffer is not None:
@@ -90,9 +89,9 @@ def reader_socket():
 
             yield buffer_array
 
-SoundPerClasse = 20
 
-def playing_sound(SoundPerClasse, classes = None):
+
+def playing_sound(ser, SoundPerClasse, classes = None):
     classe = 'birds'
     for i in range(SoundPerClasse):
             sound = dataset[classe, i]
@@ -106,7 +105,6 @@ def playing_sound(SoundPerClasse, classes = None):
             print("sleeping for:", sleeptime, "seconds")
             time.sleep(sleeptime)
 
-            #ser = serial.Serial(port = port, baudrate = 115200)
             ser.write(bytearray('s','ascii'))
             print("message sent to uart")
             #ser.close()
@@ -114,78 +112,96 @@ def playing_sound(SoundPerClasse, classes = None):
             time.sleep(7-sleeptime)
                   
 if __name__ == "__main__":
-    try:
-        # file = open(result_filename, 'w')
-        # file.close()
 
-        argParser = argparse.ArgumentParser()
-        argParser.add_argument("-p", "--port", help="Port for serial communication")
-        args = argParser.parse_args()
-        print("uart-reader launched...\n")
+    # file = open(result_filename, 'w')
+    # file.close()
 
-        if args.port is None:
-            print(
-                "No port specified, here is a list of serial communication port available"
-            )
-            print("================")
-            port = list(list_ports.comports())
-            for p in port:
-                print(p.device)
-            print("================")
-            print("Launch this script with [-p PORT_REF] to access the communication port")
+    argParser = argparse.ArgumentParser()
+    argParser.add_argument("-p", "--port", help="Port for serial communication")
+    args = argParser.parse_args()
+    print("uart-reader launched...\n")
 
-        else:
+    if args.port is None:
+        print(
+            "No port specified, here is a list of serial communication port available"
+        )
+        print("================")
+        port = list(list_ports.comports())
+        for p in port:
+            print(p.device)
+        print("================")
+        print("Launch this script with [-p PORT_REF] to access the communication port")
 
-            ser = serial.Serial(port = args.port, baudrate = 115200)
-            dataset = Dataset()
-            classes = dataset.list_classes()
+    else:
+
+        ser = serial.Serial(port = args.port, baudrate = 115200)
+        dataset = Dataset()
+        classes = dataset.list_classes()
+        msg_counter = 0
+        input_stream = reader(ser)
+
+        classe = 'birds'
+        SoundPerClasse = 20
+        for i in range(SoundPerClasse):
+
+            ###### envoi du son ######
+            sound = dataset[classe, i]
+            x, fs = sf.read(sound)
+            # target_dB = 25
+            # x /= np.linalg.norm(x) * 10 ** (-target_dB / 20)
+            print(f'Playing a "{get_cls_from_path(sound)}"')
+            sd.play(x, fs)
+
+            sleeptime = random.uniform(0, 4)
+            print("sleeping for:", sleeptime, "seconds")
+            time.sleep(sleeptime)
+
+            ser.write(bytearray('s','ascii'))
+            print("message sent to uart")
+
+            ###### recevoir du son ######
+            buffer = None
+            while buffer == None:
+                line = ""
+                while not line.endswith("\n"):
+                    line += ser.read_until(b"\n", size=2 * N_MELVECS * MELVEC_LENGTH).decode(
+                        "ascii"
+                    )
+                print(line)
+                line = line.strip()
+                buffer = parse_buffer(line)
+                if buffer is not None:
+                    melvec = np.frombuffer(buffer, dtype=dt)
+
+                    
+            #melvec = next(input_stream)
+            msg_counter += 1
+
+            print("MEL Spectrogram #{}".format(msg_counter))
+            print(melvec.shape)
+
+            melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
             
-            classe = 'birds'
-            for i in range(SoundPerClasse):
-                sound = dataset[classe, i]
-                x, fs = sf.read(sound)
-                # target_dB = 25
-                # x /= np.linalg.norm(x) * 10 ** (-target_dB / 20)
-                print(f'Playing a "{get_cls_from_path(sound)}"')
-                sd.play(x, fs)
 
-                sleeptime = random.uniform(0, 4)
-                print("sleeping for:", sleeptime, "seconds")
-                time.sleep(sleeptime)
+            #enregistrement des melvecs de la vraie chaine de communication
+            filename = "{}_{}".format(classe, msg_counter)
+            pickle.dump(melvec, open(melvec_dir+filename, 'wb'))
 
-                #ser = serial.Serial(port = port, baudrate = 115200)
-                ser.write(bytearray('s','ascii'))
-                print("message sent to uart")
-                #ser.close()
+            ##### plot #####
+            # plt.figure()
+            # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, "glucie"), xlabel="Mel vector")
+            # plt.draw()
+            # plt.pause(0.001)
+            # plt.show()
 
-                msg_counter = 0
-                input_stream = reader(port=args.port)
-                for melvec in input_stream:
-                    msg_counter += 1
-
-                    print("MEL Spectrogram #{}".format(msg_counter))
-
-                    melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
-                    melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
-
-                    #enregistrement des melvecs de la vraie chaine de communication
-                    filename = "melvec_{}".format(msg_counter)
-                    pickle.dump(melvec_normalized, open(melvec_dir+filename, 'wb'))
+            time.sleep(7-sleeptime)
 
 
-                time.sleep(7-sleeptime)
+        ser.close()
 
-
-            ser.close()
-
-                
-                # plt.figure()
-                # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
-                # plt.draw()
-                # plt.pause(0.001)
-                # plt.show()
-
-    except KeyboardInterrupt:
-        print("\n\nProgram interrupted. Shutting down server")
-        server_socket.close()
-        exit(0)
+            
+            # plt.figure()
+            # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
+            # plt.draw()
+            # plt.pause(0.001)
+            # plt.show()

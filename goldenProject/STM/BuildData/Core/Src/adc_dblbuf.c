@@ -50,6 +50,11 @@ static void print_spectrogram(void) {
 		DEBUG_PRINT("\r\n");
 	}
 	stop_cycle_count("Print FV");
+	//added
+	char hex_encoded_packet[4*N_MELVECS*MELVEC_LENGTH+1];
+	hex_encode(hex_encoded_packet, mel_vectors ,2*N_MELVECS*MELVEC_LENGTH);
+	DEBUG_PRINT("DF:HEX:%s\r\n", hex_encoded_packet);
+	//fini
 #endif
 }
 
@@ -90,7 +95,7 @@ static void send_spectrogram() {
 	S2LP_Send(packet, PACKET_LENGTH);
 	stop_cycle_count("Send packet");
 
-	print_encoded_packet(packet);
+	//print_encoded_packet(packet);
 }
 
 static void ADC_Callback(int buf_cplt) {
