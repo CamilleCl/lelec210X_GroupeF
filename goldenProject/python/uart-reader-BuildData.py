@@ -139,62 +139,62 @@ if __name__ == "__main__":
         classes = dataset.list_classes()
         msg_counter = 0
         input_stream = reader(ser)
+        for classe in classes:
+            #classe = 'helicopter'
+            SoundPerClasse = 5
+            for i in range(SoundPerClasse):
 
-        classe = 'birds'
-        SoundPerClasse = 20
-        for i in range(SoundPerClasse):
+                ###### envoi du son ######
+                sound = dataset[classe, i]
+                x, fs = sf.read(sound)
+                # target_dB = 25
+                # x /= np.linalg.norm(x) * 10 ** (-target_dB / 20)
+                print(f'Playing a "{get_cls_from_path(sound)}"')
+                sd.play(x, fs)
 
-            ###### envoi du son ######
-            sound = dataset[classe, i]
-            x, fs = sf.read(sound)
-            # target_dB = 25
-            # x /= np.linalg.norm(x) * 10 ** (-target_dB / 20)
-            print(f'Playing a "{get_cls_from_path(sound)}"')
-            sd.play(x, fs)
+                sleeptime = random.uniform(0, 4)
+                print("sleeping for:", sleeptime, "seconds")
+                time.sleep(sleeptime)
 
-            sleeptime = random.uniform(0, 4)
-            print("sleeping for:", sleeptime, "seconds")
-            time.sleep(sleeptime)
+                ser.write(bytearray('s','ascii'))
+                print("message sent to uart")
 
-            ser.write(bytearray('s','ascii'))
-            print("message sent to uart")
+                ###### recevoir du son ######
+                buffer = None
+                while buffer == None:
+                    line = ""
+                    while not line.endswith("\n"):
+                        line += ser.read_until(b"\n", size=2 * N_MELVECS * MELVEC_LENGTH).decode(
+                            "ascii"
+                        )
+                    print(line)
+                    line = line.strip()
+                    buffer = parse_buffer(line)
+                    if buffer is not None:
+                        melvec = np.frombuffer(buffer, dtype=dt)
 
-            ###### recevoir du son ######
-            buffer = None
-            while buffer == None:
-                line = ""
-                while not line.endswith("\n"):
-                    line += ser.read_until(b"\n", size=2 * N_MELVECS * MELVEC_LENGTH).decode(
-                        "ascii"
-                    )
-                print(line)
-                line = line.strip()
-                buffer = parse_buffer(line)
-                if buffer is not None:
-                    melvec = np.frombuffer(buffer, dtype=dt)
+                        
+                #melvec = next(input_stream)
+                msg_counter += 1
 
-                    
-            #melvec = next(input_stream)
-            msg_counter += 1
+                print("MEL Spectrogram #{}".format(msg_counter))
+                print(melvec.shape)
 
-            print("MEL Spectrogram #{}".format(msg_counter))
-            print(melvec.shape)
+                melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
+                
 
-            melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
-            
+                #enregistrement des melvecs de la vraie chaine de communication
+                filename = "{}_{}".format(classe, msg_counter)
+                pickle.dump(melvec, open(melvec_dir+filename, 'wb'))
 
-            #enregistrement des melvecs de la vraie chaine de communication
-            filename = "{}_{}".format(classe, msg_counter)
-            pickle.dump(melvec, open(melvec_dir+filename, 'wb'))
+                ##### plot #####
+                # plt.figure()
+                # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, "glucie"), xlabel="Mel vector")
+                # plt.draw()
+                # plt.pause(0.001)
+                # plt.show()
 
-            ##### plot #####
-            # plt.figure()
-            # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, "glucie"), xlabel="Mel vector")
-            # plt.draw()
-            # plt.pause(0.001)
-            # plt.show()
-
-            time.sleep(7-sleeptime)
+                time.sleep(7-sleeptime)
 
 
         ser.close()
