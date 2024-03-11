@@ -30,7 +30,7 @@ class Chain:
     sto_range = 10 / BIT_RATE  # defines the delay range when random
 
     cfo_val = 0
-    cfo_range = 10000  # defines the CFO range when random (in Hz) #(1000 in old repo)
+    cfo_range = 1500  # defines the CFO range when random (in Hz) #(1000 in old repo)
 
     snr_range = np.arange(-10, 30)
 
@@ -147,6 +147,20 @@ class BasicChain(Chain):
         Estimates CFO using Moose algorithm, on first samples of preamble.
         """
         # TO DO: extract 2 blocks of size N*R at the start of y
+
+        N = 8
+        R = self.osr_rx
+        B = self.bit_rate
+
+
+        block1 = y[:N*R] 
+        block2 = y[N*R:2*N*R]
+
+        # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
+
+        cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+
+        return cfo_est
 
         N = 1
         R = self.osr_rx

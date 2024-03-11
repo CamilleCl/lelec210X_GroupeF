@@ -28,14 +28,16 @@ def cfo_estimation(y, B, R, Fdev):
     Estimate CFO using Moose algorithm, on first samples of preamble
     """
 
-    # block1 = y[:N*R] 
-    # block2 = y[N*R:2*N*R]
+    N = 8
 
-    # # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
+    block1 = y[:N*R] 
+    block2 = y[N*R:2*N*R]
 
-    # cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+    # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
 
-    # return cfo_est
+    cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+
+    return cfo_est
 
     # N = 2
 

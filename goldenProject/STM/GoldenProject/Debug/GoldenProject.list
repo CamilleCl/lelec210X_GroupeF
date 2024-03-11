@@ -41,11 +41,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  18 .debug_line   0001c2d9  00000000  00000000  0006f5a5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    0011f875  00000000  00000000  0008b87e  2**0
+ 19 .debug_str    0011f88d  00000000  00000000  0008b87e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  00007098  00000000  00000000  001ab0f4  2**2
+ 20 .debug_frame  00007098  00000000  00000000  001ab10c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000081  00000000  00000000  001b218c  2**0
+ 21 .debug_line_str 00000081  00000000  00000000  001b21a4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1643,7 +1643,7 @@ void eval_radio(void)
  800115a:	f001 fb73 	bl	8002844 <S2LP_SetPALeveldBm>
 		}
 		DEBUG_PRINT("=== Configured PA level to %ld dBm, sending %d packets at this level\r\n", lvl, N_PACKETS);
- 800115e:	f242 7210 	movw	r2, #10000	; 0x2710
+ 800115e:	f44f 727a 	mov.w	r2, #1000	; 0x3e8
  8001162:	6f39      	ldr	r1, [r7, #112]	; 0x70
  8001164:	4823      	ldr	r0, [pc, #140]	; (80011f4 <eval_radio+0xf0>)
  8001166:	f007 fca3 	bl	8008ab0 <iprintf>
@@ -1699,21 +1699,21 @@ void eval_radio(void)
  80011cc:	3301      	adds	r3, #1
  80011ce:	f8a7 306e 	strh.w	r3, [r7, #110]	; 0x6e
  80011d2:	f8b7 306e 	ldrh.w	r3, [r7, #110]	; 0x6e
- 80011d6:	f242 720f 	movw	r2, #9999	; 0x270f
- 80011da:	4293      	cmp	r3, r2
- 80011dc:	d9c9      	bls.n	8001172 <eval_radio+0x6e>
+ 80011d6:	f5b3 7f7a 	cmp.w	r3, #1000	; 0x3e8
+ 80011da:	d3ca      	bcc.n	8001172 <eval_radio+0x6e>
 			}
 		}
 
 		printf("Packets sent\n");
- 80011de:	4807      	ldr	r0, [pc, #28]	; (80011fc <eval_radio+0xf8>)
- 80011e0:	f007 fccc 	bl	8008b7c <puts>
+ 80011dc:	4807      	ldr	r0, [pc, #28]	; (80011fc <eval_radio+0xf8>)
+ 80011de:	f007 fccd 	bl	8008b7c <puts>
 	for (int32_t lvl = MIN_PA_LEVEL; (lvl <= MAX_PA_LEVEL | !USE_BUTTON); lvl++) {
- 80011e4:	6f3b      	ldr	r3, [r7, #112]	; 0x70
- 80011e6:	3301      	adds	r3, #1
- 80011e8:	673b      	str	r3, [r7, #112]	; 0x70
+ 80011e2:	6f3b      	ldr	r3, [r7, #112]	; 0x70
+ 80011e4:	3301      	adds	r3, #1
+ 80011e6:	673b      	str	r3, [r7, #112]	; 0x70
 		if(USE_BUTTON) {
- 80011ea:	e7aa      	b.n	8001142 <eval_radio+0x3e>
+ 80011e8:	e7ab      	b.n	8001142 <eval_radio+0x3e>
+ 80011ea:	bf00      	nop
  80011ec:	0800ac50 	.word	0x0800ac50
  80011f0:	20000364 	.word	0x20000364
  80011f4:	0800ac70 	.word	0x0800ac70
@@ -5011,7 +5011,7 @@ HAL_StatusTypeDef S2LP_Init(SPI_HandleTypeDef *spi_handle)
  80029c4:	200002a8 	.word	0x200002a8
  80029c8:	1b4e81b5 	.word	0x1b4e81b5
  80029cc:	48001400 	.word	0x48001400
- 80029d0:	33db2580 	.word	0x33db2580
+ 80029d0:	33db0640 	.word	0x33db0640
  80029d4:	0800afa0 	.word	0x0800afa0
  80029d8:	0800affc 	.word	0x0800affc
 
@@ -5779,9 +5779,9 @@ void MX_TIM3_Init(void)
  8002d52:	4b1d      	ldr	r3, [pc, #116]	; (8002dc8 <MX_TIM3_Init+0x94>)
  8002d54:	4a1d      	ldr	r2, [pc, #116]	; (8002dcc <MX_TIM3_Init+0x98>)
  8002d56:	601a      	str	r2, [r3, #0]
-  htim3.Init.Prescaler = 5;
+  htim3.Init.Prescaler = 23;
  8002d58:	4b1b      	ldr	r3, [pc, #108]	; (8002dc8 <MX_TIM3_Init+0x94>)
- 8002d5a:	2205      	movs	r2, #5
+ 8002d5a:	2217      	movs	r2, #23
  8002d5c:	605a      	str	r2, [r3, #4]
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
  8002d5e:	4b1a      	ldr	r3, [pc, #104]	; (8002dc8 <MX_TIM3_Init+0x94>)

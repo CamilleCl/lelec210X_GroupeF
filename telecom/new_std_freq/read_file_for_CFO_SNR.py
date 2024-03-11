@@ -13,7 +13,7 @@ packet_received_list = []
 packet_error_list = []
 CFO_list = []
 
-static_CFO_corr = 6000
+static_CFO_corr = 0
 
 with open(filename, encoding="ISO-8859-1") as openfileobject:
     for line in openfileobject:
@@ -63,11 +63,11 @@ SNR_std = np.std(SNR_list)
 # print("Packets received", packet_received_list[-1])
 # print("Packet errors", packet_error_list[-1])
 
-CFO_list = CFO_list[np.where(CFO_list >= 6000)]
+#CFO_list = CFO_list[np.where(CFO_list >= 6000)]
 
 print(f"{SNR_mean}, {packet_error_list[-1]}, {packet_received_list[-1]}")
 
-# plt.figure()
-# plt.hist(CFO_list, 50)
-# plt.xlabel("CFO estimation [Hz]")
-# plt.show()
+plt.figure()
+plt.hist(CFO_list, 50)
+plt.xlabel("CFO estimation [Hz]")
+plt.show()
