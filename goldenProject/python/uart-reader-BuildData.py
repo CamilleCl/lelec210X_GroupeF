@@ -137,7 +137,6 @@ if __name__ == "__main__":
         ser = serial.Serial(port = args.port, baudrate = 115200)
         dataset = Dataset()
         classes = dataset.list_classes()
-        msg_counter = 0
         input_stream = reader(ser)
         for classe in classes:
             #classe = 'helicopter'
@@ -175,16 +174,15 @@ if __name__ == "__main__":
 
                         
                 #melvec = next(input_stream)
-                msg_counter += 1
 
-                print("MEL Spectrogram #{}".format(msg_counter))
+                print("MEL Spectrogram #{}".format(i))
                 print(melvec.shape)
 
                 melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
                 
 
                 #enregistrement des melvecs de la vraie chaine de communication
-                filename = "{}_{}".format(classe, msg_counter)
+                filename = "{}_{}.pickle".format(classe, i)
                 pickle.dump(melvec, open(melvec_dir+filename, 'wb'))
 
                 ##### plot #####
