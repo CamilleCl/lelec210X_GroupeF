@@ -140,7 +140,7 @@ if __name__ == "__main__":
         input_stream = reader(ser)
         for classe in classes:
             #classe = 'helicopter'
-            SoundPerClasse = 5
+            SoundPerClasse = 20
             for i in range(SoundPerClasse):
 
                 ###### envoi du son ######
