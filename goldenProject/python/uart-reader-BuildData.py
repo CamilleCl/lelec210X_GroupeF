@@ -40,14 +40,14 @@ melvec_dir = "dataset/"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
-model_dir = "/model/" # where to save the models
-filename = 'model.pickle'
+model_dir = "model2/" # where to save the models
+filename = 'KNN.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
 
 
 #choisir le mode qu'on veut: enregistrer un dataset et/ou faire une classification
 create_data = False
-classification = True
+classif = True
 plot_fig = False
 
 
@@ -119,8 +119,8 @@ def playing_sound(ser, SoundPerClasse, classes = None):
                   
 if __name__ == "__main__":
 
-    # file = open(result_filename, 'w')
-    # file.close()
+    file = open(result_filename, 'w')
+    file.close()
 
     argParser = argparse.ArgumentParser()
     argParser.add_argument("-p", "--port", help="Port for serial communication")
@@ -186,7 +186,7 @@ if __name__ == "__main__":
 
                 melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
 
-                if classification:
+                if classif:
                     melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
                     y_predict = model.predict(melvec_normalized)
@@ -205,7 +205,7 @@ if __name__ == "__main__":
                 ##### plot #####
                 if plot_fig:
                     plt.figure()
-                    plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, "glucie"), xlabel="Mel vector")
+                    plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(i, "glucie"), xlabel="Mel vector")
                     plt.draw()
                     plt.pause(0.001)
                     plt.show()
