@@ -2,11 +2,11 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>03-oct.-2021 13:09:17</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1633259357926</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>E:\Github\LELEC210x\fpga-offloading\LimeSDR-Mini_lms7_trx\software\lms_ctr_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>Mar 11, 2024 4:44:28 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1710171868810</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>/home/julien/Documents/LELEC2102/lelec210X_GroupeF/fpga/LimeSDR-Mini_lms7_lelec210x/software/lms_ctr_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
-        <SopcDesignFile>..\..\lms_ctr.sopcinfo</SopcDesignFile>
+        <SopcDesignFile>../../lms_ctr.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_cpu</Cpu>
         <SchemaVersion>1.9</SchemaVersion>

@@ -1,0 +1,3 @@
+16:47:03 **** Build of configuration Nios II for project lms_ctr_app ****
+make mem_init_install 
+../lms_ctr_bsp//mem_init.mk:235: *** Deprecated Makefile Target: 'mem_init_install'. Use target 'mem_init_generate' and then add mem_init/meminit.qip to your Quartus II Project.  Stop.
