@@ -40,9 +40,15 @@ melvec_dir = "dataset/"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
-model_dir = "../../classification/data/models/" # where to save the models
+model_dir = "/model/" # where to save the models
 filename = 'model.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
+
+
+#choisir le mode qu'on veut: enregistrer un dataset et/ou faire une classification
+create_data = False
+classification = True
+plot_fig = False
 
 
 def parse_buffer(line):
@@ -179,27 +185,32 @@ if __name__ == "__main__":
                 print(melvec.shape)
 
                 melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
-                
 
-                #enregistrement des melvecs de la vraie chaine de communication
-                filename = "{}_{}.pickle".format(classe, i)
-                pickle.dump(melvec, open(melvec_dir+filename, 'wb'))
+                if classification:
+                    melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
+
+                    y_predict = model.predict(melvec_normalized)
+
+                    print(f'predicted class: {y_predict}')
+
+                    file = open(result_filename, 'a')
+                    file.write(f"{y_predict}\n")
+                    file.close()
+                
+                if create_data:
+                    #enregistrement des melvecs de la vraie chaine de communication
+                    filename = "{}_{}.pickle".format(classe, i)
+                    pickle.dump(melvec, open(melvec_dir+filename, 'wb'))
 
                 ##### plot #####
-                # plt.figure()
-                # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, "glucie"), xlabel="Mel vector")
-                # plt.draw()
-                # plt.pause(0.001)
-                # plt.show()
+                if plot_fig:
+                    plt.figure()
+                    plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, "glucie"), xlabel="Mel vector")
+                    plt.draw()
+                    plt.pause(0.001)
+                    plt.show()
 
                 time.sleep(7-sleeptime)
 
 
         ser.close()
-
-            
-            # plt.figure()
-            # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
-            # plt.draw()
-            # plt.pause(0.001)
-            # plt.show()
