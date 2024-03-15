@@ -20,14 +20,15 @@
 
 import numpy as np
 from gnuradio import gr
+from numba import njit
 
-
+@njit
 def cfo_estimation(y, B, R, Fdev):
     """
     Estimate CFO using Moose algorithm, on first samples of preamble
     """
-    
-    N = 2
+
+    N = 8
 
     block1 = y[:N*R] 
     block2 = y[N*R:2*N*R]
@@ -38,23 +39,31 @@ def cfo_estimation(y, B, R, Fdev):
 
     return cfo_est
 
-
+@njit
 def sto_estimation(y, B, R, Fdev):
     """
     Estimate symbol timing (fractional) based on phase shifts
     """
-    phase_function = np.unwrap(np.angle(y))
-    phase_derivative_sign = phase_function[1:] - phase_function[:-1]
-    sign_derivative = np.abs(phase_derivative_sign[1:] - phase_derivative_sign[:-1])
+    N = 8
 
-    sum_der_saved = -np.inf
+    ph = 2 * np.pi * Fdev * (np.arange(R) / R) / B  # Phase of reference waveform
+
+    s = np.zeros(R * N)
+    for i in range(N):
+        if(i%2 == 0):
+            s[R*i:R*(i+1)] = ph
+        else:
+            s[R*i:R*(i+1)] = -ph + 2 * np.pi * Fdev / B
+
+    corr_saved = -np.inf
     save_i = 0
 
-    for i in range(0, R):
-        sum_der = np.sum(sign_derivative[i::R])
+    for i in range(R):
+        corr_func = np.exp(1j * np.roll(s, i))
+        corr_abs = np.abs(np.sum((corr_func - np.mean(corr_func)) * (y[:N*R] - np.mean(y[:N*R]))))
 
-        if sum_der > sum_der_saved:
-            sum_der_saved = sum_der
+        if corr_abs > corr_saved:
+            corr_saved = corr_abs
             save_i = i
 
     return np.mod(save_i + 1, R)

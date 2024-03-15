@@ -36,8 +36,8 @@ result_filename = "predicted_class.csv"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
-model_dir = "../../classification/data/models/" # where to save the models
-filename = 'model.pickle'
+model_dir = "models/" # where to save the models
+filename = 'KNN.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
 
 
@@ -123,27 +123,19 @@ if __name__ == "__main__":
                 melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
                 melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
-                # Pas bon, c'était juste pour tester
-                # y_predict = model.predict(np.hstack((melvec_normalized, np.zeros((1,80)))))
                 y_predict = model.predict(melvec_normalized)
 
                 print(f'predicted class: {y_predict[0]}')
 
-                response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict[0]}")
-
-                # All responses are JSON dictionaries
-                response_as_dict = json.loads(response.text)
-                print(f'server response : {response_as_dict}')
-
-                # file = open(result_filename, 'a')
-                # file.write(f"{y_predict}\n")
-                # file.close()
-                
-                # plt.figure()
-                # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
-                # plt.draw()
-                # plt.pause(0.001)
-                # plt.show()
+                try:
+                    response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict[0]}")
+                    
+                    # All responses are JSON dictionaries
+                    response_as_dict = json.loads(response.text)
+                    print(f'server response : {response_as_dict}')
+                    
+                except Exception as error:
+                    print(error)
 
     except KeyboardInterrupt:
         print("\n\nProgram interrupted. Shutting down server")
