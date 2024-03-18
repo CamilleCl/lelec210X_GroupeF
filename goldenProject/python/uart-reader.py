@@ -15,7 +15,7 @@ import socket
 import requests
 import json
 
-hostname = "http://130.104.96.147:5000"
+hostname = "http://lelec210x.sipr.ucl.ac.be"
 key = "jc5jE0qHTmt1l-0EYOYJ3HzxEB8vIb6qtNm6dI3w"
 
 
@@ -24,7 +24,7 @@ from classification.utils.plots import plot_specgram
 
 # creating the socket
 host = socket.gethostname()
-port = 5003
+port = 5004
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -128,7 +128,7 @@ if __name__ == "__main__":
                 print(f'predicted class: {y_predict[0]}')
 
                 try:
-                    response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict[0]}")
+                    response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict[0]}", timeout=1)
                     
                     # All responses are JSON dictionaries
                     response_as_dict = json.loads(response.text)

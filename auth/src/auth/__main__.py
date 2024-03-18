@@ -154,7 +154,7 @@ def main(
                 yield msg
 
     host = socket.gethostname()
-    port = 5003
+    port = 5004
 
     client_socket = socket.socket()
     client_socket.connect((host, port)) 
