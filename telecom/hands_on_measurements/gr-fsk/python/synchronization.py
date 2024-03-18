@@ -58,7 +58,7 @@ def sto_estimation(y, B, R, Fdev):
     corr_saved = -np.inf
     save_i = 0
 
-    for i in range(R):
+    for i in range(2*R):
         corr_func = np.exp(1j * np.roll(s, i))
         corr_abs = np.abs(np.sum((corr_func - np.mean(corr_func)) * (y[:N*R] - np.mean(y[:N*R]))))
 
