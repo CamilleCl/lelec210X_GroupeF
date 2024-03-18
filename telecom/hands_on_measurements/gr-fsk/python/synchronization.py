@@ -60,13 +60,14 @@ def sto_estimation(y, B, R, Fdev):
 
     for i in range(2*R):
         corr_func = np.exp(1j * np.roll(s, i))
-        corr_abs = np.abs(np.sum((corr_func - np.mean(corr_func)) * (y[:N*R] - np.mean(y[:N*R]))))
+        corr_abs = np.abs(np.correlate(y[:N*R] - np.mean(y[:N*R]), corr_func))
 
         if corr_abs > corr_saved:
             corr_saved = corr_abs
             save_i = i
 
     return np.mod(save_i + 1, R)
+
 
 
 class synchronization(gr.basic_block):
