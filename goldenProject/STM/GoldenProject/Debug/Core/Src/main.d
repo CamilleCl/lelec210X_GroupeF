@@ -34,7 +34,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
  ../Core/Inc/adc.h ../Core/Inc/main.h ../Core/Inc/dma.h ../Core/Inc/spi.h \
  ../Core/Inc/tim.h ../Core/Inc/gpio.h \
- /home/julien/Documents/LELEC2102/lelec210X_GroupeF/goldenProject/STM/GoldenProject/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h \
+ C:/Users/crens/Documents/M1-Q1/LELEC210X/git/lelec210X_GroupeF/goldenProject/STM/GoldenProject/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h \
  ../Drivers/CMSIS/Include/cmsis_compiler.h ../Core/Inc/adc_dblbuf.h \
  ../Core/Inc/config.h ../Core/Inc/retarget.h ../Core/Inc/s2lp.h \
  ../Core/Inc/spectrogram.h ../Core/Inc/eval_radio.h ../Core/Inc/packet.h \
@@ -79,7 +79,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/spi.h:
 ../Core/Inc/tim.h:
 ../Core/Inc/gpio.h:
-/home/julien/Documents/LELEC2102/lelec210X_GroupeF/goldenProject/STM/GoldenProject/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h:
+C:/Users/crens/Documents/M1-Q1/LELEC210X/git/lelec210X_GroupeF/goldenProject/STM/GoldenProject/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h:
 ../Drivers/CMSIS/Include/cmsis_compiler.h:
 ../Core/Inc/adc_dblbuf.h:
 ../Core/Inc/config.h:
