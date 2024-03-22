@@ -22,7 +22,6 @@ import numpy as np
 from gnuradio import gr
 from numba import njit
 
-@njit
 def cfo_estimation(y, B, R, Fdev):
     """
     Estimate CFO using Moose algorithm, on first samples of preamble
@@ -97,7 +96,7 @@ def cfo_estimation(y, B, R, Fdev):
 
     return cfo_est
 
-@njit
+
 def sto_estimation(y, B, R, Fdev):
     """
     Estimate symbol timing (fractional) based on phase shifts
@@ -116,15 +115,16 @@ def sto_estimation(y, B, R, Fdev):
     corr_saved = -np.inf
     save_i = 0
 
-    for i in range(R):
+    for i in range(2*R):
         corr_func = np.exp(1j * np.roll(s, i))
-        corr_abs = np.abs(np.sum((corr_func - np.mean(corr_func)) * (y[:N*R] - np.mean(y[:N*R]))))
+        corr_abs = np.abs(np.correlate(y[:N*R] - np.mean(y[:N*R]), corr_func))
 
         if corr_abs > corr_saved:
             corr_saved = corr_abs
             save_i = i
 
     return np.mod(save_i + 1, R)
+
 
 class synchronization(gr.basic_block):
     """

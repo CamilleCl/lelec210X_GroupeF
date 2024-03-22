@@ -23,7 +23,7 @@ class Chain:
     payload_len = 100  # Number of bits per packet
 
     ## Simulation parameters
-    n_packets = 1000  # Number of sent packets
+    n_packets = 10000  # Number of sent packets
 
     ## Channel parameters
     sto_val = 0  # 0 de base
@@ -216,30 +216,32 @@ class BasicChain(Chain):
         """
         Estimates symbol timing (fractional) based on phase shifts.
         """
-        R = self.osr_rx
         N = 8
+        R = self.osr_rx
+        Fdev = self.freq_dev
+        B = self.bit_rate
 
-        fd = self.freq_dev  # Frequency deviation, Delta_f
-        B = self.bit_rate  # B=1/T
-        ph = 2 * np.pi * fd * (np.arange(R) / R) / B  # Phase of reference waveform
+        ph = 2 * np.pi * Fdev * (np.arange(R) / R) / B  # Phase of reference waveform
 
         s = np.zeros(R * N)
         for i in range(N):
             if(i%2 == 0):
                 s[R*i:R*(i+1)] = ph
             else:
-                s[R*i:R*(i+1)] = -ph + 2 * np.pi * fd / B
+                s[R*i:R*(i+1)] = -ph + 2 * np.pi * Fdev / B
 
         corr_saved = -np.inf
         save_i = 0
 
-        for i in range(R):
+        for i in range(2*R):
             corr_func = np.exp(1j * np.roll(s, i))
-            corr_abs = np.abs(np.sum((corr_func - np.mean(corr_func)) * (y[:N*R] - np.mean(y[:N*R]))))
+            corr_abs = np.abs(np.correlate(y[:N*R] - np.mean(y[:N*R]), corr_func))
 
             if corr_abs > corr_saved:
                 corr_saved = corr_abs
                 save_i = i
+
+        return np.mod(save_i + 1, R)
 
         # # Computation of derivatives of phase function
         # phase_function = np.unwrap(np.angle(y))
@@ -255,7 +257,7 @@ class BasicChain(Chain):
         #         sum_der_saved = sum_der
         #         save_i = i
 
-        return np.mod(save_i + 1, R)
+        # return np.mod(save_i + 1, R)
 
     def demodulate(self, y):
         """
