@@ -24,7 +24,7 @@ from classification.utils.plots import plot_specgram
 
 # creating the socket
 host = socket.gethostname()
-port = 5004
+port = 5006
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -122,6 +122,12 @@ if __name__ == "__main__":
 
                 melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
                 melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
+
+                plt.figure()
+                plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="")
+                plt.draw()
+                plt.pause(0.001)
+                plt.show()
 
                 y_predict = model.predict(melvec_normalized)
 
