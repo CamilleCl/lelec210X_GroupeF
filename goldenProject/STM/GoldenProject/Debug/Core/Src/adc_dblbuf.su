@@ -8,5 +8,5 @@
 ../Core/Src/adc_dblbuf.c:85:13:send_spectrogram	832	static
 ../Core/Src/adc_dblbuf.c:99:10:get_signal_power	120	static
 ../Core/Src/adc_dblbuf.c:109:13:ADC_Callback	24	static
-../Core/Src/adc_dblbuf.c:147:6:HAL_ADC_ConvCpltCallback	16	static
-../Core/Src/adc_dblbuf.c:152:6:HAL_ADC_ConvHalfCpltCallback	16	static
+../Core/Src/adc_dblbuf.c:148:6:HAL_ADC_ConvCpltCallback	16	static
+../Core/Src/adc_dblbuf.c:153:6:HAL_ADC_ConvHalfCpltCallback	16	static

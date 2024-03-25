@@ -20,7 +20,7 @@ static uint32_t packet_cnt = 0;
 static volatile int32_t rem_n_bufs = 0;
 static volatile int32_t recording = 0;
 
-static uint32_t treshold = 50;
+static uint32_t treshold = 100000;
 
 int StartADCAcq(int32_t n_bufs) {
 	rem_n_bufs = n_bufs;
@@ -109,6 +109,7 @@ uint32_t get_signal_power(uint16_t *buffer, size_t len){
 static void ADC_Callback(int buf_cplt) {
 	if(!recording) {
 		uint32_t power = get_signal_power(ADCData[buf_cplt], ADC_BUF_SIZE);
+		printf("power : %ld \n", power);
 
 		if(power >= treshold) {
 			recording = 20;
