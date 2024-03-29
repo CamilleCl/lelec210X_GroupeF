@@ -44,6 +44,13 @@ model_dir = "model2/" # where to save the models
 filename = 'KNN.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
 
+predict_threshold = 0.5 #threshold for garbage class
+past_predictions = [] #liste où on vient mettre les proba des anciennes predictions
+ 
+classnames = ['birds','chainsaw','fire','handsaw','helicopter']
+start = None #start for time threshold
+time_threshold = 2.5 # max time between 2 melspecs
+
 
 #choisir le mode qu'on veut: enregistrer un dataset et/ou faire une classification
 create_data = False
@@ -190,6 +197,30 @@ if __name__ == "__main__":
                     melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
                     y_predict = model.predict(melvec_normalized)
+                    proba = model.predict_proba(melvec_normalized)
+
+                    #take past predictions into account
+                    if (start == None):
+                        start = time.time() #begin the time counter
+                    else:
+                        stop = time.time()
+                        delay = stop - start
+                        if(delay > time_threshold):
+                          past_predictions = [] #clear array of predictions
+                          print(f"too long :-( : {delay} sec")
+                        start = stop 
+                    past_predictions.append(proba)
+                    
+                    if (len(past_predictions) > 1): 
+                        weights = np.ones(len(past_predictions)) #weights of the predictions
+                        avg_proba = np.average(past_predictions, axis = 0, weights = weights) #avg proba of all columns with higher weight for the present proba
+                        y_predict = classnames[np.argmax(avg_proba)]
+                        print(f"avg proba: {avg_proba}, predicted class: {y_predict}")
+
+                    #decide if sound is garbage
+                    if (np.max(proba) < predict_threshold):
+                        y_predict = 'garbage'
+                    print(f"probabilities:{classnames}\n {proba[0]}")
 
                     print(f'predicted class: {y_predict}')
 
