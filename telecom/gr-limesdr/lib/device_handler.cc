@@ -672,6 +672,13 @@ void device_handler::update_rfe_channels()
 
 void device_handler::write_lms_reg(int device_number, uint32_t address, uint16_t val)
 {
+    uint16_t reg_data;
+
+    LMS_ReadLMSReg(
+        device_handler::getInstance().get_device(device_number), address, &reg_data);
+
+    std::cout << "value: " << reg_data << std::endl;
+
     LMS_WriteLMSReg(
         device_handler::getInstance().get_device(device_number), address, val);
 }

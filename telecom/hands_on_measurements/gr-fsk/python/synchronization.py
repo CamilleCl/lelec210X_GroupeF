@@ -21,6 +21,16 @@
 import numpy as np
 from gnuradio import gr
 from numba import njit
+import socket
+
+use_server = True
+
+host = socket.gethostname()
+port = 10010
+
+if use_server:
+    client_socket = socket.socket()
+    client_socket.connect((host, port)) 
 
 def cfo_estimation(y, B, R, Fdev):
     """
@@ -33,7 +43,7 @@ def cfo_estimation(y, B, R, Fdev):
     block2 = y[N*R:2*N*R]
 
     # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
-
+    
     cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
 
     return cfo_est
@@ -203,6 +213,9 @@ class synchronization(gr.basic_block):
                         10 * np.log10(SNR_est), len(y)
                     )
                 )
+
+                if use_server:
+                    client_socket.send(str(self.power_est).encode('ascii'))
 
             # Correct CFO before transferring samples to demodulation stage
             t = self.t0 + np.arange(1, len(y) + 1) / (self.drate * self.osr)

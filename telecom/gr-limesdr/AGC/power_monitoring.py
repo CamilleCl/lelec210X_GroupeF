@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
     
 host = socket.gethostname()
-port = 10004
+port = 10010
 server_socket = socket.socket() 
 
 def reader_socket(server_socket, host, port): 

@@ -23,7 +23,7 @@ class Chain:
     payload_len = 100  # Number of bits per packet
 
     ## Simulation parameters
-    n_packets = 10000  # Number of sent packets
+    n_packets = 2000  # Number of sent packets
 
     ## Channel parameters
     sto_val = 0  # 0 de base
@@ -158,7 +158,7 @@ class BasicChain(Chain):
 
         # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
 
-        cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
+        cfo_est = np.angle(np.correlate(block2, block1)) / (2*np.pi*N*1/B) # Default value, to change
 
         return cfo_est
 
