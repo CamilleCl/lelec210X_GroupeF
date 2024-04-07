@@ -189,7 +189,7 @@ public:
      *
      * @param   address		   Address
      */
-    virtual void read_lms_reg(uint32_t address) = 0;
+    virtual uint16_t read_lms_reg(uint32_t address) = 0;
 
      /**
      * Enable the Preamble Detector in the datapath.

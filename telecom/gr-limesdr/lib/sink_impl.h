@@ -104,7 +104,7 @@ public:
 
     void write_lms_reg(uint32_t address, uint16_t val);
 
-    void read_lms_reg(uint32_t address);
+    uint16_t read_lms_reg(uint32_t address);
 };
 } // namespace limesdr
 } // namespace gr

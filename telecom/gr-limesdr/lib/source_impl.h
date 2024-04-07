@@ -102,7 +102,7 @@ public:
 
     void write_lms_reg(uint32_t address, uint16_t val);
 
-    void read_lms_reg(uint32_t address);
+    uint16_t read_lms_reg(uint32_t address);
 
     void set_dspcfg_preamble(uint16_t dspcfg_PASSTHROUGH_LEN = 100u, uint8_t dspcfg_THRESHOLD = 100u, int dspcfg_preamble_en = 0);
 

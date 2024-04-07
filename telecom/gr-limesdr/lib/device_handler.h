@@ -341,7 +341,7 @@ public:
     /**
      * Writes an LMS register by calling LMS_ReadLMSReg()
      */
-    void read_lms_reg(int device_number, uint32_t address);
+    uint16_t read_lms_reg(int device_number, uint32_t address);
      
     /**
      * Enable the Preamble Detector in the datapath.
