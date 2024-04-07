@@ -26,7 +26,7 @@ import socket
 use_server = True
 
 host = socket.gethostname()
-port = 10010
+port = 10018
 
 if use_server:
     client_socket = socket.socket()
