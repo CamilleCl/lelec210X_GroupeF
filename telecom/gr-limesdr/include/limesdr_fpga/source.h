@@ -126,6 +126,8 @@ public:
      */
     virtual unsigned set_gain(unsigned gain_dB, int channel = 0) = 0;
 
+    virtual unsigned int get_gain(int channel = 0) = 0;
+
     /**
      * Set the same sample rate for both channels.
      *

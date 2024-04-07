@@ -280,6 +280,8 @@ public:
      */
     unsigned set_gain(int device_number, bool direction, int channel, unsigned gain_dB);
 
+    unsigned int get_gain(int device_number, bool direction, int channel);
+
     /**
      * Set NCO (numerically controlled oscillator).
      * By selecting NCO frequency

@@ -90,6 +90,8 @@ public:
 
     unsigned set_gain(unsigned gain_dB, int channel = 0);
 
+    unsigned int get_gain(int channel = 0);
+
     double set_sample_rate(double rate);
 
     void set_oversampling(int oversample);

@@ -347,6 +347,12 @@ unsigned source_impl::set_gain(unsigned gain_dB, int channel)
         stored.device_number, LMS_CH_RX, channel, gain_dB);
 }
 
+unsigned int source_impl::get_gain(int channel)
+{
+    return device_handler::getInstance().get_gain(
+        stored.device_number, LMS_CH_RX, channel);
+}
+
 void source_impl::calibrate(double bandw, int channel)
 {
     device_handler::getInstance().calibrate(

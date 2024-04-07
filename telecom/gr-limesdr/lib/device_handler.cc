@@ -568,6 +568,17 @@ device_handler::set_gain(int device_number, bool direction, int channel, unsigne
     
 }
 
+unsigned int device_handler::get_gain(int device_number, bool direction, int channel) {
+    unsigned int gain_value;
+    LMS_GetGaindB(device_handler::getInstance().get_device(device_number),
+                    direction,
+                    channel,
+                    &gain_value);
+    printf("%x\n", gain_value);
+    return gain_value;
+} 
+
+
 void device_handler::set_nco(int device_number,
                              bool direction,
                              int channel,

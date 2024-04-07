@@ -368,6 +368,13 @@ unsigned sink_impl::set_gain(unsigned gain_dB, int channel)
     return device_handler::getInstance().set_gain(
         stored.device_number, LMS_CH_TX, channel, gain_dB);
 }
+
+unsigned int sink_impl::get_gain(int channel)
+{
+    return device_handler::getInstance().get_gain(
+        stored.device_number, LMS_CH_TX, channel);
+}
+
 void sink_impl::calibrate(double bandw, int channel)
 {
     // PA path needs to be enabled for calibration
