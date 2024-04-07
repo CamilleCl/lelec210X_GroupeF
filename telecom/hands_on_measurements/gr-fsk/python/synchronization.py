@@ -23,7 +23,7 @@ from gnuradio import gr
 from numba import njit
 import socket
 
-use_server = True
+use_server = False
 
 host = socket.gethostname()
 port = 10018

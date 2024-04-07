@@ -164,6 +164,15 @@ public:
      * @param   val                Value
      */
     virtual void write_lms_reg(uint32_t address, uint16_t val) = 0;
+
+    /**
+     * Read LMS register
+     *
+     * Reads a parameter by calling LMS_ReadLMSReg()
+     *
+     * @param   address		   Address
+     */
+    virtual void read_lms_reg(uint32_t address) = 0;
 };
 } // namespace limesdr
 } // namespace gr

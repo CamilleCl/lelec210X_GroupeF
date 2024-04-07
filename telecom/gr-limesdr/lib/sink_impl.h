@@ -103,6 +103,8 @@ public:
     void set_tcxo_dac(uint16_t dacVal = 125);
 
     void write_lms_reg(uint32_t address, uint16_t val);
+
+    void read_lms_reg(uint32_t address);
 };
 } // namespace limesdr
 } // namespace gr
