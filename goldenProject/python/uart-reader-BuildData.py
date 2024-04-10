@@ -36,7 +36,7 @@ MELVEC_LENGTH = 20
 N_MELVECS = 20
 
 result_filename = "predicted_class.csv"
-melvec_dir = "dataset/"
+melvec_dir = "bigDataset/"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
@@ -53,8 +53,8 @@ time_threshold = 2.5 # max time between 2 melspecs
 
 
 #choisir le mode qu'on veut: enregistrer un dataset et/ou faire une classification
-create_data = False
-classif = True
+create_data = True
+classif = False
 plot_fig = False
 
 
@@ -153,7 +153,7 @@ if __name__ == "__main__":
         input_stream = reader(ser)
         for classe in classes:
             #classe = 'helicopter'
-            SoundPerClasse = 40
+            SoundPerClasse = 200
             for i in range(SoundPerClasse):
 
                 ###### envoi du son ######
