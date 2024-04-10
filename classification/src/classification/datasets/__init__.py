@@ -20,6 +20,7 @@ def get_cls_from_path(file: Path) -> str:
 
 
 class Dataset:
+    initData = True 
     def __init__(
         self, folder: Path = Path(__file__).parent / "soundfiles", format: str = "wav"
     ):

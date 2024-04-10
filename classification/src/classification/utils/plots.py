@@ -17,7 +17,7 @@ Synthesis of the functions in :
 # -----------------------------------------------------------------------------
 
 
-def show_confusion_matrix(y_predict, y_true, classnames, title=""):
+def show_confusion_matrix(y_predict, y_true, classnames, title="", saveFig = False, saveAs=''):
     """
     From target labels and prediction arrays, sort them appropriately and plot confusion matrix.
     The arrays can contain either ints or str quantities, as long as classnames contains all the elements present in them.
@@ -46,6 +46,10 @@ def show_confusion_matrix(y_predict, y_true, classnames, title=""):
     plt.xlabel("True label")
     plt.ylabel("Predicted label")
     plt.title(title)
+
+    if(saveFig):
+        plt.savefig(saveAs)
+    
     plt.show()
     return None
 
