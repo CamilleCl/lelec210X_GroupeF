@@ -23,6 +23,7 @@ import time
 
 from classification.datasets import Dataset, get_cls_from_path
 from classification.utils.plots import plot_audio, plot_specgram
+from classification.utils.audio_student import AudioUtil
 
 
 # creating the socket
@@ -36,7 +37,7 @@ MELVEC_LENGTH = 20
 N_MELVECS = 20
 
 result_filename = "predicted_class.csv"
-melvec_dir = "bigDataset/"
+melvec_dir = "dataset/"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
@@ -53,9 +54,10 @@ time_threshold = 2.5 # max time between 2 melspecs
 
 
 #choisir le mode qu'on veut: enregistrer un dataset et/ou faire une classification
-create_data = True
+create_data = False
 classif = False
-plot_fig = False
+plot_fig = True
+plot_sound_melvec = True
 
 
 def parse_buffer(line):
@@ -152,8 +154,8 @@ if __name__ == "__main__":
         classes = dataset.list_classes()
         input_stream = reader(ser)
         for classe in classes:
-            #classe = 'helicopter'
-            SoundPerClasse = 200
+            #classe = 'chainsaw'
+            SoundPerClasse = 1
             for i in range(SoundPerClasse):
 
                 ###### envoi du son ######
@@ -167,7 +169,6 @@ if __name__ == "__main__":
                 sleeptime = random.uniform(0, 4)
                 print("sleeping for:", sleeptime, "seconds")
                 time.sleep(sleeptime)
-
                 ser.write(bytearray('s','ascii'))
                 print("message sent to uart")
 
@@ -234,11 +235,28 @@ if __name__ == "__main__":
                     pickle.dump(melvec, open(melvec_dir+filename, 'wb'))
 
                 ##### plot #####
-                if plot_fig:
+                if plot_sound_melvec:
+                    audio = AudioUtil.open(sound)
+                    sound_melspec = AudioUtil.melspectrogram(audio)
+                    print(f"melspec shape: {sound_melspec.shape}")
+                    delay = int(sleeptime*10)
+                    print(f"melspec delay: {delay}")
+                    sound_melspec = sound_melspec[:, delay: delay+20]
+                    print(f"melspec shape: {sound_melspec.shape}")
                     plt.figure()
-                    plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(i, "glucie"), xlabel="Mel vector")
+                    plot_specgram(sound_melspec, ax=plt.gca(), is_mel=True, title="", xlabel="Mel vector")
                     plt.draw()
                     plt.pause(0.001)
+                    plt.savefig("ideal_{}.pdf".format(classe))
+                    plt.show()
+
+                if plot_fig:
+                    title = "" #"MEL Spectrogram #{} \n Predicted class: {}".format(i, "glucie")
+                    plt.figure()
+                    plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title=title, xlabel="Mel vector")
+                    plt.draw()
+                    plt.pause(0.001)
+                    plt.savefig("nonideal_{}.pdf".format(classe))
                     plt.show()
 
                 time.sleep(7-sleeptime)
