@@ -75,7 +75,7 @@ class Submission(BaseModel):
 class RoundConfig(BaseModel):
     name: str = ""
     lap_count: PositiveInt = 16
-    lap_duration: PositiveFloat = 13.0
+    lap_duration: PositiveFloat = 10.0
     only_check_for_presence: bool = False
     with_noise: bool = False
 
@@ -109,13 +109,13 @@ class SecurityGuess(BaseModel):
 class RoundsConfig(BaseModel):
     rounds: List[RoundConfig] = [
         RoundConfig(name="Functionality", only_check_for_presence=True),
+        RoundConfig(name="Robustness", only_check_for_presence=True),
         RoundConfig(name="Communication range", only_check_for_presence=True),
         RoundConfig(name="Power consumption", only_check_for_presence=True),
-        RoundConfig(name="Classification accuracy"),
-        RoundConfig(name="Classification robustness", with_noise=True),
+        RoundConfig(name="Classification accuracy", with_noise=True),
     ]
     security_round: SecurityRound = SecurityRound()
-    seed: PositiveInt = 1234
+    seed: Optional[PositiveInt] = None
     start_paused: bool = True
     restart_when_finished: bool = False
     pause_between_rounds = True
@@ -534,7 +534,7 @@ class Config(BaseModel):
                 if self.rounds_config.is_penalized(
                     group_config.key, current_round, lap
                 ):
-                    score -= 0.5
+                    score -= 0.25
 
                     if correct:
                         status = Status.correct_penalized

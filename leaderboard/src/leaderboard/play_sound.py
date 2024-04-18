@@ -6,11 +6,32 @@ from typing import Optional
 
 import click
 import requests
+from pydub import AudioSegment
+from pydub.utils import register_pydub_effect
 
 from classification.datasets import Dataset
+from common.click import verbosity
 from common.logging import logger
 
 from .utils import get_url
+
+session = requests.Session()
+
+
+@register_pydub_effect
+def normalize_dBFS(  # noqa: N802
+    seg: AudioSegment,
+    target_dBFS: float = -20,  # noqa: N803
+) -> AudioSegment:
+    """
+    Normalize an audio segment to a given loudness (dBFS).
+
+    The loudness of the audio segment is determined by the
+    average energy of each audio sample.
+    """
+    gain = target_dBFS - seg.dBFS
+
+    return seg.apply_gain(gain)
 
 
 @click.command()
@@ -57,6 +78,7 @@ from .utils import get_url
     show_envvar=True,
     help="The sound files format to include, use '*' to include all formats.",
 )
+@verbosity
 def play_sound(
     url: Optional[str],
     key: str,
@@ -93,7 +115,10 @@ def play_sound(
     # Wait for server to be up
     # and checks if admin rights
     while True:
-        response = requests.get(f"{url}/lelec210x/leaderboard/check/{key}")
+        logger.debug("Checking if the server is up and the admin key is valid.")
+        # Timeout issue?
+        # https://stackoverflow.com/questions/70917108/python-requests-get-only-responds-if-adding-a-time-out
+        response = session.get(f"{url}/lelec210x/leaderboard/check/{key}", timeout=1)
 
         code = response.status_code
 
@@ -101,8 +126,10 @@ def play_sound(
             assert response.json()["admin"], "key must belong to an admin!"
 
             if random_key:
-                response = requests.get(
-                    f"{url}/lelec210x/leaderboard/check/{random_key}"
+                logger.debug("Checking if the server is up and the 'random' is valid.")
+                response = session.get(
+                    f"{url}/lelec210x/leaderboard/check/{random_key}",
+                    timeout=1,
                 )
 
                 if response.status_code != 200:
@@ -112,19 +139,21 @@ def play_sound(
         elif code == 401:
             raise ValueError(response.json())
         else:
-            logger.info("Waiting server to be ready")
+            logger.info("Waiting server to be ready...")
             time.sleep(0.2)
 
     played_sounds = set()
 
     while True:
         start = time.time()
-        json = requests.get(f"{url}/lelec210x/leaderboard/status/{key}").json()
+        json = session.get(
+            f"{url}/lelec210x/leaderboard/status/{key}", timeout=1
+        ).json()
         delay = time.time() - start
-        logger.info(f"Took {delay:.4f}s for the status request")
+        logger.info(f"Took {delay:.4f}s for the status request.")
 
         if json["paused"]:
-            logger.info("Leaderboard is paused")
+            logger.info("Leaderboard is paused...")
             time.sleep(0.2)
             continue
 
@@ -140,7 +169,7 @@ def play_sound(
         sound_key = (current_round + 1, current_lap + 1)
 
         if sound_key in played_sounds:
-            logger.info(f"A song has already been played for round, lap: {sound_key}")
+            logger.info(f"A song has already been played for round, lap: {sound_key}.")
             time.sleep(time_before_next_lap)
             continue
 
@@ -149,19 +178,30 @@ def play_sound(
         sound_file = random.choice(dataset.get_class_files(category))
 
         if time_before_playing < 0:
-            logger.info(f"Too late for playing: {category}")
+            logger.info(f"Too late for playing: {category}.")
             time.sleep(time_before_next_lap)
             continue
 
-        logger.info(f"Playing sound in {time_before_playing}")
+        logger.info(f"Playing sound in {time_before_playing}.")
 
         start = time.time()
-        sound = AudioSegment.from_file(sound_file, format="wav").normalize()
+        sound = (
+            AudioSegment.from_file(sound_file, format=_format)
+            .set_channels(1)
+            .normalize_dBFS()
+            .fade_in(250)
+            .fade_out(250)
+        )
 
-        if with_noise:
+        if with_noise and current_lap >= 8:
+            relative_gain = -16 + 4 * (current_lap - 8)
+            logger.info(
+                "Adding random noise on top of audio segment "
+                f"with a relative volume gain of {relative_gain} dB."
+            )
             sound = sound.overlay(
                 WhiteNoise().to_audio_segment(
-                    duration=len(sound), volume=-40.0 + 2.0 * current_lap
+                    duration=len(sound), volume=sound.dBFS + relative_gain
                 )
             )
 
@@ -169,13 +209,15 @@ def play_sound(
 
         thread = Thread(target=play, args=(sound,))
         thread.start()
-        logger.info(f"Playing sound now: {sound_file}")
+        logger.info(f"Playing sound now: {sound_file}.")
 
         # Admins are always correct :-)
-        requests.post(f"{url}/lelec210x/leaderboard/submit/{key}/{category}")
+        session.post(f"{url}/lelec210x/leaderboard/submit/{key}/{category}", timeout=1)
 
         if random_key:  # Random player
             guess = random.choice(dataset.list_classes())
-            requests.post(f"{url}/lelec210x/leaderboard/submit/{random_key}/{guess}")
+            session.post(
+                f"{url}/lelec210x/leaderboard/submit/{random_key}/{guess}", timeout=1
+            )
 
         thread.join()
