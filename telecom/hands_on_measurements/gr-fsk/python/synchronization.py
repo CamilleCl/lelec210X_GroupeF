@@ -23,10 +23,10 @@ from gnuradio import gr
 from numba import njit
 import socket
 
-use_server = False
+use_server = True
 
 host = socket.gethostname()
-port = 10018
+port = 10020
 
 if use_server:
     client_socket = socket.socket()
@@ -45,64 +45,6 @@ def cfo_estimation(y, B, R, Fdev):
     # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
     
     cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
-
-    return cfo_est
-
-    # N = 2
-
-    # repeat = 4
-
-    # idx = 0
-
-    # cfo_est_arr = np.zeros(repeat)
-
-    # for i in range(repeat):
-    #     block1 = y[idx:idx+N*R] 
-    #     block2 = y[idx+N*R:idx+2*N*R]
-
-    #     cfo_est_arr[i] = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
-    #     idx = idx+2*N*R
-
-    # cfo_est = np.mean(cfo_est_arr)
-
-    # # TO DO: apply the Moose algorithm on these two blocks to estimate the CFO
-
-    # #cfo_est = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
-
-    # return cfo_est
-
-    # repeat = 2
-
-    # idx = 0
-
-    # cfo_est_arr = np.zeros(repeat)
-
-    # for i in range(repeat):
-    #     block1 = y[idx:idx+N*R] 
-    #     block2 = y[idx+N*R:idx+2*N*R]
-
-    #     cfo_est_arr[i] = np.angle(np.sum(block2 * np.conjugate(block1))) / (2*np.pi*N*1/B) # Default value, to change
-    #     idx = idx+2*N*R
-
-    # cfo_est = np.mean(cfo_est_arr)
-
-    # return cfo_est
-
-    N = 1
-    repeat = 16
-
-    idx = 0
-
-    cfo_est_arr = np.zeros(repeat)
-
-    for i in range(repeat):
-        block1 = y[int(idx):int(idx+N*R)] 
-        block2 = y[int(idx+2*N*R):int(idx+3*N*R)]
-
-        cfo_est_arr[i] = np.angle(np.sum(block2 * np.conjugate(block1))) / (4*np.pi*N*1/B) # Default value, to change
-        idx = int(idx+N*R)
-
-    cfo_est = np.mean(cfo_est_arr)
 
     return cfo_est
 

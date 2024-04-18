@@ -4,7 +4,7 @@ import numpy as np
 import time
     
 host = socket.gethostname()
-port = 10018
+port = 10020
 server_socket = socket.socket() 
 
 def reader_socket(server_socket, host, port): 
@@ -17,7 +17,7 @@ def reader_socket(server_socket, host, port):
 
     while True:
         line = conn.recv(12).decode('ascii')
-        time.sleep(0.25)
+        time.sleep(0.1)
         yield line
 
 

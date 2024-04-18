@@ -23,7 +23,7 @@ class Chain:
     payload_len = 100  # Number of bits per packet
 
     ## Simulation parameters
-    n_packets = 2000  # Number of sent packets
+    n_packets = 1000  # Number of sent packets
 
     ## Channel parameters
     sto_val = 0  # 0 de base

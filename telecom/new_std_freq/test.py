@@ -6,7 +6,7 @@ import time
 
 ser = serial.Serial("/dev/ttyACM0",115200)
 
-tx_power_list = list(range(-120, 30, 1))
+tx_power_list = list(range(-67, -55, 1))
 
 repeat = 1
 
@@ -16,7 +16,7 @@ for tx_power in tx_power_list:
         os.system(f"python3 ../hands_on_measurements/gr-fsk/apps/eval_limesdr_fpga.py >> Tx_{tx_power}dBm-{i}.txt &")
 
         # tx_power_pos = tx_power + 128
-        tx_power_pos = tx_power + 256
+        tx_power_pos = tx_power + 128
         bytes_array = tx_power_pos.to_bytes(1, byteorder='big')
 
         # wait for the program to be ready
@@ -30,6 +30,6 @@ for tx_power in tx_power_list:
             continue
 
         # wait for the python program to end :(
-        time.sleep(30)
+        time.sleep(600)
 
     

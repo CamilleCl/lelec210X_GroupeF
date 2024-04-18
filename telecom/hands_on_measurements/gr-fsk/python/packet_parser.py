@@ -133,7 +133,9 @@ class packet_parser(gr.basic_block):
         )
         self.nb_packet += 1
         if all(crc == crc_verif):
-            print("[MAC] Packet demodulated: ", payload, crc)
+            #print("[MAC] Packet demodulated: ", payload, crc)
+            print("[MAC] Packet demodulated")#print("[MAC] Packet demodulated: ", payload, crc)
+            
             output_items[0][: self.payload_len] = payload
             print(
                 "--- {} packets received with {} error(s) ---".format(
@@ -142,7 +144,8 @@ class packet_parser(gr.basic_block):
             )
             return 1
         else:
-            print("[MAC] Error in CRC, packet dropped", payload, crc)
+            # print("[MAC] Error in CRC, packet dropped", payload, crc)
+            print("[MAC] Error in CRC, packet dropped")
             self.nb_error += 1
             print(
                 "--- {} packets received with {} error(s) ---".format(
