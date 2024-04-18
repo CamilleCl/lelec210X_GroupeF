@@ -18,9 +18,6 @@ static q15_t mel_vectors[N_MELVECS][MELVEC_LENGTH];
 static uint32_t packet_cnt = 0;
 
 static volatile int32_t rem_n_bufs = 0;
-static volatile int32_t recording = 0;
-
-static uint32_t treshold = 100000;
 
 int StartADCAcq(int32_t n_bufs) {
 	rem_n_bufs = n_bufs;
@@ -96,52 +93,30 @@ static void send_spectrogram() {
 	print_encoded_packet(packet);
 }
 
-uint32_t get_signal_power(uint16_t *buffer, size_t len){
-	uint64_t sum = 0;
-	uint64_t sum2 = 0;
-	for (size_t i=0; i<len; i++) {
-		sum += (uint64_t) buffer[i];
-		sum2 += (uint64_t) buffer[i]*(uint64_t) buffer[i];
-	}
-	return (uint32_t)(sum2/len - sum*sum/len/len);
-}
-
 static void ADC_Callback(int buf_cplt) {
-	if(!recording) {
-		uint32_t power = get_signal_power(ADCData[buf_cplt], ADC_BUF_SIZE);
-		printf("power : %ld \n", power);
-
-		if(power >= treshold) {
-			recording = 20;
-		}
-
+	if (rem_n_bufs != -1) {
+		rem_n_bufs--;
 	}
-	else {
-		if (rem_n_bufs != -1) {
-			rem_n_bufs--;
-			recording--;
-		}
-		if (rem_n_bufs == 0) {
-			// stop_cycle_count("Acquisition");
-			StopADCAcq();
-		} else if (ADCDataRdy[1-buf_cplt]) {
-			DEBUG_PRINT("Error: ADC Data buffer full\r\n");
-			Error_Handler();
-		}
+	if (rem_n_bufs == 0) {
+		// stop_cycle_count("Acquisition");
+		StopADCAcq();
+	} else if (ADCDataRdy[1-buf_cplt]) {
+		DEBUG_PRINT("Error: ADC Data buffer full\r\n");
+		Error_Handler();
+	}
 
-		ADCDataRdy[buf_cplt] = 1;
-		start_cycle_count();
-		Spectrogram_Format((q15_t *)ADCData[buf_cplt]);
-		Spectrogram_Compute((q15_t *)ADCData[buf_cplt], mel_vectors[cur_melvec]);
-		cur_melvec++;
+	ADCDataRdy[buf_cplt] = 1;
+	start_cycle_count();
+	Spectrogram_Format((q15_t *)ADCData[buf_cplt]);
+	Spectrogram_Compute((q15_t *)ADCData[buf_cplt], mel_vectors[cur_melvec]);
+	cur_melvec++;
 
-		ADCDataRdy[buf_cplt] = 0;
-		stop_cycle_count("spectrogramgloe");
+	ADCDataRdy[buf_cplt] = 0;
+	stop_cycle_count("spectrogramgloe");
 
-		if (rem_n_bufs == 0) {
-			print_spectrogram();
-			send_spectrogram();
-		}
+	if (rem_n_bufs == 0) {
+		print_spectrogram();
+		send_spectrogram();
 	}
 }
 

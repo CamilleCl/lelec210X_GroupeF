@@ -280,6 +280,8 @@ public:
      */
     unsigned set_gain(int device_number, bool direction, int channel, unsigned gain_dB);
 
+    unsigned int get_gain(int device_number, bool direction, int channel);
+
     /**
      * Set NCO (numerically controlled oscillator).
      * By selecting NCO frequency
@@ -336,6 +338,12 @@ public:
      * Writes an LMS register by calling LMS_WriteLMSReg()
      */
     void write_lms_reg(int device_number, uint32_t address, uint16_t val);
+
+
+    /**
+     * Writes an LMS register by calling LMS_ReadLMSReg()
+     */
+    uint16_t read_lms_reg(int device_number, uint32_t address);
      
     /**
      * Enable the Preamble Detector in the datapath.

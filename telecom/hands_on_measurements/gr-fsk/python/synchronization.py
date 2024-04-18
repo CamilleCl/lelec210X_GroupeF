@@ -22,7 +22,6 @@ import numpy as np
 from gnuradio import gr
 from numba import njit
 
-@njit
 def cfo_estimation(y, B, R, Fdev):
     """
     Estimate CFO using Moose algorithm, on first samples of preamble
@@ -39,7 +38,6 @@ def cfo_estimation(y, B, R, Fdev):
 
     return cfo_est
 
-@njit
 def sto_estimation(y, B, R, Fdev):
     """
     Estimate symbol timing (fractional) based on phase shifts

@@ -568,6 +568,17 @@ device_handler::set_gain(int device_number, bool direction, int channel, unsigne
     
 }
 
+unsigned int device_handler::get_gain(int device_number, bool direction, int channel) {
+    unsigned int gain_value;
+    LMS_GetGaindB(device_handler::getInstance().get_device(device_number),
+                    direction,
+                    channel,
+                    &gain_value);
+    printf("%x\n", gain_value);
+    return gain_value;
+} 
+
+
 void device_handler::set_nco(int device_number,
                              bool direction,
                              int channel,
@@ -674,6 +685,16 @@ void device_handler::write_lms_reg(int device_number, uint32_t address, uint16_t
 {
     LMS_WriteLMSReg(
         device_handler::getInstance().get_device(device_number), address, val);
+}
+
+uint16_t device_handler::read_lms_reg(int device_number, uint32_t address)
+{
+    uint16_t reg_data;
+
+    LMS_ReadLMSReg(
+        device_handler::getInstance().get_device(device_number), address, &reg_data);
+
+    return reg_data;
 }
 
 int device_handler::modify_spi_reg_bits(lms_device_t *device, const DSPCFGParameter &param, const uint16_t value)

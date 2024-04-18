@@ -368,6 +368,13 @@ unsigned sink_impl::set_gain(unsigned gain_dB, int channel)
     return device_handler::getInstance().set_gain(
         stored.device_number, LMS_CH_TX, channel, gain_dB);
 }
+
+unsigned int sink_impl::get_gain(int channel)
+{
+    return device_handler::getInstance().get_gain(
+        stored.device_number, LMS_CH_TX, channel);
+}
+
 void sink_impl::calibrate(double bandw, int channel)
 {
     // PA path needs to be enabled for calibration
@@ -399,6 +406,11 @@ void sink_impl::set_tcxo_dac(uint16_t dacVal)
 void sink_impl::write_lms_reg(uint32_t address, uint16_t val)
 {
     device_handler::getInstance().write_lms_reg(stored.device_number, address, val);
+}
+
+uint16_t sink_impl::read_lms_reg(uint32_t address)
+{
+    return device_handler::getInstance().read_lms_reg(stored.device_number, address);
 }
 
 } // namespace limesdr

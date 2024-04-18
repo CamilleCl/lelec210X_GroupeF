@@ -347,6 +347,12 @@ unsigned source_impl::set_gain(unsigned gain_dB, int channel)
         stored.device_number, LMS_CH_RX, channel, gain_dB);
 }
 
+unsigned int source_impl::get_gain(int channel)
+{
+    return device_handler::getInstance().get_gain(
+        stored.device_number, LMS_CH_RX, channel);
+}
+
 void source_impl::calibrate(double bandw, int channel)
 {
     device_handler::getInstance().calibrate(
@@ -375,6 +381,11 @@ void source_impl::set_tcxo_dac(uint16_t dacVal)
 void source_impl::write_lms_reg(uint32_t address, uint16_t val)
 {
     device_handler::getInstance().write_lms_reg(stored.device_number, address, val);
+}
+
+uint16_t source_impl::read_lms_reg(uint32_t address)
+{
+    return device_handler::getInstance().read_lms_reg(stored.device_number, address);
 }
 
 void source_impl::set_dspcfg_preamble(uint16_t dspcfg_PASSTHROUGH_LEN, uint8_t dspcfg_THRESHOLD, int dspcfg_preamble_en) {

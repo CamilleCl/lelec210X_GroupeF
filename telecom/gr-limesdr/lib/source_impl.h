@@ -90,6 +90,8 @@ public:
 
     unsigned set_gain(unsigned gain_dB, int channel = 0);
 
+    unsigned int get_gain(int channel = 0);
+
     double set_sample_rate(double rate);
 
     void set_oversampling(int oversample);
@@ -101,6 +103,8 @@ public:
     void set_tcxo_dac(uint16_t dacVal = 125);
 
     void write_lms_reg(uint32_t address, uint16_t val);
+
+    uint16_t read_lms_reg(uint32_t address);
 
     void set_dspcfg_preamble(uint16_t dspcfg_PASSTHROUGH_LEN = 100u, uint8_t dspcfg_THRESHOLD = 100u, int dspcfg_preamble_en = 0);
 
