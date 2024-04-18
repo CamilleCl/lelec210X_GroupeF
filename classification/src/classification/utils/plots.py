@@ -31,7 +31,7 @@ def show_confusion_matrix(y_predict, y_true, classnames, title="", saveFig = Fal
     #     labels[mask] = mode(y_true2[mask])[0]
     
 
-    plt.figure(figsize=(3, 3))
+    plt.figure(figsize=(6, 6))
     confmat = confusion_matrix(y_true, y_predict)
     heatmap(
         confmat.T,

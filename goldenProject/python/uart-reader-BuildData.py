@@ -25,6 +25,7 @@ from classification.datasets import Dataset, get_cls_from_path
 from classification.utils.plots import plot_audio, plot_specgram
 from classification.utils.audio_student import AudioUtil
 
+from sklearn.preprocessing import LabelEncoder
 
 # creating the socket
 host = socket.gethostname()
@@ -37,13 +38,15 @@ MELVEC_LENGTH = 20
 N_MELVECS = 20
 
 result_filename = "predicted_class.csv"
-melvec_dir = "dataset/"
+melvec_dir = "bigbigDataset/"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
-model_dir = "model2/" # where to save the models
-filename = 'KNN.pickle'
+model_dir = "modelCNN/" # where to save the models
+filename = 'CNN.pickle'
+label_name = "label_encoder.pickle"
 model = pickle.load(open(model_dir + filename, 'rb'))
+label_encoder = pickle.load(open(model_dir + label_name, 'rb'))
 
 predict_threshold = 0.5 #threshold for garbage class
 past_predictions = [] #liste où on vient mettre les proba des anciennes predictions
@@ -54,10 +57,10 @@ time_threshold = 2.5 # max time between 2 melspecs
 
 
 #choisir le mode qu'on veut: enregistrer un dataset et/ou faire une classification
-create_data = False
+create_data = True
 classif = False
-plot_fig = True
-plot_sound_melvec = True
+plot_fig = False
+plot_sound_melvec = False
 
 
 def parse_buffer(line):
@@ -151,11 +154,12 @@ if __name__ == "__main__":
 
         ser = serial.Serial(port = args.port, baudrate = 115200)
         dataset = Dataset()
-        classes = dataset.list_classes()
+        #classes = dataset.list_classes()
+        classes = ["helicopter"]
         input_stream = reader(ser)
         for classe in classes:
-            #classe = 'chainsaw'
-            SoundPerClasse = 1
+            #classe = 'helicopter'
+            SoundPerClasse = 250
             for i in range(SoundPerClasse):
 
                 ###### envoi du son ######
@@ -166,7 +170,7 @@ if __name__ == "__main__":
                 print(f'Playing a "{get_cls_from_path(sound)}"')
                 sd.play(x, fs)
 
-                sleeptime = random.uniform(0, 4)
+                sleeptime = 1 #random.uniform(0, 4)
                 print("sleeping for:", sleeptime, "seconds")
                 time.sleep(sleeptime)
                 ser.write(bytearray('s','ascii'))
@@ -193,35 +197,42 @@ if __name__ == "__main__":
                 print(melvec.shape)
 
                 melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
+                #melvec = np.reshape(melvec, (1, N_MELVECS, MELVEC_LENGTH, 1))
+                print(f"melvec reshaped:{melvec.shape}")
 
                 if classif:
                     melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
-                    y_predict = model.predict(melvec_normalized)
-                    proba = model.predict_proba(melvec_normalized)
+                    proba = model.predict(melvec_normalized)
+                    print(proba)
+                    y_predict = np.argmax(proba, axis=1) # the most probable class
+                    print(y_predict)
+                    y_predict = label_encoder.inverse_transform(y_predict)
+                    print(y_predict)
+                    #proba = model.predict_proba(melvec_normalized)
 
                     #take past predictions into account
-                    if (start == None):
-                        start = time.time() #begin the time counter
-                    else:
-                        stop = time.time()
-                        delay = stop - start
-                        if(delay > time_threshold):
-                          past_predictions = [] #clear array of predictions
-                          print(f"too long :-( : {delay} sec")
-                        start = stop 
-                    past_predictions.append(proba)
+                    # if (start == None):
+                    #     start = time.time() #begin the time counter
+                    # else:
+                    #     stop = time.time()
+                    #     delay = stop - start
+                    #     if(delay > time_threshold):
+                    #       past_predictions = [] #clear array of predictions
+                    #       print(f"too long :-( : {delay} sec")
+                    #     start = stop 
+                    # past_predictions.append(proba)
                     
-                    if (len(past_predictions) > 1): 
-                        weights = np.ones(len(past_predictions)) #weights of the predictions
-                        avg_proba = np.average(past_predictions, axis = 0, weights = weights) #avg proba of all columns with higher weight for the present proba
-                        y_predict = classnames[np.argmax(avg_proba)]
-                        print(f"avg proba: {avg_proba}, predicted class: {y_predict}")
+                    # if (len(past_predictions) > 1): 
+                    #     weights = np.ones(len(past_predictions)) #weights of the predictions
+                    #     avg_proba = np.average(past_predictions, axis = 0, weights = weights) #avg proba of all columns with higher weight for the present proba
+                    #     y_predict = classnames[np.argmax(avg_proba)]
+                    #     print(f"avg proba: {avg_proba}, predicted class: {y_predict}")
 
-                    #decide if sound is garbage
-                    if (np.max(proba) < predict_threshold):
-                        y_predict = 'garbage'
-                    print(f"probabilities:{classnames}\n {proba[0]}")
+                    # #decide if sound is garbage
+                    # if (np.max(proba) < predict_threshold):
+                    #     y_predict = 'garbage'
+                    #print(f"probabilities:{classnames}\n {proba[0]}")
 
                     print(f'predicted class: {y_predict}')
 
@@ -247,7 +258,7 @@ if __name__ == "__main__":
                     plot_specgram(sound_melspec, ax=plt.gca(), is_mel=True, title="", xlabel="Mel vector")
                     plt.draw()
                     plt.pause(0.001)
-                    plt.savefig("ideal_{}.pdf".format(classe))
+                    #plt.savefig("ideal_{}.pdf".format(classe))
                     plt.show()
 
                 if plot_fig:
@@ -256,7 +267,7 @@ if __name__ == "__main__":
                     plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title=title, xlabel="Mel vector")
                     plt.draw()
                     plt.pause(0.001)
-                    plt.savefig("nonideal_{}.pdf".format(classe))
+                    #plt.savefig("nonideal_micro_{}.pdf".format(classe))
                     plt.show()
 
                 time.sleep(7-sleeptime)
