@@ -54,11 +54,12 @@ past_predictions = [] #liste où on vient mettre les proba des anciennes predict
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
 start = None #start for time threshold
 time_threshold = 2.5 # max time between 2 melspecs
-
+label_encoder = LabelEncoder()
+label_encoder.fit(classnames)
 
 #choisir le mode qu'on veut: enregistrer un dataset et/ou faire une classification
-create_data = True
-classif = False
+create_data = False
+classif = True
 plot_fig = False
 plot_sound_melvec = False
 
@@ -154,12 +155,12 @@ if __name__ == "__main__":
 
         ser = serial.Serial(port = args.port, baudrate = 115200)
         dataset = Dataset()
-        #classes = dataset.list_classes()
-        classes = ["helicopter"]
+        classes = dataset.list_classes()
+        #classes = ["helicopter"]
         input_stream = reader(ser)
         for classe in classes:
             #classe = 'helicopter'
-            SoundPerClasse = 250
+            SoundPerClasse = 10
             for i in range(SoundPerClasse):
 
                 ###### envoi du son ######
@@ -203,7 +204,7 @@ if __name__ == "__main__":
                 if classif:
                     melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
-                    proba = model.predict(melvec_normalized)
+                    proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
                     print(proba)
                     y_predict = np.argmax(proba, axis=1) # the most probable class
                     print(y_predict)

@@ -11,10 +11,10 @@ from classification.datasets import Dataset, get_cls_from_path
 from classification.utils.plots import plot_audio, plot_specgram
 
 
-dataset_size = 100
+dataset_size = 50
 
 classes = ['birds','chainsaw','fire','handsaw','helicopter']
-classnames = ['birds','chainsaw','fire','handsaw','helicopter', "garbage"] #to have the garbage class in matrix
+classnames = ['birds','chainsaw','fire','handsaw','helicopter'] #, "garbage"] #to have the garbage class in matrix
 
 ground_class = []
 

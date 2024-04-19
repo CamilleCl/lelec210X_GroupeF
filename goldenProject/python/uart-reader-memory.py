@@ -43,12 +43,14 @@ label_name = "label_encoder.pickle"
 model = pickle.load(open(model_dir + filename, 'rb'))
 label_encoder = pickle.load(open(model_dir + label_name, 'rb'))
 
-predict_threshold = 0.8 #threshold for garbage class
+predict_threshold = 0.7 #threshold for garbage class
 past_predictions = [] #liste où on vient mettre les proba des anciennes predictions
  
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
 start = None #start for time threshold
 time_threshold = 2.5 # max time between 2 melspecs
+label_encoder = LabelEncoder()
+label_encoder.fit(classnames)
 
 
 #choisir le mode qu'on veut: enregistrer un dataset et/ou faire une classification
@@ -112,7 +114,7 @@ if __name__ == "__main__":
         input_stream = reader(ser)
         for classe in classes:
             #classe = 'helicopter'
-            SoundPerClasse = 20
+            SoundPerClasse = 5
             for i in range(SoundPerClasse):
 
                 ###### envoi du son ######
@@ -157,7 +159,7 @@ if __name__ == "__main__":
 
                     proba = model.predict(melvec_normalized)
                     y_predict = np.argmax(proba, axis = 1) # the most probable class
-                    y_predict = label_encoder.inverse_transform(y_predict)
+                    #y_predict = label_encoder.inverse_transform(y_predict)
                     print(f"predicted class initially: {y_predict}")
 
                     #take past predictions into account

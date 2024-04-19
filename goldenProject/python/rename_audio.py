@@ -15,15 +15,15 @@
 import os
 
 # Define the directory containing the files
-directory = 'test_rename'
+directory = 'bigDatasetBIS/helico'
 
-new_name = "chainsaw"
-i = 0
+new_name = "birds"
+i = 250
 
 # Loop through each file in the directory
 for filename in os.listdir(directory):
     # Define the new filename
-    new_filename = f'chainsaw_{i:03d}.wav'
+    new_filename = f'helicopter_{i:03d}.pickle'
     
     # Use os.rename() to rename the file
     os.rename(os.path.join(directory, filename), os.path.join(directory, new_filename))
