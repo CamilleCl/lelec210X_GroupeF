@@ -21,6 +21,7 @@ key = "jc5jE0qHTmt1l-0EYOYJ3HzxEB8vIb6qtNm6dI3w"
 
 
 from classification.utils.plots import plot_specgram
+from sklearn.preprocessing import LabelEncoder
 
 # creating the socket
 host = socket.gethostname()
@@ -39,6 +40,10 @@ dt = np.dtype(np.uint16).newbyteorder("<")
 model_dir = "models/" # where to save the models
 filename = 'KNN.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
+
+classnames = ['birds','chainsaw','fire','handsaw','helicopter']
+label_encoder = LabelEncoder()
+label_encoder.fit(classnames)
 
 
 def parse_buffer(line):
@@ -120,7 +125,8 @@ if __name__ == "__main__":
 
                 print("MEL Spectrogram #{}".format(msg_counter))
 
-                melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
+                #melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
+                melvec = np.reshape(melvec, (1, N_MELVECS, MELVEC_LENGTH, 1))
                 melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
                 plt.figure()
@@ -129,7 +135,12 @@ if __name__ == "__main__":
                 plt.pause(0.001)
                 plt.show()
 
-                y_predict = model.predict(melvec_normalized)
+                #y_predict = model.predict(melvec_normalized)
+                proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
+                print(proba)
+                y_predict = np.argmax(proba, axis=1) # the most probable class
+                print(y_predict)
+                y_predict = label_encoder.inverse_transform(y_predict)
 
                 print(f'predicted class: {y_predict[0]}')
 
