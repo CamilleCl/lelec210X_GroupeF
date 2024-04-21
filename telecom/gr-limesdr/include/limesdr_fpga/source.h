@@ -126,6 +126,8 @@ public:
      */
     virtual unsigned set_gain(unsigned gain_dB, int channel = 0) = 0;
 
+    virtual unsigned int get_gain(int channel = 0) = 0;
+
     /**
      * Set the same sample rate for both channels.
      *
@@ -180,6 +182,16 @@ public:
      * @param   val                Value
      */
     virtual void write_lms_reg(uint32_t address, uint16_t val) = 0;
+
+
+    /**
+     * Read LMS register
+     *
+     * Reads a parameter by calling LMS_ReadLMSReg()
+     *
+     * @param   address		   Address
+     */
+    virtual uint16_t read_lms_reg(uint32_t address) = 0;
 
      /**
      * Enable the Preamble Detector in the datapath.

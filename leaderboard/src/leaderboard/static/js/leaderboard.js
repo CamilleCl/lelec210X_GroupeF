@@ -8,13 +8,15 @@ const destination = document.getElementsByTagName("body")[0];
 // Init websocket
 
 // Uncomment this on the server
+// TODO: fix Socketio issue in "production" server
+// It is this: https://github.com/miguelgrinberg/Flask-SocketIO/issues/1501
 /*
-const socket = io("wss://perceval.elen.ucl.ac.be", {
+const socket = io("http://lelec210x.sipr.ucl.ac.be", {
   path: "/lelec210x/socket.io",
 });
 */
 
-// Command this on the server
+// Comment this on the server
 const socket = io();
 
 const scrollAmount = 100;

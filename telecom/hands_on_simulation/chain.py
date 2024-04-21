@@ -12,7 +12,7 @@ class Chain:
 
     ## Communication parameters
     bit_rate = BIT_RATE
-    freq_dev = BIT_RATE / 4
+    freq_dev = BIT_RATE / 2
 
     osr_tx = 64
     osr_rx = 8
@@ -23,14 +23,14 @@ class Chain:
     payload_len = 150  # Number of bits per packet
 
     ## Simulation parameters
-    n_packets = 1000  # Number of sent packets
+    n_packets = 10000  # Number of sent packets
 
     ## Channel parameters
     sto_val = 0  # 0 de base
     sto_range = 10 / BIT_RATE  # defines the delay range when random
 
     cfo_val = 0
-    cfo_range = 10000  # defines the CFO range when random (in Hz) #(1000 in old repo)
+    cfo_range = 1500  # defines the CFO range when random (in Hz) #(1000 in old repo)
 
     snr_range = np.arange(-10, 25)
 
@@ -167,20 +167,30 @@ class BasicChain(Chain):
         """
         Estimates symbol timing (fractional) based on phase shifts.
         """
+        N = 8
         R = self.osr_rx
+        B = self.bit_rate
+        Fdev = self.freq_dev
 
-        # Computation of derivatives of phase function
-        phase_function = np.unwrap(np.angle(y))
-        phase_derivative_1 = phase_function[1:] - phase_function[:-1]
-        phase_derivative_2 = np.abs(phase_derivative_1[1:] - phase_derivative_1[:-1])
+        ph = 2 * np.pi * Fdev * (np.arange(R) / R) / B  # Phase of reference waveform
 
-        sum_der_saved = -np.inf
+        s = np.zeros(R * N)
+        for i in range(N):
+            if(i%2 == 0):
+                s[R*i:R*(i+1)] = ph
+            else:
+                s[R*i:R*(i+1)] = -ph + 2 * np.pi * Fdev / B
+
+        corr_saved = -np.inf
         save_i = 0
-        for i in range(0, R):
-            sum_der = np.sum(phase_derivative_2[i::R])  # Sum every R samples
 
-            if sum_der > sum_der_saved:
-                sum_der_saved = sum_der
+        for i in range(2*R):
+            corr_func = np.exp(1j * np.roll(s, i))
+            corr_abs = np.abs(np.correlate(y[:N*R] - np.mean(y[:N*R]), corr_func))
+            # corr_abs = np.abs(np.sum((corr_func - np.mean(corr_func)) * (y[:N*R] - np.mean(y[:N*R]))))
+
+            if corr_abs > corr_saved:
+                corr_saved = corr_abs
                 save_i = i
 
         return np.mod(save_i + 1, R)

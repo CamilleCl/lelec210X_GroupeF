@@ -92,7 +92,7 @@ def create_app() -> Flask:
 
     @app.route("/")
     def _index():
-        readme_file = open("README.md")
+        readme_file = open(Path(__file__).parents[2].joinpath("README.md"))
         md_template_string = markdown.markdown(
             readme_file.read(), extensions=["fenced_code"]
         )
@@ -104,7 +104,7 @@ def create_app() -> Flask:
         "logger": logger,
     }
 
-    if os.environ["FLASK_RUN_HOST"].lower() == "localhost":
+    if os.environ["FLASK_RUN_HOST"].lower() in ["localhost", "0.0.0.0"]:
         socketio = SocketIO(
             app,
             **socketio_kwargs,
@@ -113,7 +113,6 @@ def create_app() -> Flask:
     else:
         socketio = SocketIO(
             app,
-            cors_allowed_origins=os.environ["FLASK_RUN_HOST"],
             path=os.environ["FLASK_STATIC_PATH"] + "/socket.io/",
             **socketio_kwargs,
         )
@@ -171,7 +170,7 @@ def ping():
     is_flag=True,
     help="Open documentation page in a web browser, only when serving on localhost.",
 )
-def serve(_open, _open_doc):
+def serve(_open: bool = False, _open_doc: bool = False):
     """Run a leaderboard server."""
     app = create_app()
 
@@ -182,12 +181,12 @@ def serve(_open, _open_doc):
     host = os.environ["FLASK_RUN_HOST"].lower()
     port = os.environ["FLASK_RUN_PORT"]
 
-    if _open and host == "localhost":
+    if _open and host in ["localhost", "0.0.0.0"]:
         Timer(
             1, lambda: webbrowser.open(f"http://{host}:{port}/lelec210x/leaderboard")
         ).start()
 
-    if _open_doc and host == "localhost":
+    if _open_doc and host in ["localhost", "0.0.0.0"]:
         Timer(
             1,
             lambda: webbrowser.open(f"http://{host}:{port}/lelec210x/leaderboard/doc"),

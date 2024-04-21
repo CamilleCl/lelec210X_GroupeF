@@ -36,12 +36,12 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '10'
+    value: '12'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [556, 66]
+    coordinate: [568, 124.0]
     rotation: 0
     state: true
 - name: carrier_freq
@@ -80,7 +80,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '70'
-    value: '40'
+    value: '60'
     widget: counter_slider
   states:
     bus_sink: false

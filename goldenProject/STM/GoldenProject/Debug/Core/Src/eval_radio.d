@@ -35,7 +35,8 @@ Core/Src/eval_radio.o: ../Core/Src/eval_radio.c ../Core/Inc/adc_dblbuf.h \
  ../Core/Inc/config.h \
  /home/julien/Documents/LELEC2102/lelec210X_GroupeF/goldenProject/STM/GoldenProject/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h \
  ../Drivers/CMSIS/Include/cmsis_compiler.h ../Core/Inc/eval_radio.h \
- ../Core/Inc/config.h ../Core/Inc/main.h ../Core/Inc/s2lp.h
+ ../Core/Inc/config.h ../Core/Inc/main.h ../Core/Inc/s2lp.h \
+ ../Core/Inc/usart.h
 ../Core/Inc/adc_dblbuf.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
@@ -78,3 +79,4 @@ Core/Src/eval_radio.o: ../Core/Src/eval_radio.c ../Core/Inc/adc_dblbuf.h \
 ../Core/Inc/config.h:
 ../Core/Inc/main.h:
 ../Core/Inc/s2lp.h:
+../Core/Inc/usart.h:

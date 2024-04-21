@@ -6,7 +6,7 @@
 #define INC_S2LP_H_
 
 // === Communication parameters
-#define MEAN_CFO 8000
+#define MEAN_CFO 7500
 #define BASE_FREQ 870000000 - MEAN_CFO // Carrier frequency, in Hz
 #define DATARATE 50000 // Data rate in 2FSK, in bit/s
 #define FREQDEV DATARATE/2 // Frequency deviation, in Hz
