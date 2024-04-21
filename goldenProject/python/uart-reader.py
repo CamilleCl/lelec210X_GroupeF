@@ -11,12 +11,21 @@ import serial
 from serial.tools import list_ports
 import pickle
 import socket
+import time
+
+import requests
+import json
+
+hostname = "http://lelec210x.sipr.ucl.ac.be"
+key = "jc5jE0qHTmt1l-0EYOYJ3HzxEB8vIb6qtNm6dI3w"
+
+
 
 from classification.utils.plots import plot_specgram
 
 # creating the socket
 host = socket.gethostname()
-port = 5002
+port = 5006
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -28,10 +37,15 @@ result_filename = "predicted_class.csv"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
-model_dir = "../../classification/data/models/" # where to save the models
-filename = 'model.pickle'
+model_dir = "models/" # where to save the models
+filename = 'KNN.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
 
+classnames = ['birds','chainsaw','fire','handsaw','helicopter']
+#memory
+start = None #start for time threshold
+time_threshold = 2.5 # max time between 2 melspecs [s]
+past_predictions = [] #liste où on vient mettre les proba des anciennes predictions
 
 def parse_buffer(line):
     line = line.strip()
@@ -112,24 +126,49 @@ if __name__ == "__main__":
 
                 print("MEL Spectrogram #{}".format(msg_counter))
 
-                melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
+                #melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
+                melvec = np.reshape(melvec, (1, N_MELVECS, MELVEC_LENGTH, 1))
                 melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
-                # Pas bon, c'était juste pour tester
-                # y_predict = model.predict(np.hstack((melvec_normalized, np.zeros((1,80)))))
-                y_predict = model.predict(melvec_normalized)
-
-                print(f'predicted class: {y_predict}')
-
-                file = open(result_filename, 'a')
-                file.write(f"{y_predict}\n")
-                file.close()
-                
                 plt.figure()
-                plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="MEL Spectrogram #{} \n Predicted class: {}".format(msg_counter, y_predict), xlabel="Mel vector")
+                plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="")
                 plt.draw()
                 plt.pause(0.001)
                 plt.show()
+
+                #y_predict = model.predict(melvec_normalized)
+                proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
+                y_predict = np.argmax(proba, axis=1) # index of the most probable class
+                y_predict = classnames[y_predict]
+                print(f'predicted class at first: {y_predict}')
+
+                #take past predictions into account
+                if (start == None):
+                    start = time.time() #begin the time counter
+                else:
+                    stop = time.time()
+                    delay = stop - start
+                    if(delay > time_threshold):
+                        past_predictions = [] #clear array of predictions
+                        print(f"too long :-( : {delay} sec")
+                    start = stop 
+                past_predictions.append(proba[0])
+                
+                if (len(past_predictions) > 1): 
+                    weights = np.ones(len(past_predictions)) #weights of the predictions
+                    avg_proba = np.average(past_predictions, axis = 0, weights = weights) #avg proba of all columns with higher weight for the present proba
+                    y_predict = classnames[np.argmax(avg_proba)]
+                    print(f'predicted class with memory: {y_predict}')
+
+                try:
+                    response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict}", timeout=1)
+                    
+                    # All responses are JSON dictionaries
+                    response_as_dict = json.loads(response.text)
+                    print(f'server response : {response_as_dict}')
+                    
+                except Exception as error:
+                    print(error)
 
     except KeyboardInterrupt:
         print("\n\nProgram interrupted. Shutting down server")
