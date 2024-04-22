@@ -33,7 +33,7 @@ Core/Src/adc_dblbuf.o: ../Core/Src/adc_dblbuf.c ../Core/Inc/adc_dblbuf.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
  ../Core/Inc/config.h \
- /home/julien/Documents/LELEC2102/lelec210X_GroupeF/goldenProject/STM/GoldenProject/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h \
+ /home/lucie/Documents/LELEC210X/lelec210X_GroupeF/goldenProject/STM/GoldenProject/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h \
  ../Drivers/CMSIS/Include/cmsis_compiler.h ../Core/Inc/config.h \
  ../Core/Inc/main.h ../Core/Inc/spectrogram.h ../Core/Inc/utils.h \
  ../Core/Inc/s2lp.h ../Core/Inc/packet.h
@@ -73,7 +73,7 @@ Core/Src/adc_dblbuf.o: ../Core/Src/adc_dblbuf.c ../Core/Inc/adc_dblbuf.h \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h:
 ../Core/Inc/config.h:
-/home/julien/Documents/LELEC2102/lelec210X_GroupeF/goldenProject/STM/GoldenProject/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h:
+/home/lucie/Documents/LELEC210X/lelec210X_GroupeF/goldenProject/STM/GoldenProject/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h:
 ../Drivers/CMSIS/Include/cmsis_compiler.h:
 ../Core/Inc/config.h:
 ../Core/Inc/main.h:

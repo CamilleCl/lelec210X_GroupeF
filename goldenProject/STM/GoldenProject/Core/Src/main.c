@@ -99,12 +99,12 @@ void run(void)
 	while (1)
 	{
 	  while (!btn_press) {
-//		  HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PIN_SET);
-//		  HAL_Delay(200);
-//		  HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PIN_RESET);
-//		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PIN_SET);
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PIN_RESET);
+		  HAL_Delay(200);
 	  }
-	  //btn_press = 0;
+	  btn_press = 0;
 #if (CONTINUOUS_ACQ == 1)
 	  while (!btn_press) {
 		  acquire_and_send_packet();
