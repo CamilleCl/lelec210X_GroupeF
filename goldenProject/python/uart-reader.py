@@ -25,7 +25,7 @@ from classification.utils.plots import plot_specgram
 
 # creating the socket
 host = socket.gethostname()
-port = 5006
+port = 5009
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -37,8 +37,8 @@ result_filename = "predicted_class.csv"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
-model_dir = "models/" # where to save the models
-filename = 'KNN.pickle'
+model_dir = "modelCNN/" # where to save the models
+filename = 'CNN.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
 
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
@@ -130,16 +130,16 @@ if __name__ == "__main__":
                 melvec = np.reshape(melvec, (1, N_MELVECS, MELVEC_LENGTH, 1))
                 melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
-                plt.figure()
-                plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="")
-                plt.draw()
-                plt.pause(0.001)
-                plt.show()
+                # plt.figure()
+                # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="")
+                # plt.draw()
+                # plt.pause(0.001)
+                # plt.show()
 
                 #y_predict = model.predict(melvec_normalized)
                 proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
                 y_predict = np.argmax(proba, axis=1) # index of the most probable class
-                y_predict = classnames[y_predict]
+                y_predict = classnames[y_predict[0]]
                 print(f'predicted class at first: {y_predict}')
 
                 #take past predictions into account
@@ -160,15 +160,15 @@ if __name__ == "__main__":
                     y_predict = classnames[np.argmax(avg_proba)]
                     print(f'predicted class with memory: {y_predict}')
 
-                try:
-                    response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict}", timeout=1)
+                # try:
+                #     response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict}", timeout=1)
                     
-                    # All responses are JSON dictionaries
-                    response_as_dict = json.loads(response.text)
-                    print(f'server response : {response_as_dict}')
+                #     # All responses are JSON dictionaries
+                #     response_as_dict = json.loads(response.text)
+                #     print(f'server response : {response_as_dict}')
                     
-                except Exception as error:
-                    print(error)
+                # except Exception as error:
+                #     print(error)
 
     except KeyboardInterrupt:
         print("\n\nProgram interrupted. Shutting down server")
