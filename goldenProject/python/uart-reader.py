@@ -25,7 +25,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # creating the socket
 host = socket.gethostname()
-port = 5001
+port = 5002
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -38,7 +38,7 @@ result_filename = "predicted_class.csv"
 dt = np.dtype(np.uint16).newbyteorder("<")
 
 model_dir = "models/" # where to save the models
-filename = 'RFC.pickle'
+filename = 'CNN.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
 
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
@@ -127,7 +127,7 @@ if __name__ == "__main__":
 
                 melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
                 #melvec = np.reshape(melvec, (1, N_MELVECS, MELVEC_LENGTH, 1))
-                melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
+                melvec_normalized = melvec #/ np.linalg.norm(melvec, keepdims=True)
 
                 '''
                 plt.figure()
@@ -137,24 +137,24 @@ if __name__ == "__main__":
                 plt.show()
                 '''
 
-                y_predict = model.predict(melvec_normalized)
-                #proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
+                #y_predict = model.predict(melvec_normalized)
+                y_predict = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
                 #print(proba)
-                #y_predict = np.argmax(y_predict, axis=1) # the most probable class
+                y_predict = np.argmax(y_predict, axis=1) # the most probable class
                 print(y_predict)
-                #y_predict = label_encoder.inverse_transform(y_predict)
+                y_predict = label_encoder.inverse_transform(y_predict)
 
                 print(f'predicted class: {y_predict[0]}')
 
-                try:
-                    response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict[0]}", timeout=0.5)
+                # try:
+                #     response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict[0]}", timeout=0.5)
                     
-                    # All responses are JSON dictionaries
-                    response_as_dict = json.loads(response.text)
-                    print(f'server response : {response_as_dict}')
+                #     # All responses are JSON dictionaries
+                #     response_as_dict = json.loads(response.text)
+                #     print(f'server response : {response_as_dict}')
                     
-                except Exception as error:
-                    print(error)
+                # except Exception as error:
+                #     print(error)
 
     except KeyboardInterrupt:
         print("\n\nProgram interrupted. Shutting down server")
