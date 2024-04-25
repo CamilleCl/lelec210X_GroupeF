@@ -25,7 +25,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # creating the socket
 host = socket.gethostname()
-port = 5002
+port = 5005
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -127,15 +127,15 @@ if __name__ == "__main__":
 
                 melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
                 #melvec = np.reshape(melvec, (1, N_MELVECS, MELVEC_LENGTH, 1))
-                melvec_normalized = melvec #/ np.linalg.norm(melvec, keepdims=True)
+                melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
-                '''
-                plt.figure()
-                plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="")
-                plt.draw()
-                plt.pause(0.001)
-                plt.show()
-                '''
+                
+                # plt.figure()
+                # plot_specgram(melvec_normalized.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="")
+                # plt.draw()
+                # plt.pause(0.001)
+                # plt.show()
+                
 
                 #y_predict = model.predict(melvec_normalized)
                 y_predict = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
@@ -146,15 +146,15 @@ if __name__ == "__main__":
 
                 print(f'predicted class: {y_predict[0]}')
 
-                # try:
-                #     response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict[0]}", timeout=0.5)
+                try:
+                    response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict[0]}", timeout=0.5)
                     
-                #     # All responses are JSON dictionaries
-                #     response_as_dict = json.loads(response.text)
-                #     print(f'server response : {response_as_dict}')
+                    # All responses are JSON dictionaries
+                    response_as_dict = json.loads(response.text)
+                    print(f'server response : {response_as_dict}')
                     
-                # except Exception as error:
-                #     print(error)
+                except Exception as error:
+                    print(error)
 
     except KeyboardInterrupt:
         print("\n\nProgram interrupted. Shutting down server")
