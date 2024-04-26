@@ -25,7 +25,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # creating the socket
 host = socket.gethostname()
-port = 5001
+port = 5005
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -38,7 +38,7 @@ result_filename = "predicted_class.csv"
 dt = np.dtype(np.uint16).newbyteorder("<")
 
 model_dir = "models/" # where to save the models
-filename = 'RFC.pickle'
+filename = 'CNN.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
 
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
@@ -129,20 +129,20 @@ if __name__ == "__main__":
                 #melvec = np.reshape(melvec, (1, N_MELVECS, MELVEC_LENGTH, 1))
                 melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
-                '''
-                plt.figure()
-                plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="")
-                plt.draw()
-                plt.pause(0.001)
-                plt.show()
-                '''
+                
+                # plt.figure()
+                # plot_specgram(melvec_normalized.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="")
+                # plt.draw()
+                # plt.pause(0.001)
+                # plt.show()
+                
 
-                y_predict = model.predict(melvec_normalized)
-                #proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
+                #y_predict = model.predict(melvec_normalized)
+                y_predict = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
                 #print(proba)
-                #y_predict = np.argmax(y_predict, axis=1) # the most probable class
+                y_predict = np.argmax(y_predict, axis=1) # the most probable class
                 print(y_predict)
-                #y_predict = label_encoder.inverse_transform(y_predict)
+                y_predict = label_encoder.inverse_transform(y_predict)
 
                 print(f'predicted class: {y_predict[0]}')
 
