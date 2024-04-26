@@ -44,9 +44,11 @@ dt = np.dtype(np.uint16).newbyteorder("<")
 
 model_dir = "model1/" # where to save the models
 filename = 'RFC.pickle'
+file_PCA = 'PCA.pickle'
 #label_name = "label_encoder.pickle"
 model = pickle.load(open(model_dir + filename, 'rb'))
 #label_encoder = pickle.load(open(model_dir + label_name, 'rb'))
+pca = pickle.load(open(model_dir + file_PCA, 'rb'))
 
 predict_threshold = 0.5 #threshold for garbage class
 past_predictions = [] #liste où on vient mettre les proba des anciennes predictions
@@ -203,6 +205,8 @@ if __name__ == "__main__":
 
                 if classif:
                     melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
+
+                    melvec_normalized = pca.transform(melvec_normalized)
 
                     #proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
                     #print(proba)
