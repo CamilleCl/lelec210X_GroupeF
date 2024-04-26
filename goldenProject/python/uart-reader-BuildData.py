@@ -42,11 +42,11 @@ melvec_dir = "bigbigDataset/"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
-model_dir = "modelCNN/" # where to save the models
-filename = 'CNN.pickle'
-label_name = "label_encoder.pickle"
+model_dir = "model1/" # where to save the models
+filename = 'RFC.pickle'
+#label_name = "label_encoder.pickle"
 model = pickle.load(open(model_dir + filename, 'rb'))
-label_encoder = pickle.load(open(model_dir + label_name, 'rb'))
+#label_encoder = pickle.load(open(model_dir + label_name, 'rb'))
 
 predict_threshold = 0.5 #threshold for garbage class
 past_predictions = [] #liste où on vient mettre les proba des anciennes predictions
@@ -204,13 +204,15 @@ if __name__ == "__main__":
                 if classif:
                     melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
-                    proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
-                    print(proba)
-                    y_predict = np.argmax(proba, axis=1) # the most probable class
-                    print(y_predict)
+                    #proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
+                    #print(proba)
+                    #y_predict = np.argmax(proba, axis=1) # the most probable class
+                    #print(y_predict)
+                    #y_predict = label_encoder.inverse_transform(y_predict)
+                    #print(y_predict)
+                    proba = model.predict_proba(melvec_normalized)
+                    y_predict = np.argmax(proba, axis=1)
                     y_predict = label_encoder.inverse_transform(y_predict)
-                    print(y_predict)
-                    #proba = model.predict_proba(melvec_normalized)
 
                     #take past predictions into account
                     # if (start == None):
