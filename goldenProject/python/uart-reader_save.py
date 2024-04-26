@@ -11,7 +11,6 @@ import serial
 from serial.tools import list_ports
 import pickle
 import socket
-import time
 
 import requests
 import json
@@ -22,10 +21,11 @@ key = "jc5jE0qHTmt1l-0EYOYJ3HzxEB8vIb6qtNm6dI3w"
 
 
 from classification.utils.plots import plot_specgram
+from sklearn.preprocessing import LabelEncoder
 
 # creating the socket
 host = socket.gethostname()
-port = 5010
+port = 5005
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -42,10 +42,9 @@ filename = 'CNN.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
 
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
-#memory
-start = None #start for time threshold
-time_threshold = 2.5 # max time between 2 melspecs [s]
-past_predictions = [] #liste où on vient mettre les proba des anciennes predictions
+label_encoder = LabelEncoder()
+label_encoder.fit(classnames)
+
 
 def parse_buffer(line):
     line = line.strip()
@@ -126,49 +125,36 @@ if __name__ == "__main__":
 
                 print("MEL Spectrogram #{}".format(msg_counter))
 
-                #melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
-                melvec = np.reshape(melvec, (1, N_MELVECS, MELVEC_LENGTH, 1))
+                melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
+                #melvec = np.reshape(melvec, (1, N_MELVECS, MELVEC_LENGTH, 1))
                 melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
+                
                 # plt.figure()
-                # plot_specgram(melvec.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="")
+                # plot_specgram(melvec_normalized.reshape((N_MELVECS, MELVEC_LENGTH)).T, ax=plt.gca(), is_mel=True, title="")
                 # plt.draw()
                 # plt.pause(0.001)
                 # plt.show()
+                
 
                 #y_predict = model.predict(melvec_normalized)
-                proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
-                y_predict = np.argmax(proba, axis=1) # index of the most probable class
-                y_predict = classnames[y_predict[0]]
-                print(f'predicted class at first: {y_predict}')
+                y_predict = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
+                #print(proba)
+                y_predict = np.argmax(y_predict, axis=1) # the most probable class
+                print(y_predict)
+                y_predict = label_encoder.inverse_transform(y_predict)
 
-                #take past predictions into account
-                if (start == None):
-                    start = time.time() #begin the time counter
-                else:
-                    stop = time.time()
-                    delay = stop - start
-                    if(delay > time_threshold):
-                        past_predictions = [] #clear array of predictions
-                        print(f"too long :-( : {delay} sec")
-                    start = stop 
-                past_predictions.append(proba[0])
-                
-                if (len(past_predictions) > 1): 
-                    weights = np.ones(len(past_predictions)) #weights of the predictions
-                    avg_proba = np.average(past_predictions, axis = 0, weights = weights) #avg proba of all columns with higher weight for the present proba
-                    y_predict = classnames[np.argmax(avg_proba)]
-                    print(f'predicted class with memory: {y_predict}')
+                print(f'predicted class: {y_predict[0]}')
 
-                # try:
-                #     response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict}", timeout=1)
+                try:
+                    response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict[0]}", timeout=0.5)
                     
-                #     # All responses are JSON dictionaries
-                #     response_as_dict = json.loads(response.text)
-                #     print(f'server response : {response_as_dict}')
+                    # All responses are JSON dictionaries
+                    response_as_dict = json.loads(response.text)
+                    print(f'server response : {response_as_dict}')
                     
-                # except Exception as error:
-                #     print(error)
+                except Exception as error:
+                    print(error)
 
     except KeyboardInterrupt:
         print("\n\nProgram interrupted. Shutting down server")
