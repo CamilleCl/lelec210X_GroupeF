@@ -25,7 +25,7 @@ from classification.utils.plots import plot_specgram
 
 # creating the socket
 host = socket.gethostname()
-port = 5001
+port = 5002
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
