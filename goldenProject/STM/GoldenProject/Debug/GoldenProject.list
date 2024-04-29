@@ -1576,7 +1576,7 @@ static inline float q15_to_float(q15_t x)
 
 080010f0 <StartADCAcq>:
 
-static uint32_t threshold = 90000;
+static uint32_t threshold = 30000;
 
 
 

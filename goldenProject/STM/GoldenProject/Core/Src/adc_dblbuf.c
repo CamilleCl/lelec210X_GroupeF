@@ -20,7 +20,7 @@ static uint32_t packet_cnt = 0;
 static volatile int32_t rem_n_bufs = 0;
 static volatile int32_t recording = 0;
 
-static uint32_t threshold = 90000;
+static uint32_t threshold = 30000;
 
 
 
