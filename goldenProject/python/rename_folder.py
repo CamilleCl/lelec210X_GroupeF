@@ -40,11 +40,13 @@ def rename_files(folder_path, start):
         prev_prefix = prefix
 
 # Example usage: provide the path to your folder
-folder_path = "datasetCuisineGloe"
-start = 650
+folder_path = "bigDataset"
+start = 890
 rename_files(folder_path, start)
 
 #pyth de 0 à 249
 # chambre gloe de 250 à 449
 # couloir gloe 450 à 649
-# cuisine gloe 650 à 850
+# cuisine gloe 650 à 849
+# dataset (barb) 850 à 889
+# bigDataset (chambre glu) 890 à 1089
