@@ -25,7 +25,7 @@ from classification.datasets import Dataset, get_cls_from_path
 from classification.utils.plots import plot_audio, plot_specgram
 from classification.utils.audio_student import AudioUtil
 
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
 
 # creating the socket
 host = socket.gethostname()
@@ -42,17 +42,11 @@ melvec_dir = "bigbigDataset/"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
-model_dir = "modelCNN/" # where to save the models
-filename = 'CNN.pickle'
-pca = False
-cnn_model = True
-rfc_model = False
-if (pca):
-    file_PCA = 'PCA.pickle'
-    pca = pickle.load(open(model_dir + file_PCA, 'rb'))
-#label_name = "label_encoder.pickle"
+model_dir = "model/" # where to save the models
+filename = 'CNN3conv.pickle'
+ohe_name = "ohe.pickle"
 model = pickle.load(open(model_dir + filename, 'rb'))
-#label_encoder = pickle.load(open(model_dir + label_name, 'rb'))
+ohe = pickle.load(open(model_dir + ohe_name, 'rb'))
 
 
 predict_threshold = 0.5 #threshold for garbage class
@@ -61,8 +55,6 @@ past_predictions = [] #liste où on vient mettre les proba des anciennes predict
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
 start = None #start for time threshold
 time_threshold = 2.5 # max time between 2 melspecs
-label_encoder = LabelEncoder()
-label_encoder.fit(classnames)
 
 #choisir le mode qu'on veut: enregistrer un dataset et/ou faire une classification
 create_data = False
@@ -95,47 +87,14 @@ def reader(ser):
 
             yield buffer_array
 
-def reader_socket(): 
+def binarizer(prediction_CNN): 
+    pred = np.zeros(prediction_CNN.shape)
+    print(pred.shape)
+    for i, line in enumerate(prediction_CNN): 
+        idx = np.argmax(line)
+        pred[i,idx] = 1
+    return pred
 
-    server_socket.bind((host, port))
-
-    server_socket.listen(1)
-    conn, address = server_socket.accept()
-    print("Connection from: " + str(address))
-
-    while True:
-        line = conn.recv(16 * N_MELVECS * MELVEC_LENGTH).decode('ascii')
-        line = line.strip()
-
-        print(line)
-        
-        buffer = parse_buffer(line)
-        if buffer is not None:
-            buffer_array = np.frombuffer(buffer, dtype=dt)
-
-            yield buffer_array
-
-
-
-def playing_sound(ser, SoundPerClasse, classes = None):
-    classe = 'birds'
-    for i in range(SoundPerClasse):
-            sound = dataset[classe, i]
-            x, fs = sf.read(sound)
-            # target_dB = 25
-            # x /= np.linalg.norm(x) * 10 ** (-target_dB / 20)
-            print(f'Playing a "{get_cls_from_path(sound)}"')
-            sd.play(x, fs)
-
-            sleeptime = random.uniform(0, 4)
-            print("sleeping for:", sleeptime, "seconds")
-            time.sleep(sleeptime)
-
-            ser.write(bytearray('s','ascii'))
-            print("message sent to uart")
-            #ser.close()
-
-            time.sleep(7-sleeptime)
                   
 if __name__ == "__main__":
 
@@ -163,22 +122,18 @@ if __name__ == "__main__":
         ser = serial.Serial(port = args.port, baudrate = 115200)
         dataset = Dataset()
         classes = dataset.list_classes()
-        #classes = ["helicopter"]
         input_stream = reader(ser)
         for classe in classes:
-            #classe = 'helicopter'
-            SoundPerClasse = 10
+            SoundPerClasse = 40
             for i in range(SoundPerClasse):
 
                 ###### envoi du son ######
                 sound = dataset[classe, i]
                 x, fs = sf.read(sound)
-                # target_dB = 25
-                # x /= np.linalg.norm(x) * 10 ** (-target_dB / 20)
                 print(f'Playing a "{get_cls_from_path(sound)}"')
                 sd.play(x, fs)
 
-                sleeptime = 1 #random.uniform(0, 4)
+                sleeptime = random.uniform(0, 4)
                 print("sleeping for:", sleeptime, "seconds")
                 time.sleep(sleeptime)
                 ser.write(bytearray('s','ascii'))
@@ -199,7 +154,6 @@ if __name__ == "__main__":
                         melvec = np.frombuffer(buffer, dtype=dt)
 
                         
-                #melvec = next(input_stream)
 
                 print("MEL Spectrogram #{}".format(i))
                 print(melvec.shape)
@@ -210,19 +164,10 @@ if __name__ == "__main__":
 
                 if classif:
                     melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
-
-                    if (pca):
-                        melvec_normalized = pca.transform(melvec_normalized)
-
-                    if (cnn_model):
-                        melvec_normalized = melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1)
-                        proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
-                    
-                    if (rfc_model) :
-                        proba = model.predict_proba(melvec_normalized)
-
-                    y_predict = np.argmax(proba, axis=1)
-                    y_predict = label_encoder.inverse_transform(y_predict)
+                    melvec_normalized = melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1)
+                    proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
+                    ohe_predict = binarizer(proba)
+                    y_predict = (ohe.inverse_transform(ohe_predict)).squeeze()
 
                     #take past predictions into account
                     # if (start == None):
@@ -283,7 +228,7 @@ if __name__ == "__main__":
                     #plt.savefig("nonideal_micro_{}.pdf".format(classe))
                     plt.show()
 
-                time.sleep(7-sleeptime)
+                time.sleep(6-sleeptime)
 
 
         ser.close()
