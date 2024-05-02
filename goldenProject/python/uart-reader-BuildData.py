@@ -43,7 +43,7 @@ melvec_dir = "bigbigDataset/"
 dt = np.dtype(np.uint16).newbyteorder("<")
 
 model_dir = "model/" # where to save the models
-filename = 'CNN3conv.pickle'
+filename = 'CNN-DatasetGlPyth.pickle'
 ohe_name = "ohe.pickle"
 model = pickle.load(open(model_dir + filename, 'rb'))
 ohe = pickle.load(open(model_dir + ohe_name, 'rb'))
@@ -124,7 +124,7 @@ if __name__ == "__main__":
         classes = dataset.list_classes()
         input_stream = reader(ser)
         for classe in classes:
-            SoundPerClasse = 40
+            SoundPerClasse = 10
             for i in range(SoundPerClasse):
 
                 ###### envoi du son ######
