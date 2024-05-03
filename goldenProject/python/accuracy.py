@@ -11,7 +11,7 @@ from classification.datasets import Dataset, get_cls_from_path
 from classification.utils.plots import plot_audio, plot_specgram
 
 
-dataset_size = 50
+dataset_size = 200
 
 classes = ['birds','chainsaw','fire','handsaw','helicopter']
 classnames = ['birds','chainsaw','fire','handsaw','helicopter'] #, "garbage"] #to have the garbage class in matrix
