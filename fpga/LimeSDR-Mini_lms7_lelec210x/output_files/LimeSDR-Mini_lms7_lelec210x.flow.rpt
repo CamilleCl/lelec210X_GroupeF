@@ -1,5 +1,5 @@
 Flow report for LimeSDR-Mini_lms7_lelec210x
-Thu Jan 18 15:51:04 2024
+Fri May  3 14:50:06 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,24 +40,24 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Jan 18 15:51:04 2024       ;
+; Flow Status                        ; Successful - Fri May  3 14:50:06 2024       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; LimeSDR-Mini_lms7_lelec210x                 ;
 ; Top-level Entity Name              ; lms7_trx_top                                ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M16SAU169C8G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 15,040                                      ;
-;     Total combinational functions  ; 9,309                                       ;
-;     Dedicated logic registers      ; 10,713                                      ;
+; Total logic elements               ; 13,567 / 15,840 ( 86 % )                    ;
+;     Total combinational functions  ; 9,350 / 15,840 ( 59 % )                     ;
+;     Dedicated logic registers      ; 10,645 / 15,840 ( 67 % )                    ;
 ; Total registers                    ; 10717                                       ;
-; Total pins                         ; 117                                         ;
+; Total pins                         ; 117 / 130 ( 90 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 244,624                                     ;
-; Embedded Multiplier 9-bit elements ; 3                                           ;
-; Total PLLs                         ; 1                                           ;
-; UFM blocks                         ; 1                                           ;
-; ADC blocks                         ; 0                                           ;
+; Total memory bits                  ; 244,624 / 562,176 ( 44 % )                  ;
+; Embedded Multiplier 9-bit elements ; 3 / 90 ( 3 % )                              ;
+; Total PLLs                         ; 1 / 1 ( 100 % )                             ;
+; UFM blocks                         ; 1 / 1 ( 100 % )                             ;
+; ADC blocks                         ; 0 / 1 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-------------------+-----------------------------+
 ; Option            ; Setting                     ;
 +-------------------+-----------------------------+
-; Start date & time ; 01/18/2024 15:49:30         ;
+; Start date & time ; 05/03/2024 14:45:45         ;
 ; Main task         ; Compilation                 ;
 ; Revision Name     ; LimeSDR-Mini_lms7_lelec210x ;
 +-------------------+-----------------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 ; Assignment Name                     ; Value                                                            ; Default Value               ; Entity Name         ; Section Id     ;
 +-------------------------------------+------------------------------------------------------------------+-----------------------------+---------------------+----------------+
 ; ALLOW_REGISTER_RETIMING             ; Off                                                              ; On                          ; --                  ; --             ;
-; COMPILER_SIGNATURE_ID               ; 31118930263852.170558937042749                                   ; --                          ; --                  ; --             ;
+; COMPILER_SIGNATURE_ID               ; 31118930263852.171474034514699                                   ; --                          ; --                  ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                                             ; --                          ; --                  ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                                           ; <None>                      ; --                  ; --             ;
 ; ENABLE_SIGNALTAP                    ; Off                                                              ; --                          ; --                  ; --             ;
@@ -154,8 +154,13 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:01:27     ; 1.0                     ; 1374 MB             ; 00:02:09                           ;
-; Total                ; 00:01:27     ; --                      ; --                  ; 00:02:09                           ;
+; Analysis & Synthesis ; 00:01:18     ; 1.0                     ; 1381 MB             ; 00:01:52                           ;
+; Fitter               ; 00:02:12     ; 1.3                     ; 1814 MB             ; 00:04:11                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 849 MB              ; 00:00:03                           ;
+; Power Analyzer       ; 00:00:14     ; 1.8                     ; 1332 MB             ; 00:00:24                           ;
+; Timing Analyzer      ; 00:00:13     ; 2.1                     ; 994 MB              ; 00:00:24                           ;
+; EDA Netlist Writer   ; 00:00:06     ; 1.0                     ; 1217 MB             ; 00:00:06                           ;
+; Total                ; 00:04:06     ; --                      ; --                  ; 00:07:00                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -165,6 +170,11 @@ refer to the applicable agreement for further details.
 ; Module Name          ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
 +----------------------+------------------+----------------+------------+----------------+
 ; Analysis & Synthesis ; julien-UX331UN   ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
+; Fitter               ; julien-UX331UN   ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
+; Assembler            ; julien-UX331UN   ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
+; Power Analyzer       ; julien-UX331UN   ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
+; Timing Analyzer      ; julien-UX331UN   ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
+; EDA Netlist Writer   ; julien-UX331UN   ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
 +----------------------+------------------+----------------+------------+----------------+
 
 
@@ -172,6 +182,11 @@ refer to the applicable agreement for further details.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off LimeSDR-Mini_lms7_lelec210x -c LimeSDR-Mini_lms7_lelec210x
+quartus_fit --read_settings_files=off --write_settings_files=off LimeSDR-Mini_lms7_lelec210x -c LimeSDR-Mini_lms7_lelec210x
+quartus_asm --read_settings_files=off --write_settings_files=off LimeSDR-Mini_lms7_lelec210x -c LimeSDR-Mini_lms7_lelec210x
+quartus_pow --read_settings_files=off --write_settings_files=off LimeSDR-Mini_lms7_lelec210x -c LimeSDR-Mini_lms7_lelec210x
+quartus_sta LimeSDR-Mini_lms7_lelec210x -c LimeSDR-Mini_lms7_lelec210x
+quartus_eda --read_settings_files=off --write_settings_files=off LimeSDR-Mini_lms7_lelec210x -c LimeSDR-Mini_lms7_lelec210x
 
 
 
