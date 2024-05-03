@@ -33,15 +33,16 @@ MELVEC_LENGTH = 20
 N_MELVECS = 20
 
 result_filename = "predicted_class.csv"
+result_filename_mem = "predicted_class_memory.csv"
 melvec_dir = "dataset/"
 
 dt = np.dtype(np.uint16).newbyteorder("<")
 
-model_dir = "modelCNN/" # where to save the models
-filename = 'CNN.pickle'
-label_name = "label_encoder.pickle"
+model_dir = "model/" # where to save the models
+filename = 'CNN3conv.pickle'
+ohe_name = "ohe.pickle"
 model = pickle.load(open(model_dir + filename, 'rb'))
-label_encoder = pickle.load(open(model_dir + label_name, 'rb'))
+ohe = pickle.load(open(model_dir + ohe_name, 'rb'))
 
 predict_threshold = 0.7 #threshold for garbage class
 past_predictions = [] #liste où on vient mettre les proba des anciennes predictions
@@ -49,16 +50,9 @@ past_predictions = [] #liste où on vient mettre les proba des anciennes predict
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
 start = None #start for time threshold
 time_threshold = 2.5 # max time between 2 melspecs
-label_encoder = LabelEncoder()
-label_encoder.fit(classnames)
 
 
-#choisir le mode qu'on veut: enregistrer un dataset et/ou faire une classification
-create_data = False
-classif = True
-plot_fig = False
-plot_sound_melvec = False
-
+estimator = "ML" #ML estimator or mean
 
 def parse_buffer(line):
     line = line.strip()
@@ -84,11 +78,20 @@ def reader(ser):
 
             yield buffer_array
 
+def binarizer(prediction_CNN): 
+    pred = np.zeros(prediction_CNN.shape)
+    print(pred.shape)
+    for i, line in enumerate(prediction_CNN): 
+        idx = np.argmax(line)
+        pred[i,idx] = 1
+    return pred
                   
 if __name__ == "__main__":
 
     file = open(result_filename, 'w')
     file.close()
+    file_mem = open(result_filename_mem, 'w')           
+    file_mem.close()
 
     argParser = argparse.ArgumentParser()
     argParser.add_argument("-p", "--port", help="Port for serial communication")
@@ -113,7 +116,6 @@ if __name__ == "__main__":
         classes = dataset.list_classes()
         input_stream = reader(ser)
         for classe in classes:
-            #classe = 'helicopter'
             SoundPerClasse = 5
             for i in range(SoundPerClasse):
 
@@ -145,21 +147,20 @@ if __name__ == "__main__":
                             melvec = np.frombuffer(buffer, dtype=dt)
 
                             
-                    #melvec = next(input_stream)
 
                     print("MEL Spectrogram #{}".format(i))
                     print(melvec.shape)
 
-                    #melvec = np.reshape(melvec, (1, N_MELVECS * MELVEC_LENGTH))
                     melvec = np.reshape(melvec, (1, N_MELVECS, MELVEC_LENGTH, 1))
                     print(f"melvec reshaped:{melvec.shape}")
 
                     #classification    
                     melvec_normalized = melvec / np.linalg.norm(melvec, keepdims=True)
 
-                    proba = model.predict(melvec_normalized)
-                    y_predict = np.argmax(proba, axis = 1) # the most probable class
-                    #y_predict = label_encoder.inverse_transform(y_predict)
+                    proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
+                    ohe_predict = binarizer(proba)
+                    y_predict = (ohe.inverse_transform(ohe_predict)).squeeze() # the most probable class
+                    y_predict_first = y_predict
                     print(f"predicted class initially: {y_predict}")
 
                     #take past predictions into account
@@ -172,12 +173,19 @@ if __name__ == "__main__":
                     #       past_predictions = [] #clear array of predictions
                     #       print(f"too long :-( : {delay} sec")
                     #     start = stop 
-                    past_predictions.append(proba[0])
+                    past_predictions.append(proba.squeeze())
+                    print(f"past predictions {past_predictions}")
                     
                     if (len(past_predictions) > 1): 
                         weights = np.ones(len(past_predictions)) #weights of the predictions
-                        avg_proba = np.average(past_predictions, axis = 0, weights = weights) #avg proba of all columns with higher weight for the present proba
-                        y_predict = classnames[np.argmax(avg_proba)]
+                        mean_proba = np.average(past_predictions, axis = 0, weights = weights) #avg proba of all columns with higher weight for the present proba
+                        print(f"mean proba: {mean_proba}")
+                        ML_proba = np.sum(np.log(past_predictions), axis = 0)
+                        print(f"ML proba: {ML_proba}")
+                        if estimator == "ML":
+                            y_predict = classnames[np.argmax(ML_proba)]
+                        else:
+                            y_predict = classnames[np.argmax(mean_proba)]
                         #print(f"avg proba: {avg_proba}, predicted class: {y_predict}")
 
                     # #decide if sound is garbage
@@ -188,8 +196,15 @@ if __name__ == "__main__":
                     print(f'predicted class at the end: {y_predict}')
 
                 past_predictions = [] #clear array of predictions
+
+                #file with predictions with memory
+                file_mem = open(result_filename_mem, 'a')
+                file_mem.write(f"{y_predict}\n")
+                file_mem.close()
+                
+                #predictions without memory
                 file = open(result_filename, 'a')
-                file.write(f"{y_predict}\n")
+                file.write(f"{y_predict_first}\n")
                 file.close()
 
                 time.sleep(3)
