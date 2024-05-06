@@ -72,5 +72,4 @@ if __name__ == "__main__":
                 
     except KeyboardInterrupt:
         print("\n\nProgram interrupted. Shutting down server")
-        server_socket.close()
         exit(0)
