@@ -22,6 +22,7 @@ key = "jc5jE0qHTmt1l-0EYOYJ3HzxEB8vIb6qtNm6dI3w"
 
 
 from classification.utils.plots import plot_specgram
+from sklearn.preprocessing import OneHotEncoder
 
 # creating the socket
 host = socket.gethostname()
@@ -38,7 +39,7 @@ result_filename = "predicted_class.csv"
 dt = np.dtype(np.uint16).newbyteorder("<")
 
 model_dir = "models/" # where to save the models
-filename = 'CNN.pickle'
+filename = 'CNN-DatasetAll.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
 ohe_name = "ohe.pickle"
 ohe = pickle.load(open(model_dir + ohe_name, 'rb'))
