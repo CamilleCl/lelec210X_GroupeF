@@ -25,7 +25,7 @@ from classification.utils.plots import plot_specgram
 
 # creating the socket
 host = socket.gethostname()
-port = 5002
+port = 5009
 server_socket = socket.socket() 
 
 PRINT_PREFIX = "DF:HEX:"
@@ -40,6 +40,9 @@ dt = np.dtype(np.uint16).newbyteorder("<")
 model_dir = "models/" # where to save the models
 filename = 'CNN.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
+ohe_name = "ohe.pickle"
+ohe = pickle.load(open(model_dir + ohe_name, 'rb'))
+
 
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
 #memory
@@ -91,6 +94,14 @@ def reader_socket():
             buffer_array = np.frombuffer(buffer, dtype=dt)
 
             yield buffer_array
+
+def binarizer(prediction_CNN): 
+    pred = np.zeros(prediction_CNN.shape)
+    print(pred.shape)
+    for i, line in enumerate(prediction_CNN): 
+        idx = np.argmax(line)
+        pred[i,idx] = 1
+    return pred
                   
 if __name__ == "__main__":
     try:
@@ -138,8 +149,8 @@ if __name__ == "__main__":
 
                 #y_predict = model.predict(melvec_normalized)
                 proba = model.predict(melvec_normalized.reshape(len(melvec_normalized), 20, 20, 1))
-                y_predict = np.argmax(proba, axis=1) # index of the most probable class
-                y_predict = classnames[y_predict[0]]
+                ohe_predict = binarizer(proba)
+                y_predict = (ohe.inverse_transform(ohe_predict)).squeeze()
                 print(f'predicted class at first: {y_predict}')
 
                 #take past predictions into account
@@ -152,7 +163,7 @@ if __name__ == "__main__":
                         past_predictions = [] #clear array of predictions
                         print(f"too long :-( : {delay} sec")
                     start = stop 
-                past_predictions.append(proba[0])
+                past_predictions.append(proba.squeeze())
                 
                 if (len(past_predictions) > 1): 
                     weights = np.ones(len(past_predictions)) #weights of the predictions
