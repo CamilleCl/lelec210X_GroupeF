@@ -79,7 +79,7 @@ class PacketUnwrapper:
             if sender not in self.senders_last_serial:
                 raise InvalidPacket("Not authorized sender.")
             # Validate serial
-            if self.senders_last_serial[sender] >= serial:
-                raise InvalidPacket(f"Serial number non-incrementing ({serial}).")
-            self.senders_last_serial[sender] = serial
+            # if self.senders_last_serial[sender] >= serial:
+            #     raise InvalidPacket(f"Serial number non-incrementing ({serial}).")
+            # self.senders_last_serial[sender] = serial
         return (sender, packet[HEADER_LEN:-TAG_LEN])
