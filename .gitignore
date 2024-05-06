@@ -14,6 +14,10 @@ DatasetChambreGloe
 datasetCouloirGloe
 datasetCuisineGloe 
 datasetGloeAndPyth
+testDataset
+datasetGloeAndPythAndBarb
+datasetGloeAndPythAndGluAndBarb
+
 goldenProject/python/datasetGloeAndPythAndGluAndBarb
 classification/src/classification/datasets/testDatasetV2
 classification/src/classification/datasets/testDataset
