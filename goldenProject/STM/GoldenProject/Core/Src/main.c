@@ -104,12 +104,11 @@ void run(void)
 		  HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PIN_RESET);
 		  HAL_Delay(200);
 	  }
-	  btn_press = 0;
+	  btn_press = 1;
 #if (CONTINUOUS_ACQ == 1)
-	  while (!btn_press) {
-		  acquire_and_send_packet();
-	  }
-	  btn_press = 0;
+
+	  acquire_and_send_packet();
+
 #elif (CONTINUOUS_ACQ == 0)
 	  if (btn_press) {
 		  acquire_and_send_packet();
