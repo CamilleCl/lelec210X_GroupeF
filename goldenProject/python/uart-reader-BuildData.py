@@ -49,7 +49,7 @@ model = pickle.load(open(model_dir + filename, 'rb'))
 ohe = pickle.load(open(model_dir + ohe_name, 'rb'))
 
 
-predict_threshold = 0.5 #threshold for garbage class
+predict_threshold = 0.7 #threshold for garbage class
 past_predictions = [] #liste où on vient mettre les proba des anciennes predictions
  
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
@@ -187,10 +187,10 @@ if __name__ == "__main__":
                     #     y_predict = classnames[np.argmax(avg_proba)]
                     #     print(f"avg proba: {avg_proba}, predicted class: {y_predict}")
 
-                    # #decide if sound is garbage
-                    # if (np.max(proba) < predict_threshold):
-                    #     y_predict = 'garbage'
-                    #print(f"probabilities:{classnames}\n {proba[0]}")
+                    #decide if sound is garbage
+                    if (np.max(proba) < predict_threshold):
+                        y_predict = 'garbage'
+                    print(f"probabilities: {proba[0]}")
 
                     print(f'predicted class: {y_predict}')
 

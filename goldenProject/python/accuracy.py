@@ -14,7 +14,7 @@ from classification.utils.plots import plot_audio, plot_specgram
 dataset_size = 200
 
 classes = ['birds','chainsaw','fire','handsaw','helicopter']
-classnames = ['birds','chainsaw','fire','handsaw','helicopter'] #, "garbage"] #to have the garbage class in matrix
+classnames = ['birds','chainsaw','fire','handsaw','helicopter', "garbage"] #to have the garbage class in matrix
 
 ground_class = []
 
@@ -69,4 +69,4 @@ print(ground_class)
 acc = np.sum(lst == ground_class) / len(lst)
 
 print('Accuracy of CNN with fixed train/validation sets : {:.1f}%'.format(100*acc))
-show_confusion_matrix(lst, ground_class, classes)
+show_confusion_matrix(lst, ground_class, classnames)

@@ -39,7 +39,7 @@ melvec_dir = "dataset/"
 dt = np.dtype(np.uint16).newbyteorder("<")
 
 model_dir = "model/" # where to save the models
-filename = 'CNN3conv.pickle'
+filename = 'CNN-DatasetAll.pickle'
 ohe_name = "ohe.pickle"
 model = pickle.load(open(model_dir + filename, 'rb'))
 ohe = pickle.load(open(model_dir + ohe_name, 'rb'))
@@ -53,6 +53,8 @@ time_threshold = 2.5 # max time between 2 melspecs
 
 
 estimator = "ML" #ML estimator or mean
+proba_correct = []
+proba_incorrect = []
 
 def parse_buffer(line):
     line = line.strip()
@@ -116,7 +118,7 @@ if __name__ == "__main__":
         classes = dataset.list_classes()
         input_stream = reader(ser)
         for classe in classes:
-            SoundPerClasse = 5
+            SoundPerClasse = 40
             for i in range(SoundPerClasse):
 
                 ###### envoi du son ######
@@ -162,6 +164,12 @@ if __name__ == "__main__":
                     y_predict = (ohe.inverse_transform(ohe_predict)).squeeze() # the most probable class
                     y_predict_first = y_predict
                     print(f"predicted class initially: {y_predict}")
+                    if (y_predict == classe) :
+                        proba_correct.append(np.max(proba.squeeze()))
+                    else:
+                        proba_incorrect.append(np.max(proba.squeeze()))
+                    print(f"Proba if prediction is correct:{proba_correct}")
+                    print(f"Proba if prediction is incorrect:{proba_incorrect}")
 
                     #take past predictions into account
                     # if (start == None):
@@ -207,7 +215,7 @@ if __name__ == "__main__":
                 file.write(f"{y_predict_first}\n")
                 file.close()
 
-                time.sleep(3)
+                time.sleep(2)
 
 
         ser.close()
