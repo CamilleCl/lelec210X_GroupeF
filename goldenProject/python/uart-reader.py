@@ -167,9 +167,8 @@ if __name__ == "__main__":
                 past_predictions.append(proba.squeeze())
                 
                 if (len(past_predictions) > 1): 
-                    weights = np.ones(len(past_predictions)) #weights of the predictions
-                    avg_proba = np.average(past_predictions, axis = 0, weights = weights) #avg proba of all columns with higher weight for the present proba
-                    y_predict = classnames[np.argmax(avg_proba)]
+                    ML_proba = np.sum(np.log(past_predictions), axis = 0)
+                    y_predict = classnames[np.argmax(ML_proba)]
                     print(f'predicted class with memory: {y_predict}')
 
                 # try:
