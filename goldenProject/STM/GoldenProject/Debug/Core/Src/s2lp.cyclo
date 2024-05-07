@@ -3,7 +3,7 @@
 ../Core/Src/s2lp.c:54:19:S2LP_WriteReg	2
 ../Core/Src/s2lp.c:70:19:S2LP_WriteTxFIFO	2
 ../Core/Src/s2lp.c:89:19:S2LP_Send	14
-../Core/Src/s2lp.c:171:6:S2LP_PrintStatus	13
+../Core/Src/s2lp.c:171:6:S2LP_PrintStatus	6
 ../Core/Src/s2lp.c:221:6:S2LP_PLLConf	5
 ../Core/Src/s2lp.c:283:10:ComputeDatarate	3
 ../Core/Src/s2lp.c:302:6:SearchDatarateME	6

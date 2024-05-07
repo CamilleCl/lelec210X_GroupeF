@@ -1,8 +1,7 @@
-../Core/Inc/spectrogram.h:13:21:q15_to_float	1
 ../Core/Src/adc_dblbuf.c:27:5:StartADCAcq	2
 ../Core/Src/adc_dblbuf.c:38:5:IsADCFinished	1
 ../Core/Src/adc_dblbuf.c:42:13:StopADCAcq	1
-../Core/Src/adc_dblbuf.c:46:13:print_spectrogram	3
+../Core/Src/adc_dblbuf.c:46:13:print_spectrogram	1
 ../Core/Src/adc_dblbuf.c:61:13:print_encoded_packet	1
 ../Core/Src/adc_dblbuf.c:69:13:encode_packet	4
 ../Core/Src/adc_dblbuf.c:87:13:send_spectrogram	1
