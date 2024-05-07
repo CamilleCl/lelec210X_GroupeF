@@ -15,6 +15,7 @@ leaderboard/.config.json
 database.db
 package.json
 node_modules/
+moresoundfiles/
 
 # TeX
 
@@ -95,3 +96,4 @@ fpga/*/simulation/
 fpga/*/timing/
 fpga/*/*_sim/
 fpga/incremental_db/
+
