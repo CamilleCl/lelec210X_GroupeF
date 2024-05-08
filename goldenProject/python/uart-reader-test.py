@@ -16,10 +16,8 @@ import time
 import requests
 import json
 
-hostname = "http://lelec210x.sipr.ucl.ac.be"
-key = "jc5jE0qHTmt1l-0EYOYJ3HzxEB8vIb6qtNm6dI3w"
-
-
+hostname = "http://localhost:5000"
+key = "EJMBdSi7SRBzWlarXEQ-QdfvUC0adL3OtwghYJ33"
 
 from classification.utils.plots import plot_specgram
 from sklearn.preprocessing import OneHotEncoder
@@ -43,7 +41,6 @@ filename = 'CNN-DatasetAll.pickle'
 model = pickle.load(open(model_dir + filename, 'rb'))
 ohe_name = "ohe.pickle"
 ohe = pickle.load(open(model_dir + ohe_name, 'rb'))
-
 
 classnames = ['birds','chainsaw','fire','handsaw','helicopter']
 #memory
@@ -172,7 +169,7 @@ if __name__ == "__main__":
                     print(f'predicted class with memory: {y_predict}')
 
                 try:
-                    response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict}", timeout=0.75)
+                    response = requests.post(f"{hostname}/lelec210x/leaderboard/submit/{key}/{y_predict}", timeout=0.5)
                     
                     # All responses are JSON dictionaries
                     response_as_dict = json.loads(response.text)
